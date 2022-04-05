@@ -49,6 +49,12 @@ TagManager:
   - name: Wall
     uniqueID: 1272345259
     locked: 0
+  - name: Player
+    uniqueID: 3303435543
+    locked: 0
+  - name: Cloud
+    uniqueID: 146717447
+    locked: 0
   - name: Foreground
     uniqueID: 2976627157
     locked: 0
