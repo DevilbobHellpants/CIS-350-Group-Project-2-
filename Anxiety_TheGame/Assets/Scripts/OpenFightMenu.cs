@@ -20,7 +20,7 @@ public class OpenFightMenu : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             fightMenu.SetActive(true);
             Debug.Log("cloud hit");
