@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BrainlandAtlas
+  m_Name: Brainland
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -172,5 +172,5 @@ SpriteAtlas:
   - ANXIETYGAMETILEMAP_50
   - ANXIETYGAMETILEMAP_53
   - ANXIETYGAMETILEMAP_52
-  m_Tag: BrainlandAtlas
+  m_Tag: Brainland
   m_IsVariant: 0
