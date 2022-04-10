@@ -12,20 +12,25 @@ using UnityEngine.UI;
 public class OpenFightMenu : MonoBehaviour
 {
     public GameObject fightMenu;
+    public Sprite enemyPortrait;
+    public Enemy[] enemies;
 
     void Start()
     { 
-        fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
+        //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Cloud"))
         {
             fightMenu.SetActive(true);
             Debug.Log("cloud hit");
             Time.timeScale = 0f;
         }
-        Destroy(gameObject);
+        Destroy(other.gameObject);
     }
+
+    //enemyPortrait.sprite = enemies[1].enemySprite; 
+    // was testing something,,, going to wait until i understand the combat system before i mess with the enemies.
 }

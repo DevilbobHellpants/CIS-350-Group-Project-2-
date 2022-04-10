@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 7533964477865436892}
   - component: {fileID: 7533964477865436893}
   - component: {fileID: 8046841651691207440}
-  - component: {fileID: 5561639686921624910}
   m_Layer: 0
   m_Name: Cloud
-  m_TagString: Untagged
+  m_TagString: Cloud
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,16 +133,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
---- !u!114 &5561639686921624910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7533964477865436890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d7d686b704a3c4c8c7cec7b7e4492c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fightMenu: {fileID: 0}
