@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Attack Database", menuName = "Combat System/Database")]
-public class AttackDatabase : MonoBehaviour
+public class AttackDatabase : ScriptableObject, ISerializationCallbackReceiver
 {
     public AttackObjects[] AttackObjects;
 
