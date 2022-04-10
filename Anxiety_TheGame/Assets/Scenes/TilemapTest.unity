@@ -799,7 +799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.66143346, y: -0.08333522, z: -10}
+  m_LocalPosition: {x: -0.6612313, y: -0.08333522, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -29821,6 +29821,7 @@ GameObject:
   - component: {fileID: 1400751133}
   - component: {fileID: 1400751134}
   - component: {fileID: 1400751135}
+  - component: {fileID: 1400751136}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -29967,6 +29968,19 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1400751136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400751129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d7d686b704a3c4c8c7cec7b7e4492c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightMenu: {fileID: 822004501}
 --- !u!1 &1444743862
 GameObject:
   m_ObjectHideFlags: 0
@@ -80291,7 +80305,8 @@ PrefabInstance:
       propertyPath: speed
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 059789e6e724ac645860f861c7134b4f, type: 3}
 --- !u!1 &1958308524
 GameObject:
@@ -80432,7 +80447,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.66143346, y: -0.08333522, z: -10}
+  m_LocalPosition: {x: -0.6612313, y: -0.08333522, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}

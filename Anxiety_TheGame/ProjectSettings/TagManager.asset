@@ -7,6 +7,9 @@ TagManager:
   - Spawn Left
   - Spawn Right
   - FightMenu
+  - FxTemporaire
+  - Cloud
+  - EnemyPortrait
   layers:
   - Default
   - TransparentFX
