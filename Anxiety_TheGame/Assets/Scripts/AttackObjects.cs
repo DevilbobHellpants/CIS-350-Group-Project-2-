@@ -15,7 +15,7 @@ public enum Attributes
 public class AttackObjects : ScriptableObject
 {
     public Sprite uiDisplay;
-    public bool stackable;
+    //public bool stackable;
     [TextArea(15, 20)]
     public string description;
     public Attack data = new Attack();

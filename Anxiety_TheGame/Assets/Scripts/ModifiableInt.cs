@@ -56,7 +56,7 @@ public class ModifiableInt : MonoBehaviour
     }
     public void RemoveModifier(IModifiers _modifier)
     {
-        modifiers.Add(_modifier);
+        modifiers.Remove(_modifier);
         UpdateModifiedValue();
     }
 }
