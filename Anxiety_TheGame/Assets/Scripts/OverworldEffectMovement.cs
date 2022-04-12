@@ -20,7 +20,7 @@ public class OverworldEffectMovement : MonoBehaviour
     private void Start()
     {
         direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-        speed = Random.Range(1f, 4f);
+        speed = Random.Range(1f, 3f);
     }
 
     // Update is called once per frame

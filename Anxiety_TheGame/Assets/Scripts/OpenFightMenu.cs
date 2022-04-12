@@ -28,7 +28,11 @@ public class OpenFightMenu : MonoBehaviour
             Debug.Log("cloud hit");
             Time.timeScale = 0f;
         }
-        Destroy(other.gameObject);
+        GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
+        for (int i = 0; i < clouds.Length; i++)
+        {
+            Destroy(clouds[i]);
+        }
     }
 
     //enemyPortrait.sprite = enemies[1].enemySprite; 

@@ -16,7 +16,7 @@ public class CloudSpawn : MonoBehaviour
   
     void Start()
     {
-        StartCoroutine(SpawnRandomPrefabWithCoroutine());
+        //StartCoroutine(SpawnRandomPrefabWithCoroutine());
     }
 
     IEnumerator SpawnRandomPrefabWithCoroutine()
@@ -32,7 +32,7 @@ public class CloudSpawn : MonoBehaviour
     private void SpawnClouds()
     {
        
-            Vector2 spawnPos = spawnPos = new Vector2(transform.position.x, Random.Range(-3.0f, 5.0f)); ;
+            Vector2 spawnPos = new Vector2(transform.position.x, Random.Range(-3.0f, 5.0f));
             int side = Random.Range(0, 1);
 
             //side = 0,left side

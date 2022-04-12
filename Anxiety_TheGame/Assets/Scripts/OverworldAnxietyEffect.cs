@@ -1,6 +1,6 @@
-﻿/* Caleb Kahn
+﻿/* Caleb Kahn, Jacob Zydorowicz
  * Project 5
- * While the player is in the overworld, this script increases the effects of anxiety over time
+ * While the player is in the overworld, this script increases the effects of anxiety over time and applies them
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ public class OverworldAnxietyEffect : MonoBehaviour
     public Image darknessEffect;
     public CinemachineVirtualCamera cinemachine;
     public GameObject player;
+
     private float timer = 0;
     private float randomTimer = 0;
     private float cooldownTimer = 0;
@@ -28,11 +29,52 @@ public class OverworldAnxietyEffect : MonoBehaviour
     private float alphaChangeTime = 2f;
     private bool alphaUp = true;
 
-    
+    public GameObject cloudPrefab;
+    private float minCloudSpawnTime = 1f;
+    private float maxCloudSpawnTime = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
-        cinemachine.m_Lens.OrthographicSize = 2f;
+        StartCoroutine(SpawnRandomPrefabWithCoroutine());
+    }
+
+    IEnumerator SpawnRandomPrefabWithCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(minCloudSpawnTime, maxCloudSpawnTime));
+            SpawnClouds();
+        }
+    }
+
+    private void SpawnClouds()
+    {
+
+        Vector2 spawnPos;
+        int side = Random.Range(0, 4);
+
+        //side = 0,left side
+        //side = 1,right side
+        if (side == 0) {//Top Side
+            spawnPos =  new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, 4f + player.transform.position.y);
+        }
+        else if (side == 1)
+        {//Right Side
+            spawnPos = new Vector2(7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
+        }
+        else if (side == 2)
+        {//Bottom Side
+            spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, -4f + player.transform.position.y);
+        }
+        else
+        {//Left Side
+            spawnPos = new Vector2(-7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
+        }
+
+        float size = Random.Range(1.5f, 3f);
+        Instantiate(cloudPrefab, spawnPos, cloudPrefab.transform.rotation).transform.localScale = new Vector3(size, size, size);
+
     }
 
     // Update is called once per frame
@@ -72,7 +114,7 @@ public class OverworldAnxietyEffect : MonoBehaviour
                 if (0 == Random.Range(0, randomChance)) {
                     cooldownTimer = 0f;
                     int num = Random.Range(0, imagePrefabs.Length);
-                    GameObject effect = Instantiate(imagePrefabs[num], new Vector2(Random.Range(-8f, 6.0f) + player.transform.position.x, Random.Range(-5f, 5.0f) + player.transform.position.y), imagePrefabs[num].transform.rotation);
+                    GameObject effect = Instantiate(imagePrefabs[num], new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y), imagePrefabs[num].transform.rotation);
                     effect.GetComponent<OverworldEffectMovement>().effectTimer = effectTimer;
                 }
             }
@@ -100,16 +142,18 @@ public class OverworldAnxietyEffect : MonoBehaviour
 
     public void resetVariables()
     {
+        inBattle = false;
         timer = 0;
         randomTimer = 0;
         cooldownTimer = 0;
         minCooldown = 3f;
         pov = 3.5f;
-        randomChance = 100;
+        randomChance = 120;
         effectTimer = 3f;
         alpha = 0f;
         minAlpha = 0f;
         maxAlpha = .1f;
+        alphaChangeTime = 2f;
         alphaUp = true;
-    }
+}
 }
