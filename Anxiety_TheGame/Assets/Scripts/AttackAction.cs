@@ -25,14 +25,17 @@ public class AttackAction : MonoBehaviour
 
     public void Meditate()
     {
+        //playerStats.attributes[0].value.BaseValue = (playerStats.attributes[0].value.BaseValue)
+        //playerStats.attributes[0].value.BaseValue = (playerStats.attributes[0].value.BaseValue) + clickedAttack.attack.data.buffs[0].value;
+        //Debug.Log(string.Concat(playerStats.attributes[0].type, " was updated! Value is now ", playerStats.attributes[0].value.ModifiedValue));
         for (int i = 0; i < playerStats.attributes.Length; i++)
         {
             if (playerStats.attributes[0].type == clickedAttack.attack.data.buffs[0].attribute)
             {
+                clickedAttack.attack.data.buffs[0].GenerateValue();
+                playerStats.attributes[0].value.BaseValue = (playerStats.attributes[0].value.BaseValue) + clickedAttack.attack.data.buffs[0].value;
                 Debug.Log(string.Concat(playerStats.attributes[0].type, " was updated! Value is now ", playerStats.attributes[0].value.ModifiedValue));
-                //playerStats.attributes[0].value.AddModifier(clickedAttack.attack.data.buffs[0]);
             }
         }
-        //Debug.Log(string.Concat(playerStats.attributes[0].type, " was updated! Value is now ", playerStats.attributes[0].value.ModifiedValue));
     }
 }

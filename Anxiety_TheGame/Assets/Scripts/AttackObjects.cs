@@ -97,5 +97,6 @@ public class AttackEffect : IModifiers
     public void GenerateValue()
     {
         value = UnityEngine.Random.Range(min, max);
+        Debug.Log(value);
     }
 }

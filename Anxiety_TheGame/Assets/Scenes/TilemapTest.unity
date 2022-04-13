@@ -590,7 +590,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.467853
+  orthographic size: 3.401398
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -614,7 +614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65539616, y: -0.08256978, z: -10}
+  m_LocalPosition: {x: -0.8017536, y: -0.08098745, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -918,7 +918,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack 1
+  m_Text: Emotional Support
 --- !u!222 &878878557
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32711,6 +32711,8 @@ GameObject:
   - component: {fileID: 1315154607}
   - component: {fileID: 1315154606}
   - component: {fileID: 1315154605}
+  - component: {fileID: 1315154609}
+  - component: {fileID: 1315154608}
   m_Layer: 5
   m_Name: Attack 1
   m_TagString: Untagged
@@ -32780,7 +32782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1315154606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1315154608}
+        m_TargetAssemblyTypeName: AttackAction, Assembly-CSharp
+        m_MethodName: Meditate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1315154606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32819,6 +32833,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315154603}
   m_CullTransparentMesh: 0
+--- !u!114 &1315154608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315154603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd162f1e1ee367419239bc5aa977f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1315154609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315154603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce59ca33f748674c9d3b84c3bdade0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 11400000, guid: e1f69f5163d2bf24ba655b190bf72700, type: 2}
 --- !u!1 &1343301322
 GameObject:
   m_ObjectHideFlags: 0
@@ -33102,6 +33141,7 @@ GameObject:
   - component: {fileID: 1400751136}
   - component: {fileID: 1400751138}
   - component: {fileID: 1400751137}
+  - component: {fileID: 1400751139}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33458,6 +33498,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1400751139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400751129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6222042c4fdac7e4abb4b74aaac18a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes:
+  - type: 0
+    value: {fileID: 0}
 --- !u!1 &1444743862
 GameObject:
   m_ObjectHideFlags: 0
@@ -88874,7 +88929,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1400751132}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.467853
+    OrthographicSize: 3.401398
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -88895,7 +88950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65539616, y: -0.08256978, z: -10}
+  m_LocalPosition: {x: -0.8017536, y: -0.08098745, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}
