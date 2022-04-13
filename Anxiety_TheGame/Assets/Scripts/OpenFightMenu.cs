@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 /*
- * Anna Breuker
+ * Anna Breuker, Jacob Zydorowicz
  * Project 5 
  * Opens the fight menu when player touches a cloud.
  */
@@ -12,8 +12,15 @@ using UnityEngine.UI;
 public class OpenFightMenu : MonoBehaviour
 {
     public GameObject fightMenu;
+    public GameObject worldEffect;
+    public GameObject nueronEffect;
+    public ParticleSystem smokeEffect;
     public Sprite enemyPortrait;
     public Enemy[] enemies;
+
+    public AudioSource playerAudio;
+    public AudioClip encounterSound;
+
 
     void Start()
     { 
@@ -24,9 +31,18 @@ public class OpenFightMenu : MonoBehaviour
     {
         if (other.CompareTag("Cloud"))
         {
+            worldEffect.SetActive(false);
+            nueronEffect.SetActive(false);
             fightMenu.SetActive(true);
+
+            playerAudio.PlayOneShot(encounterSound, .75f);
+
+            if(!smokeEffect.isPlaying)
+            {
+                StartCoroutine(playSmoke());
+            }
+               
             Debug.Log("cloud hit");
-            Time.timeScale = 0f;
         }
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         for (int i = 0; i < clouds.Length; i++)
@@ -37,4 +53,18 @@ public class OpenFightMenu : MonoBehaviour
 
     //enemyPortrait.sprite = enemies[1].enemySprite; 
     // was testing something,,, going to wait until i understand the combat system before i mess with the enemies.
+
+    //Plays enemy entry anim and stops time
+    IEnumerator playSmoke()
+    {
+        //yield return new WaitForSeconds(0.5f);
+
+        if (smokeEffect != null)
+        {
+            smokeEffect.Play();
+            yield return new WaitForSeconds(2);
+            Time.timeScale = 0f;
+        }
+
+    }
 }
