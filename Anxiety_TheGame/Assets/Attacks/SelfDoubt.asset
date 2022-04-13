@@ -10,12 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cc03ff7f5c970249b9c31b74b446c91, type: 3}
-  m_Name: New Attack
+  m_Name: SelfDoubt
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
-  stackable: 0
-  description: 
+  description: "Enemy to use against: Glass-Eye\n\nAbility: Anxiety up, end encounter
+    prematurely \n\nDescription shown when used: Maybe they're right... I do look
+    stupid.\n"
   data:
-    Name: 
-    Id: -1
-    buffs: []
+    Name: SelfDoubt
+    Id: 4
+    buffs:
+    - attribute: 0
+      value: 0
+      min: 20
+      max: 30
+    - attribute: 4
+      value: 100
+      min: 0
+      max: 0

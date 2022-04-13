@@ -4,11 +4,30 @@ using UnityEngine;
 
 public enum Attributes
 {
-    Agility,
+    /*Agility,
     Intellect,
     Stamina,
     Strength,
-    Health
+    Health*/ //going to replace these using only the attributes described in the doc - anna
+
+    PlayerAnxiety, //goes up or down by either a flat amount or a random amount within a range
+    EnemyHealth, //goes up or down by either a flat amount or a random amount within a range
+
+    //^ these two are honestly the only necessary ones ^
+
+    MovementSpeed, //effects movement in the overworld (i think that's the intention)
+    Blindness, //blindness in the overworld 
+    EndEncounterEarly, //a chance between 0 and 100
+    ChangeEnemyText, //different depending on enemy
+    CloudSpawnRate, //cloud spawn would be multiplied by whatever this number is
+    Asleep, //if true, cannot make selections for two turns / enemy gets two free attacks.
+    Defense,
+    Drunk, //if true, controls swaped in overworld
+    MusicVolume, //directly effects background music
+    Agoraphobic //cannot use social related skills until X amount of combat turns have passed
+                //   this was something i added back in last minute, probably not theisable for 
+                //   playtest build.
+
 }
 
 [CreateAssetMenu(fileName = "New Attack", menuName = "Combat System/Attacks")]

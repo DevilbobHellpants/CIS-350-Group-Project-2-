@@ -10,11 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cc03ff7f5c970249b9c31b74b446c91, type: 3}
-  m_Name: Meditate
+  m_Name: TakeOffGlasses
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
-  description: 
+  description: "Enemy to use against: Glass-Eye\n\nAbility: Anxiety down, blindness
+    \n\nDescription shown when used: Who needs glasses anyways? Not you, that's for
+    sure.\n"
   data:
-    Name: 
-    Id: -1
-    buffs: []
+    Name: TakeOffGlasses
+    Id: 3
+    buffs:
+    - attribute: 0
+      value: -20
+      min: 0
+      max: 0
+    - attribute: 3
+      value: 0
+      min: 0
+      max: 0

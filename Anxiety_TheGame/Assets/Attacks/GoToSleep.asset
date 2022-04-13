@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc03ff7f5c970249b9c31b74b446c91, type: 3}
+  m_Name: GoToSleep
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 0}
+  description: "Enemy to use against: Lier Smiler\n\nAbility: anxiety way down, problem
+    slightly down, but can\u2019t do anything for two turns\n\nDescription shown
+    when used: There's nothing a good nap can't fix."
+  data:
+    Name: GoToSleep
+    Id: 9
+    buffs:
+    - attribute: 0
+      value: 0
+      min: -40
+      max: -60
+    - attribute: 1
+      value: 0
+      min: -10
+      max: -30
+    - attribute: 7
+      value: 2
+      min: 0
+      max: 0
