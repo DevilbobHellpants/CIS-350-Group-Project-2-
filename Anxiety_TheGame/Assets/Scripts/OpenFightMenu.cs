@@ -11,8 +11,9 @@ using UnityEngine.UI;
 //this is supposed to be attached to the cloud prefab- might recode it to be attached to the player because this "FindGameObjectWithTag" isn't finding the game object with tag.
 public class OpenFightMenu : MonoBehaviour
 {
+    private OverworldAnxietyEffect worldEffect;
+
     public GameObject fightMenu;
-    public GameObject worldEffect;
     public GameObject nueronEffect;
     public ParticleSystem smokeEffect;
     public Sprite enemyPortrait;
@@ -23,15 +24,18 @@ public class OpenFightMenu : MonoBehaviour
 
 
     void Start()
-    { 
+    {
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
+        worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Cloud"))
         {
-            worldEffect.SetActive(false);
+            worldEffect.inBattle = true;
+            worldEffect.resetVariables();
+
             nueronEffect.SetActive(false);
             fightMenu.SetActive(true);
 
@@ -61,9 +65,13 @@ public class OpenFightMenu : MonoBehaviour
 
         if (smokeEffect != null)
         {
+            playerAudio.PlayOneShot(encounterSound, .75f);
+            
             smokeEffect.Play();
             yield return new WaitForSeconds(2);
             Time.timeScale = 0f;
+            
+            
         }
 
     }

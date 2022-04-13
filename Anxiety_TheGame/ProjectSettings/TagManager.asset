@@ -10,6 +10,7 @@ TagManager:
   - FxTemporaire
   - Cloud
   - EnemyPortrait
+  - AnxietyEffect
   layers:
   - Default
   - TransparentFX

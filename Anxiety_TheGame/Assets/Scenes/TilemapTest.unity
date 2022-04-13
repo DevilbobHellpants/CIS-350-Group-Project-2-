@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 129707850}
   m_Layer: 0
   m_Name: Overworld Anxiety Effect
-  m_TagString: Untagged
+  m_TagString: AnxietyEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,7 +370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -244.69989, y: -4.4000244}
+  m_AnchoredPosition: {x: -244.69987, y: -4.4000244}
   m_SizeDelta: {x: -585.6799, y: -87.41519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273639702
@@ -614,7 +614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8017536, y: -0.08098745, z: -10}
+  m_LocalPosition: {x: -0.54253596, y: -0.08098745, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1160,6 +1160,18 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.1792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.1792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.1792453
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
@@ -33299,7 +33311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightMenu: {fileID: 822004501}
-  worldEffect: {fileID: 129707849}
   nueronEffect: {fileID: 1262546477}
   smokeEffect: {fileID: 352696406}
   enemyPortrait: {fileID: 0}
@@ -33318,7 +33329,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 99c8e93ceeabb5a408682edd5dd081ca, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.35
   m_Pitch: 0.38
   Loop: 1
   Mute: 0
@@ -33414,8 +33425,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.6
+  m_Pitch: 2
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -33748,7 +33759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25962028, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.10002, y: 0}
+  m_AnchoredPosition: {x: -55.100018, y: 0}
   m_SizeDelta: {x: 93.58905, y: 67.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571357227
@@ -88950,7 +88961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8017536, y: -0.08098745, z: -10}
+  m_LocalPosition: {x: -0.54253596, y: -0.08098745, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}
