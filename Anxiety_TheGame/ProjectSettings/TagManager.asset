@@ -14,6 +14,7 @@ TagManager:
   - PhysicalAnxietyEffect
   - Tutorial Text
   - Tutorial Cloud
+  - Darkness Effect
   layers:
   - Default
   - TransparentFX
@@ -56,6 +57,9 @@ TagManager:
     locked: 0
   - name: Wall
     uniqueID: 1272345259
+    locked: 0
+  - name: Top Wall
+    uniqueID: 4192593157
     locked: 0
   - name: Player
     uniqueID: 3303435543

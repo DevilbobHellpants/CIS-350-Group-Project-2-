@@ -25,6 +25,7 @@ public class OpenFightMenu : MonoBehaviour
     private float timer;
     private PlayerMovement player;
     public GameObject TutorialText;
+    public Image darknessEffect;
     private bool startingBattle = false;
 
     void Start()
@@ -33,6 +34,7 @@ public class OpenFightMenu : MonoBehaviour
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         TutorialText = GameObject.FindGameObjectWithTag("Tutorial Text");
+        darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -67,6 +69,7 @@ public class OpenFightMenu : MonoBehaviour
         {
             clouds[i].GetComponent<CloudMovement>().canDie = false;
         }
+        float darknessAlpha = darknessEffect.color.a;
         timer = 0;
         while (timer < menuDelayTime)
         {
@@ -83,6 +86,7 @@ public class OpenFightMenu : MonoBehaviour
             {
                 effects[i].GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha[i] * (menuDelayTime - timer) / menuDelayTime);
             }
+            darknessEffect.color = new Color(0f, 0f, 0f, darknessAlpha * (menuDelayTime - timer) / menuDelayTime);
         }
 
         //When the time has been waited
