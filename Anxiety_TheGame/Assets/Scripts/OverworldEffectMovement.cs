@@ -13,6 +13,7 @@ public class OverworldEffectMovement : MonoBehaviour
     public float effectTimer = 5f;
     public Image image;
     public Text text;
+    public bool inBattle = false;
 
     private float timer = 0f;
     private Vector3 direction;
@@ -26,48 +27,51 @@ public class OverworldEffectMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= effectTimer)
+        if (!inBattle)
         {
-            Destroy(this.gameObject);
-        }
-        transform.position += direction * speed * Time.deltaTime;
-        if (image == null)
-        {
-            if (effectTimer < 5f)
+            timer += Time.deltaTime;
+            if (timer >= effectTimer)
             {
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f - (Mathf.Abs(effectTimer / 2 - timer) / (effectTimer / 2)));
+                Destroy(this.gameObject);
+            }
+            transform.position += direction * speed * Time.deltaTime;
+            if (image == null)
+            {
+                if (effectTimer < 5f)
+                {
+                    gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f - (Mathf.Abs(effectTimer / 2 - timer) / (effectTimer / 2)));
+                }
+                else
+                {
+                    if (timer < 2.5f)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f - (2.5f - timer) / (2.5f));
+                    }
+                    else if (effectTimer - 2.5f < timer)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f - (2.5f - (effectTimer - timer)) / (2.5f));
+                    }
+                }
             }
             else
             {
-                if (timer < 2.5f)
+                if (effectTimer < 5f)
                 {
-                    gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f - (2.5f - timer) / (2.5f));
+                    image.color = new Color(1f, 1f, 1f, 1f - (Mathf.Abs(effectTimer / 2 - timer) / (effectTimer / 2)));
+                    text.color = new Color(0f, 0f, 0f, 1f - (Mathf.Abs(effectTimer / 2 - timer) / (effectTimer / 2)));
                 }
-                else if (effectTimer - 2.5f < timer)
+                else
                 {
-                    gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f - (2.5f - (effectTimer - timer)) / (2.5f));
-                }
-            }
-        }
-        else
-        {
-            if (effectTimer < 5f)
-            {
-                image.color = new Color(1f, 1f, 1f, 1f - (Mathf.Abs(effectTimer / 2 - timer) / (effectTimer / 2)));
-                text.color = new Color(0f, 0f, 0f, 1f - (Mathf.Abs(effectTimer / 2 - timer) / (effectTimer / 2)));
-            }
-            else
-            {
-                if (timer < 2.5f)
-                {
-                    image.color = new Color(1f, 1f, 1f, 1f - (2.5f - timer) / (2.5f));
-                    text.color = new Color(0f, 0f, 0f, 1f - (2.5f - timer) / (2.5f));
-                }
-                else if (effectTimer - 2.5f < timer)
-                {
-                    image.color = new Color(1f, 1f, 1f, 1f - (2.5f - (effectTimer - timer)) / (2.5f));
-                    text.color = new Color(0f, 0f, 0f, 1f - (2.5f - (effectTimer - timer)) / (2.5f));
+                    if (timer < 2.5f)
+                    {
+                        image.color = new Color(1f, 1f, 1f, 1f - (2.5f - timer) / (2.5f));
+                        text.color = new Color(0f, 0f, 0f, 1f - (2.5f - timer) / (2.5f));
+                    }
+                    else if (effectTimer - 2.5f < timer)
+                    {
+                        image.color = new Color(1f, 1f, 1f, 1f - (2.5f - (effectTimer - timer)) / (2.5f));
+                        text.color = new Color(0f, 0f, 0f, 1f - (2.5f - (effectTimer - timer)) / (2.5f));
+                    }
                 }
             }
         }

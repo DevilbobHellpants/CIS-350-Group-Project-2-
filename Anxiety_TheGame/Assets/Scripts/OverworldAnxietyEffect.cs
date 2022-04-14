@@ -11,7 +11,7 @@ using Cinemachine;
 public class OverworldAnxietyEffect : MonoBehaviour
 {
     public GameObject[] imagePrefabs;
-    public bool inBattle = false;//I can take this value from somewhere else
+    public bool inBattle = false;
     public Image darknessEffect;
     public CinemachineVirtualCamera cinemachine;
     public GameObject player;
@@ -29,22 +29,49 @@ public class OverworldAnxietyEffect : MonoBehaviour
     private float alphaChangeTime = 2f;
     private bool alphaUp = true;
 
+    public GameObject neuronPrefab;
     public GameObject cloudPrefab;
     private float minCloudSpawnTime = 1f;
     private float maxCloudSpawnTime = 5f;
+    private bool skipedFirst = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnRandomPrefabWithCoroutine());
+        StartCoroutine(SpawnCloudPrefab());
+        StartCoroutine(SpawnNeuronEffect());
     }
 
-    IEnumerator SpawnRandomPrefabWithCoroutine()
+    IEnumerator SpawnNeuronEffect()
+    {
+        while (true)
+        {
+            yield return new WaitForEndOfFrame();
+            if (!inBattle)
+            {
+                GameObject neuron = Instantiate(neuronPrefab, player.transform.position, neuronPrefab.transform.rotation);
+                yield return new WaitForSeconds(2f);
+                Destroy(neuron);
+            }
+        }
+    }
+
+    IEnumerator SpawnCloudPrefab()
     {
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minCloudSpawnTime, maxCloudSpawnTime));
-            SpawnClouds();
+            if (!inBattle)
+            {
+                if (skipedFirst)
+                {
+                    SpawnClouds();
+                }
+                else
+                {
+                    skipedFirst = true;
+                }
+            }
         }
     }
 
@@ -72,9 +99,9 @@ public class OverworldAnxietyEffect : MonoBehaviour
             spawnPos = new Vector2(-7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
         }
 
-        float size = Random.Range(1.5f, 3f);
+        float size = Random.Range(1.225f, 1.732f);//sqrt 1.5 - sqrt 3
+        size *= size;
         Instantiate(cloudPrefab, spawnPos, cloudPrefab.transform.rotation).transform.localScale = new Vector3(size, size, size);
-
     }
 
     // Update is called once per frame
@@ -155,5 +182,6 @@ public class OverworldAnxietyEffect : MonoBehaviour
         maxAlpha = .1f;
         alphaChangeTime = 2f;
         alphaUp = true;
-}
+        skipedFirst = false;
+    }
 }

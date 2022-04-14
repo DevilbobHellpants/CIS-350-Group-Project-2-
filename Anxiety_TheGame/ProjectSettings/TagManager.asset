@@ -11,6 +11,9 @@ TagManager:
   - Cloud
   - EnemyPortrait
   - AnxietyEffect
+  - PhysicalAnxietyEffect
+  - Tutorial Text
+  - Tutorial Cloud
   layers:
   - Default
   - TransparentFX

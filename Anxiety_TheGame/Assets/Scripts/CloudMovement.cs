@@ -11,6 +11,7 @@ public class CloudMovement : MonoBehaviour
 {
     private Transform player;
     public float averageSpeed = 3;
+    public bool inBattle = false;
     private float speed;
     private float minDistance = 10f;
     private float range;
@@ -20,6 +21,7 @@ public class CloudMovement : MonoBehaviour
     //private Vector3 rightBound;
 
     private bool increaseSpeed = false;
+    public bool canDie = true;
 
     private void Start()
     {
@@ -34,41 +36,44 @@ public class CloudMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (increaseSpeed)
+        if (!inBattle)
         {
-            speed += Time.deltaTime * averageSpeed;
-            if (speed >= averageSpeed * 3 / 2)
+            if (increaseSpeed)
             {
-                increaseSpeed = false;
-                speed = averageSpeed * 3 / 2;
+                speed += Time.deltaTime * averageSpeed;
+                if (speed >= averageSpeed * 3 / 2)
+                {
+                    increaseSpeed = false;
+                    speed = averageSpeed * 3 / 2;
+                }
             }
-        }
-        else
-        {
-            speed -= Time.deltaTime * averageSpeed;
-            if (speed <= averageSpeed / 2)
+            else
             {
-                increaseSpeed = true;
-                speed = averageSpeed / 2;
+                speed -= Time.deltaTime * averageSpeed;
+                if (speed <= averageSpeed / 2)
+                {
+                    increaseSpeed = true;
+                    speed = averageSpeed / 2;
+                }
             }
-        }
 
-        //finds direction for clouds to move in towards the player
-        range = Vector2.Distance(transform.position, player.position);
+            //finds direction for clouds to move in towards the player
+            range = Vector2.Distance(transform.position, player.position);
 
-        if (range < minDistance)
-        {
-            transform.position += direction * speed * Time.deltaTime;
+            if (range < minDistance)
+            {
+                transform.position += direction * speed * Time.deltaTime;
+            }
+            else if (canDie)
+            {
+                Destroy(gameObject);
+            }
+            /*
+            if (transform.position.x < leftBound.x || transform.position.x > rightBound.x)
+            {
+                Destroy(gameObject);
+
+            }*/
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-        /*
-        if (transform.position.x < leftBound.x || transform.position.x > rightBound.x)
-        {
-            Destroy(gameObject);
-         
-        }*/
     }
 }
