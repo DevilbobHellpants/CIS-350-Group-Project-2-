@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
    // public Attacks attack;
-    public Image enemySprite;
+    public Sprite enemySprite;
     public float health;
+    public string enemyName;
     
     // Start is called before the first frame update
     void Start()
@@ -20,4 +21,6 @@ public class Enemy : MonoBehaviour
     {
         
     }
+
+    
 }

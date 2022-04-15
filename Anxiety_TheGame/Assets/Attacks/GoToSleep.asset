@@ -22,12 +22,12 @@ MonoBehaviour:
     buffs:
     - attribute: 0
       value: 0
-      min: -40
-      max: -60
+      min: -60
+      max: -40
     - attribute: 1
       value: 0
-      min: -10
-      max: -30
+      min: -30
+      max: -10
     - attribute: 7
       value: 2
       min: 0

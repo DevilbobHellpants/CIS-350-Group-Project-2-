@@ -15,7 +15,9 @@ public class OpenFightMenu : MonoBehaviour
 
     public GameObject fightMenu;
     public ParticleSystem smokeEffect;
-    public Sprite enemyPortrait;
+
+    public Image enemyPortrait;
+    public Text enemyNameDisplayed;
     public Enemy[] enemies;
 
     public AudioSource playerAudio;
@@ -105,10 +107,15 @@ public class OpenFightMenu : MonoBehaviour
         startingBattle = false;
         TutorialText.SetActive(false);
         fightMenu.SetActive(true);
+
+        //setting up the menu for the specific enemy
+        int enemyNum = Random.Range(0, enemies.Length);
+        enemyPortrait.sprite = enemies[enemyNum].enemySprite;
+        enemyNameDisplayed.text = enemies[enemyNum].enemyName;
+
     }
 
     //enemyPortrait.sprite = enemies[1].enemySprite; 
-    // was testing something,,, going to wait until i understand the combat system before i mess with the enemies.
 
     //Plays enemy entry anim and stops time
     IEnumerator playSmoke()

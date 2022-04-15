@@ -15,6 +15,7 @@ TagManager:
   - Tutorial Text
   - Tutorial Cloud
   - Darkness Effect
+  - Enemy
   layers:
   - Default
   - TransparentFX
