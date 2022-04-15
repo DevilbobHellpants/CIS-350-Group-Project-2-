@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
         {
             attributes[i].SetParent(this);
         }
-        //attributes[0].value.BaseValue = 100;
+        //attributes[1].value.BaseValue = 3;
     }
 
     // Update is called once per frame

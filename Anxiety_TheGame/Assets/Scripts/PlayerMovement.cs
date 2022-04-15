@@ -15,10 +15,16 @@ public class PlayerMovement : MonoBehaviour
     public Animator Anim;
     public bool canMove;
 
+    private PlayerStats drunkStat;
+
+    private bool inDrunkenMovment;
+
     private void Start()
     {
         canMove = false;
         StartCoroutine(WaitOnStart());
+        drunkStat = GetComponent<PlayerStats>();
+        inDrunkenMovment = false;
     }
 
     IEnumerator WaitOnStart()
@@ -27,9 +33,26 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
     }
 
+    IEnumerator DrunkenMovment()
+    {
+        inDrunkenMovment = true;
+        yield return new WaitForSeconds(UnityEngine.Random.Range(2f, 7f));
+        walkSpeed = walkSpeed * -1;
+        inDrunkenMovment = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (drunkStat.attributes[1].value.BaseValue >= 3 && inDrunkenMovment == false)
+        {
+            Debug.Log("Corutine Started");
+            StartCoroutine(DrunkenMovment());
+        }
+        if (drunkStat.attributes[1].value.BaseValue < 3 && Mathf.Sign(walkSpeed) == -1)
+        {
+            walkSpeed = walkSpeed * -1;
+        }
         if (canMove)
         {
             xSpeed = Input.GetAxis("Horizontal");

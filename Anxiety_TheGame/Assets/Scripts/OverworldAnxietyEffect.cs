@@ -31,8 +31,8 @@ public class OverworldAnxietyEffect : MonoBehaviour
 
     public GameObject neuronPrefab;
     public GameObject cloudPrefab;
-    private float minCloudSpawnTime = 1f;
-    private float maxCloudSpawnTime = 5f;
+    public float minCloudSpawnTime = 1f;
+    public float maxCloudSpawnTime = 5f;
     private bool skipedFirst = false;
 
     // Start is called before the first frame update
