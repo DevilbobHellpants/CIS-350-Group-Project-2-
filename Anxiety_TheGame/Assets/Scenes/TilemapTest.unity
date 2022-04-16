@@ -1854,7 +1854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.653363, y: -0.08229202, z: -10}
+  m_LocalPosition: {x: -0.6539912, y: -0.08229202, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38279,7 +38279,7 @@ GameObject:
   - component: {fileID: 1343301327}
   m_Layer: 5
   m_Name: Attack 2
-  m_TagString: Untagged
+  m_TagString: Attack 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38565,8 +38565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Insert either desctiption text, enemy dialouge, enemy attacks, or player
-    attacks depending on the circumstance. Mostly just *flavour.*
+  m_Text: A problem appears!
 --- !u!222 &1353908140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39076,6 +39075,28 @@ MonoBehaviour:
   - {fileID: 7175368741907969544, guid: 3c9be304595f83246b40eddabc706d4a, type: 3}
   - {fileID: 6102935585789387390, guid: ec6966af9239c6b43830082c73156a3d, type: 3}
   finalBoss: {fileID: 2971139465738391787, guid: d0f6d5fe28aa46a42a65f5770a6494aa, type: 3}
+  attackButtons:
+  - {fileID: 1315154603}
+  - {fileID: 1343301322}
+  - {fileID: 1571357225}
+  - {fileID: 1444743862}
+  attackNames:
+  - 333 Grounding
+  - Emotional Support
+  - Self Doubt
+  - Take Off Glasses
+  - 54321 Grounding
+  - Drink To Forget
+  - Go To Sleep
+  - Isolation
+  - Blast Music
+  - Box Breathing
+  - Leave The Room
+  - Punch A Wall
+  - Hide
+  - Shift Focus
+  - Shut Down
+  - Visualization
   playerAudio: {fileID: 1400751138}
   encounterSound: {fileID: 8300000, guid: 0611d2aadbfc07e42af4ad0c55d2d91b, type: 3}
   menuDelayTime: 2
@@ -39307,7 +39328,7 @@ GameObject:
   - component: {fileID: 1444743867}
   m_Layer: 5
   m_Name: Attack 4
-  m_TagString: Untagged
+  m_TagString: Attack 4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40223,7 +40244,7 @@ GameObject:
   - component: {fileID: 1571357230}
   m_Layer: 5
   m_Name: Attack 3
-  m_TagString: Untagged
+  m_TagString: Attack 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97465,7 +97486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.653363, y: -0.08229202, z: -10}
+  m_LocalPosition: {x: -0.6539912, y: -0.08229202, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}

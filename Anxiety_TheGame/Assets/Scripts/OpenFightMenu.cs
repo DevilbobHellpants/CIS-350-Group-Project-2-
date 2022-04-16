@@ -21,6 +21,9 @@ public class OpenFightMenu : MonoBehaviour
     public Enemy[] enemies;
     public Enemy finalBoss;
 
+    public GameObject[] attackButtons;
+    public string[] attackNames;
+
     public AudioSource playerAudio;
     public AudioClip encounterSound;
 
@@ -118,6 +121,27 @@ public class OpenFightMenu : MonoBehaviour
         int enemyNum = Random.Range(0, enemies.Length);
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
+
+        for (int i = 0; i < attackButtons.Length; i++)
+        {
+            Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
+            if (enemyNameDisplayed.text == "Glass Eye")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+            }
+            if (enemyNameDisplayed.text == "Liar Smiler")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4+i];
+            }
+            if (enemyNameDisplayed.text == "Scramble Sound")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+            }
+            if (enemyNameDisplayed.text == "Question Air")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
+            }
+        }
     }
 
     IEnumerator StartBossFight()
