@@ -19,6 +19,7 @@ public class OpenFightMenu : MonoBehaviour
     public Image enemyPortrait;
     public Text enemyNameDisplayed;
     public Enemy[] enemies;
+    public Enemy finalBoss;
 
     public AudioSource playerAudio;
     public AudioClip encounterSound;
@@ -41,7 +42,7 @@ public class OpenFightMenu : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud")) && !startingBattle)
+        if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud") || other.CompareTag("Final Boss Cloud"))  && !startingBattle)
         {
             Debug.Log("cloud hit");
             StartCoroutine(OpenMenuOnDelay(other.gameObject));
@@ -109,9 +110,19 @@ public class OpenFightMenu : MonoBehaviour
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
-        int enemyNum = Random.Range(0, enemies.Length);
-        enemyPortrait.sprite = enemies[enemyNum].enemySprite;
-        enemyNameDisplayed.text = enemies[enemyNum].enemyName;
+        if (cloud.CompareTag("Tutorial Cloud") || cloud.CompareTag("Cloud"))
+        {
+            int enemyNum = Random.Range(0, enemies.Length);
+            enemyPortrait.sprite = enemies[enemyNum].enemySprite;
+            enemyNameDisplayed.text = enemies[enemyNum].enemyName;
+        }
+        else if (cloud.CompareTag("Final Boss Cloud"))
+        {
+            enemyPortrait.sprite = finalBoss.enemySprite;
+            enemyNameDisplayed.text = finalBoss.enemyName;
+        }
+        
+
 
     }
 

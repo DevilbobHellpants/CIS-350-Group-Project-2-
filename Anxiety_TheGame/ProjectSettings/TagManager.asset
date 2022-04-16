@@ -16,6 +16,7 @@ TagManager:
   - Tutorial Cloud
   - Darkness Effect
   - Enemy
+  - Final Boss Cloud
   layers:
   - Default
   - TransparentFX
