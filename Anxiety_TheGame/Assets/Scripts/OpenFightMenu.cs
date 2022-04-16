@@ -123,7 +123,7 @@ public class OpenFightMenu : MonoBehaviour
         int enemyNum = Random.Range(0, enemies.Length);
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
-        enemyStats.attributes[3].value.BaseValue = enemies[enemyNum].health;
+        enemyStats.attributes[2].value.BaseValue = enemies[enemyNum].health;
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
