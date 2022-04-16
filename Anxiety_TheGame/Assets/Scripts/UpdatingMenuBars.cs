@@ -14,13 +14,12 @@ public class UpdatingMenuBars : MonoBehaviour
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         menu = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         playerAnxietyBar.GetComponent<ProgressBar>().maximum = 100;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //enemyHealthBar.GetComponent<ProgressBar>().maximum = playerStats.attributes[1].value.BaseValue;
+        enemyHealthBar.GetComponent<ProgressBar>().current = playerStats.attributes[2].value.BaseValue;
         playerAnxietyBar.GetComponent<ProgressBar>().current = playerStats.attributes[0].value.BaseValue;
     }
 }

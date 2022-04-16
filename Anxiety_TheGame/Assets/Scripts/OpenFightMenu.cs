@@ -21,6 +21,7 @@ public class OpenFightMenu : MonoBehaviour
     public Text enemyNameDisplayed;
     public Enemy[] enemies;
     public Enemy finalBoss;
+    public GameObject enemyHealthBar;
 
     public GameObject[] attackButtons;
     public string[] attackNames;
@@ -123,7 +124,9 @@ public class OpenFightMenu : MonoBehaviour
         int enemyNum = Random.Range(0, enemies.Length);
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
-        enemyStats.attributes[3].value.BaseValue = enemies[enemyNum].health;
+        enemyStats.attributes[2].value.BaseValue = enemies[enemyNum].health;
+
+        enemyHealthBar.GetComponent<ProgressBar>().maximum = enemies[enemyNum].health;
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
