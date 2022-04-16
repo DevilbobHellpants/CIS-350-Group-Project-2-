@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Anna Breuker
+ * Project 5 
+ * Updates the menu progress bars
+ */
 public class UpdatingMenuBars : MonoBehaviour
 {
     public GameObject enemyHealthBar;

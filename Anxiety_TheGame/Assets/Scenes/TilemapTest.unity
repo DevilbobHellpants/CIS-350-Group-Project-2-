@@ -1280,7 +1280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -244.69992, y: -4.4000244}
+  m_AnchoredPosition: {x: -244.69989, y: -4.4000244}
   m_SizeDelta: {x: -585.6799, y: -87.41519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273639702
@@ -1854,7 +1854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65467477, y: -0.08229202, z: -10}
+  m_LocalPosition: {x: -0.65344006, y: -0.08229202, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3192,6 +3192,7 @@ GameObject:
   - component: {fileID: 822004504}
   - component: {fileID: 822004503}
   - component: {fileID: 822004505}
+  - component: {fileID: 822004506}
   m_Layer: 5
   m_Name: Panel - Fight Menu
   m_TagString: FightMenu
@@ -3272,6 +3273,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealthBar: {fileID: 785428278}
   playerAnxietyBar: {fileID: 1983991695}
+--- !u!114 &822004506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822004501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d51cdc8e4155474abafbe6991b900f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightMenu: {fileID: 822004501}
 --- !u!1 &878878554
 GameObject:
   m_ObjectHideFlags: 0
@@ -37673,7 +37687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.2515267}
-  m_AnchoredPosition: {x: 0, y: 0.8000183}
+  m_AnchoredPosition: {x: 0, y: 0.8000488}
   m_SizeDelta: {x: 0, y: 1.5794678}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1220439198
@@ -39095,7 +39109,6 @@ MonoBehaviour:
   - {fileID: 7175368741907969544, guid: 3c9be304595f83246b40eddabc706d4a, type: 3}
   - {fileID: 6102935585789387390, guid: ec6966af9239c6b43830082c73156a3d, type: 3}
   finalBoss: {fileID: 2971139465738391787, guid: d0f6d5fe28aa46a42a65f5770a6494aa, type: 3}
-  enemyHealthBar: {fileID: 785428278}
   attackButtons:
   - {fileID: 1315154603}
   - {fileID: 1343301322}
@@ -40289,7 +40302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25962028, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.100037, y: 0}
+  m_AnchoredPosition: {x: -55.10006, y: 0}
   m_SizeDelta: {x: 93.58905, y: 67.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571357227
@@ -97514,7 +97527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65467477, y: -0.08229202, z: -10}
+  m_LocalPosition: {x: -0.65344006, y: -0.08229202, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}
