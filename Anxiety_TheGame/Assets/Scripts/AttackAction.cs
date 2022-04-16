@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackAction : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class AttackAction : MonoBehaviour
     public bool sameBattle;
     public int numOfDrunkenEncounters;
 
+    private Text description;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,8 @@ public class AttackAction : MonoBehaviour
         numOfEncounters = 0;
         sameBattle = false;
         numOfDrunkenEncounters = 0;
+
+        description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
     }
 
     // gets called when attack button is pressed in the fight menu
@@ -109,25 +114,33 @@ public class AttackAction : MonoBehaviour
     public void TripleRule()
     {
         changeStats();
+        description.text = "You focus on 3 things you can see, 3 things you can hear, " +
+            "and 3 things you can feel, moving 3 different parts of your body." +
+            "\n\nTaking a deep breath, you feel lighter. ";
     }
     public void Grounding()
     {
         changeStats();
+        description.text = "You focus on 5 things you can see, 4 you can touch, " +
+            "3 you can hear, 2 you can smell, and 1 you can taste.\n\nYou feel grounded.";
     }
 
     public void BlastMusic()
     {
+        description.text = "You turn the music up. The noise seems fainter.";
         changeStats();
         //m_MyAudioSource.volume = m_MySliderValue;
     }
 
     public void BoxBreath()
     {
+        description.text = "You breathe in for 4, hold for 4, out for 4, hold for 4. As you repeat, the noise seems fainter.";
         changeStats();
     }
 
     public void DrinkToForget()
     {
+        description.text = "Maybe drinking will help?";
         changeStats();
         if (clickedAttack.attack.data.buffs[2].value == 3)
         {
@@ -138,40 +151,47 @@ public class AttackAction : MonoBehaviour
 
     public void EmotionalSupport()
     {
+        description.text = "You ask a friend for reassurance. They smile and say you look fine.";
         changeStats();
     }
 
     public void GoToSleep()
     {
+        description.text = "There's nothing a good nap can't fix.";
         changeStats();
         // skip next two turns
     }
 
     public void Hide()
     {
+        description.text = "It's too much. Everyone's staring. You can't do this.";
         changeStats();
         //Force encounter to end
     }
 
     public void Isolation()
     {
+        description.text = "They're right, none of my friends actually care.";
         changeStats();
         //Force encounter to end
     }
 
     public void LeaveTheRoom()
     {
+        description.text = "You know what? This isn't worth it. You leave the room.";
         changeStats();
         //Force encounter to end
     }
 
     public void PunchAWall()
     {
+        description.text = "You punch a wall out of frustration. ...that kind of hurt.";
         changeStats();
     }
 
     public void SelfDoubt()
     {
+        description.text = "Maybe they're right... I do look stupid.";
         changeStats();
     }
 
@@ -183,11 +203,13 @@ public class AttackAction : MonoBehaviour
 
     public void ShiftFocus()
     {
+        description.text = "You shift your focus to something other than the people around you.";
         changeStats();
     }
 
     public void ShutDown()
     {
+        description.text = "This isn't worth it- you can't do this. Who ever wanted to actually ask questions anyway?";
         changeStats();
         cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;
         // increase cloud spawn rate
@@ -195,12 +217,14 @@ public class AttackAction : MonoBehaviour
 
     public void TakeOffGlasses()
     {
+        description.text = "Who needs glasses anyways? Not you, that's for sure.";
         changeStats();
         // blindness?
     }
 
     public void Visualization()
     {
+        description.text = "You imagine yourself somewhere else. This is nice.";
         changeStats();
         //chance to end encounter
     }

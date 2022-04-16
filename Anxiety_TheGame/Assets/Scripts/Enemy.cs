@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+ * Anna Breuker
+ * Project 6
+ * Contains information on individual enemies.
+ */
 public class Enemy : MonoBehaviour
 {
    // public Attacks attack;

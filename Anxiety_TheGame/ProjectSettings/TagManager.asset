@@ -15,6 +15,10 @@ TagManager:
   - Enemy
   - Final Boss Cloud
   - Tutorial Cloud
+  - Attack 2
+  - Attack 4
+  - Attack 3
+  - DescriptionBox
   layers:
   - Default
   - TransparentFX
