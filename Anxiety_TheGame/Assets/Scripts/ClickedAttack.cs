@@ -20,19 +20,19 @@ public class ClickedAttack : MonoBehaviour
 
     private void Update()
     {
-        if (enemy.enemies[0])
+        if (enemy.enemyNameDisplayed.text == "Glass Eye")
         {
             attack = attackButton1;
         }
-        if (enemy.enemies[1])
+        if (enemy.enemyNameDisplayed.text == "Question Air")
         {
             attack = attackButton2;
         }
-        if (enemy.enemies[2])
+        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
         {
             attack = attackButton3;
         }
-        if (enemy.enemies[3])
+        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
         {
             attack = attackButton4;
         }

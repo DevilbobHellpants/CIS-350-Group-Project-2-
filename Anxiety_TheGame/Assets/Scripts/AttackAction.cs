@@ -28,7 +28,7 @@ public class AttackAction : MonoBehaviour
     // gets called when attack button is pressed in the fight menu
     public void playerAttacks(GameObject attackButton)
     {
-        if (enemy.enemies[0]) //Glass-Eye
+        if (enemy.enemyNameDisplayed.text == "Glass Eye") //Glass-Eye
         {
             if (attackButton.tag == "Attack 1")
             {
@@ -47,7 +47,7 @@ public class AttackAction : MonoBehaviour
                 TakeOffGlasses();
             }
         }
-        if (enemy.enemies[1]) //Lier Smiler
+        if (enemy.enemyNameDisplayed.text == "Liar Smiler") //Lier Smiler
         {
             if (attackButton.tag == "Attack 1")
             {
@@ -66,7 +66,7 @@ public class AttackAction : MonoBehaviour
                 Isolation();
             }
         }
-        if (enemy.enemies[2]) //Scrambled Sound
+        if (enemy.enemyNameDisplayed.text == "Scramble Sound") //Scrambled Sound
         {
             if (attackButton.tag == "Attack 1")
             {
@@ -85,7 +85,7 @@ public class AttackAction : MonoBehaviour
                 PunchAWall();
             }
         }
-        if (enemy.enemies[3]) //Question-Air
+        if (enemy.enemyNameDisplayed.text == "Question Air") //Question-Air
         {
             if (attackButton.tag == "Attack 1")
             {
