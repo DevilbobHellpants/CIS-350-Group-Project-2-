@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
    // public Attacks attack;
     public Sprite enemySprite;
-    public float health;
+    public int health;
     public string enemyName;
     
     // Start is called before the first frame update
