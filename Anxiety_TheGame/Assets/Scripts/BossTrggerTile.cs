@@ -20,13 +20,9 @@ public class BossTrggerTile : MonoBehaviour
     {
         PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         OverworldAnxietyEffect worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
-        GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         StartCoroutine(RemoveDarkness());
-        for (int i = 0; i < clouds.Length; i++)
-        {
-            Destroy(clouds[i]);
-        }
         player.canMove = false;
+        player.gameObject.GetComponent<OpenFightMenu>().startingBattle = true;
         worldEffect.inBattle = true;
         for (int i = 0; i < inOrderAppearTiles.Length; i++)
         {
@@ -34,20 +30,49 @@ public class BossTrggerTile : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
         player.canMove = true;
+        player.gameObject.GetComponent<OpenFightMenu>().startingBattle = false;
         gameObject.SetActive(false);
     }
 
     IEnumerator RemoveDarkness()
     {
         Image darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
+        GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
+        GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
+        float[] alpha = new float[effects.Length];
+        for (int i = 0; i < effects.Length; i++)
+        {
+            effects[i].GetComponent<OverworldEffectMovement>().inBattle = true;
+            alpha[i] = effects[i].GetComponent<SpriteRenderer>().color.a;
+        }
+        for (int i = 0; i < clouds.Length; i++)
+        {
+            clouds[i].GetComponent<CloudMovement>().canDie = false;
+        }
         float timer = 0;
         float darknessAlpha = darknessEffect.color.a;
-        while (timer < 1f)
+        while (timer < waitTime)
         {
             yield return new WaitForEndOfFrame();
             timer += Time.deltaTime;
-            darknessEffect.color = new Color(0f, 0f, 0f, darknessAlpha * (1f - timer) / 1f);
+            darknessEffect.color = new Color(0f, 0f, 0f, darknessAlpha * (waitTime - timer) / waitTime);
+            for (int i = 0; i < clouds.Length; i++)
+            {
+                clouds[i].GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, (waitTime - timer) / waitTime);
+            }
+            for (int i = 0; i < effects.Length; i++)
+            {
+                effects[i].GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha[i] * (waitTime - timer) / waitTime);
+            }
         }
         darknessEffect.color = new Color(0f, 0f, 0f, 0f);
+        for (int i = 0; i < clouds.Length; i++)
+        {
+            Destroy(clouds[i]);
+        }
+        for (int i = 0; i < effects.Length; i++)
+        {
+            Destroy(effects[i]);
+        }
     }
 }

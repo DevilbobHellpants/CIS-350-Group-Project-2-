@@ -29,7 +29,7 @@ public class OpenFightMenu : MonoBehaviour
     private PlayerMovement player;
     public GameObject TutorialText;
     public Image darknessEffect;
-    private bool startingBattle = false;
+    public bool startingBattle = false;
 
     void Start()
     {
@@ -42,20 +42,21 @@ public class OpenFightMenu : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud") || other.CompareTag("Final Boss Cloud"))  && !startingBattle)
+        if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud"))  && !startingBattle)
         {
             Debug.Log("cloud hit");
             StartCoroutine(OpenMenuOnDelay(other.gameObject));
+        }
+        else if (other.CompareTag("Final Boss Cloud") && !startingBattle)
+        {
+            Debug.Log("Boss Fight Start");
+            StartCoroutine(StartBossFight());
         }
     }
 
     IEnumerator OpenMenuOnDelay(GameObject cloud)
     {
-        if (!smokeEffect.isPlaying)
-        {
-            playerAudio.PlayOneShot(encounterSound, .75f);
-            StartCoroutine(playSmoke());
-        }
+        StartCoroutine(playSmoke());
         player.canMove = false;
         worldEffect.inBattle = true;
         startingBattle = true;
@@ -73,6 +74,10 @@ public class OpenFightMenu : MonoBehaviour
             clouds[i].GetComponent<CloudMovement>().canDie = false;
         }
         float darknessAlpha = darknessEffect.color.a;
+        if (darknessAlpha == 0)
+        {
+            darknessAlpha = .01f;
+        }
         timer = 0;
         while (timer < menuDelayTime)
         {
@@ -110,20 +115,26 @@ public class OpenFightMenu : MonoBehaviour
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
-        if (cloud.CompareTag("Tutorial Cloud") || cloud.CompareTag("Cloud"))
-        {
-            int enemyNum = Random.Range(0, enemies.Length);
-            enemyPortrait.sprite = enemies[enemyNum].enemySprite;
-            enemyNameDisplayed.text = enemies[enemyNum].enemyName;
-        }
-        else if (cloud.CompareTag("Final Boss Cloud"))
-        {
-            enemyPortrait.sprite = finalBoss.enemySprite;
-            enemyNameDisplayed.text = finalBoss.enemyName;
-        }
-        
+        int enemyNum = Random.Range(0, enemies.Length);
+        enemyPortrait.sprite = enemies[enemyNum].enemySprite;
+        enemyNameDisplayed.text = enemies[enemyNum].enemyName;
+    }
 
+    IEnumerator StartBossFight()
+    {
+        StartCoroutine(playSmoke());
+        player.canMove = false;
+        startingBattle = true;
+        yield return new WaitForSeconds(menuDelayTime);
 
+        //When the time has been waited
+        startingBattle = false;
+        TutorialText.SetActive(false);
+        fightMenu.SetActive(true);
+
+        //setting up the menu for the specific enemy
+        enemyPortrait.sprite = finalBoss.enemySprite;
+        enemyNameDisplayed.text = finalBoss.enemyName;
     }
 
     //enemyPortrait.sprite = enemies[1].enemySprite; 
@@ -133,16 +144,16 @@ public class OpenFightMenu : MonoBehaviour
     {
         //yield return new WaitForSeconds(0.5f);
 
-        if (smokeEffect != null)
-        {
+        //if (smokeEffect != null) This doesn't work because smoke gets destroyed after one use, it shoulde be a prefab also smoke doesn't work anymore anyways
+        //{
             playerAudio.PlayOneShot(encounterSound, .75f);
             
-            smokeEffect.Play();
-            yield return new WaitForSeconds(2);
-            Time.timeScale = 0f;
+            //smokeEffect.Play();
+            yield return new WaitForSeconds(2f);
+            //Time.timeScale = 0f; Do we need to do this, this would mess up the code for the sprites when we animate them
             
             
-        }
+        //}
 
     }
 }
