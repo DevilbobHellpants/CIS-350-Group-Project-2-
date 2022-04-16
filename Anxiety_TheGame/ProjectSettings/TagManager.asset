@@ -4,26 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Spawn Left
-  - Spawn Right
-  - FightMenu
-  - FxTemporaire
-  - Cloud
-  - EnemyPortrait
   - AnxietyEffect
-  - PhysicalAnxietyEffect
-  - Tutorial Text
-  - Tutorial Cloud
+  - EnemyPortrait
   - Darkness Effect
-  - Enemy
-<<<<<<< Updated upstream
-  - Final Boss Cloud
-=======
+  - FightMenu
+  - Tutorial Text
   - Attack 1
-  - Attack 2
-  - Attack 3
-  - Attack 4
->>>>>>> Stashed changes
+  - PhysicalAnxietyEffect
+  - Cloud
+  - Enemy
+  - Final Boss Cloud
+  - Tutorial Cloud
   layers:
   - Default
   - TransparentFX
@@ -58,27 +49,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
-    uniqueID: 1615694483
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 1291378265
+    locked: 0
   - name: Wall
-    uniqueID: 1272345259
+    uniqueID: 1356314873
     locked: 0
   - name: Top Wall
-    uniqueID: 4192593157
+    uniqueID: 3485153953
     locked: 0
   - name: Player
-    uniqueID: 3303435543
+    uniqueID: 1143485263
     locked: 0
   - name: Cloud
-    uniqueID: 146717447
-    locked: 0
-  - name: Foreground
-    uniqueID: 2976627157
+    uniqueID: 314268519
     locked: 0
   - name: Effects
-    uniqueID: 3156028351
+    uniqueID: 1887148519
+    locked: 0
+  - name: UI
+    uniqueID: 3014292517
     locked: 0
