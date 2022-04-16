@@ -6,16 +6,17 @@ public class AttackAction : MonoBehaviour
 {
     private PlayerStats playerStats;
     private ClickedAttack clickedAttack;
+    private OverworldAnxietyEffect cloudSpwanRate;
+    private OpenFightMenu enemy;
 
     public int numOfEncounters;
     public bool sameBattle;
     public int numOfDrunkenEncounters;
 
-    private OverworldAnxietyEffect cloudSpwanRate;
-
     // Start is called before the first frame update
     void Start()
     {
+        enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         cloudSpwanRate = GameObject.FindGameObjectWithTag("Player").GetComponent<OverworldAnxietyEffect>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         clickedAttack = GetComponent<ClickedAttack>();
@@ -24,109 +25,110 @@ public class AttackAction : MonoBehaviour
         numOfDrunkenEncounters = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    // gets called when attack button is pressed in the fight menu
+    public void playerAttacks(GameObject attackButton)
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if (enemy.enemies[0]) //Glass-Eye
         {
-            Meditate();
-        }
-    }
-
-    public void Meditate()
-    {
-        //playerStats.attributes[0].value.BaseValue = (playerStats.attributes[0].value.BaseValue)
-        //playerStats.attributes[0].value.BaseValue = (playerStats.attributes[0].value.BaseValue) + clickedAttack.attack.data.buffs[0].value;
-        //Debug.Log(string.Concat(playerStats.attributes[0].type, " was updated! Value is now ", playerStats.attributes[0].value.ModifiedValue));
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            if (playerStats.attributes[0].type == clickedAttack.attack.data.buffs[0].attribute)
+            if (attackButton.tag == "Attack 1")
             {
-                clickedAttack.attack.data.buffs[0].GenerateValue();
-                playerStats.attributes[0].value.BaseValue = (playerStats.attributes[0].value.BaseValue) + clickedAttack.attack.data.buffs[0].value;
-                Debug.Log(string.Concat(playerStats.attributes[0].type, " was updated! Value is now ", playerStats.attributes[0].value.ModifiedValue));
+                TripleRule();
+            }
+            if (attackButton.tag == "Attack 2")
+            {
+                EmotionalSupport();
+            }
+            if (attackButton.tag == "Attack 3")
+            {
+                SelfDoubt();
+            }
+            if (attackButton.tag == "Attack 4")
+            {
+                TakeOffGlasses();
+            }
+        }
+        if (enemy.enemies[1]) //Lier Smiler
+        {
+            if (attackButton.tag == "Attack 1")
+            {
+                Grounding();
+            }
+            if (attackButton.tag == "Attack 2")
+            {
+                DrinkToForget();
+            }
+            if (attackButton.tag == "Attack 3")
+            {
+                GoToSleep();
+            }
+            if (attackButton.tag == "Attack 4")
+            {
+                Isolation();
+            }
+        }
+        if (enemy.enemies[2]) //Scrambled Sound
+        {
+            if (attackButton.tag == "Attack 1")
+            {
+                BlastMusic();
+            }
+            if (attackButton.tag == "Attack 2")
+            {
+                BoxBreath();
+            }
+            if (attackButton.tag == "Attack 3")
+            {
+                LeaveTheRoom();
+            }
+            if (attackButton.tag == "Attack 4")
+            {
+                PunchAWall();
+            }
+        }
+        if (enemy.enemies[3]) //Question-Air
+        {
+            if (attackButton.tag == "Attack 1")
+            {
+                Hide();
+            }
+            if (attackButton.tag == "Attack 2")
+            {
+                ShiftFocus();
+            }
+            if (attackButton.tag == "Attack 3")
+            {
+                ShutDown();
+            }
+            if (attackButton.tag == "Attack 4")
+            {
+                Visualization();
             }
         }
     }
 
     public void TripleRule()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
     }
     public void Grounding()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    //clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
     }
 
     public void BlastMusic()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         //m_MyAudioSource.volume = m_MySliderValue;
     }
 
     public void BoxBreath()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
     }
 
     public void DrinkToForget()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         if (clickedAttack.attack.data.buffs[2].value == 3)
         {
             //movementMultiplyer = -1;
@@ -136,189 +138,74 @@ public class AttackAction : MonoBehaviour
 
     public void EmotionalSupport()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
     }
 
     public void GoToSleep()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         // skip next two turns
     }
 
     public void Hide()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         //Force encounter to end
     }
 
     public void Isolation()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         //Force encounter to end
     }
 
     public void LeaveTheRoom()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         //Force encounter to end
     }
 
     public void PunchAWall()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
     }
 
     public void SelfDoubt()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
     }
 
     public void shiftDoubt()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         //Force encounter to end
     }
 
     public void ShiftFocus()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
     }
 
     public void ShutDown()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;
         // increase cloud spawn rate
     }
 
     public void TakeOffGlasses()
     {
-        for (int i = 0; i < playerStats.attributes.Length; i++)
-        {
-            for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)
-            {
-                if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
-                {
-                    clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
-                }
-            }
-        }
+        changeStats();
         // blindness?
     }
 
     public void Visualization()
+    {
+        changeStats();
+        //chance to end encounter
+    }
+
+    public void changeStats()
     {
         for (int i = 0; i < playerStats.attributes.Length; i++)
         {
@@ -332,6 +219,5 @@ public class AttackAction : MonoBehaviour
                 }
             }
         }
-        //chance to end encounter
     }
 }
