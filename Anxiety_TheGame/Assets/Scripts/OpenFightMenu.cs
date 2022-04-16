@@ -37,6 +37,7 @@ public class OpenFightMenu : MonoBehaviour
 
     void Start()
     {
+        enemyStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
