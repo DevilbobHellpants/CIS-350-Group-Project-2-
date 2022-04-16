@@ -9,6 +9,7 @@ public class AttackAction : MonoBehaviour
     private ClickedAttack clickedAttack;
     private OverworldAnxietyEffect cloudSpwanRate;
     private OpenFightMenu enemy;
+    private EnemiesTurn enemyTurn;
 
     public int numOfEncounters;
     public bool sameBattle;
@@ -19,6 +20,7 @@ public class AttackAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyTurn = GetComponent<EnemiesTurn>();
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         cloudSpwanRate = GameObject.FindGameObjectWithTag("Player").GetComponent<OverworldAnxietyEffect>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
@@ -109,6 +111,7 @@ public class AttackAction : MonoBehaviour
                 Visualization();
             }
         }
+        enemyTurn.enemyTurn();
     }
 
     public void TripleRule()
@@ -211,7 +214,7 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "This isn't worth it- you can't do this. Who ever wanted to actually ask questions anyway?";
         changeStats();
-        cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;
+        //cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;
         // increase cloud spawn rate
     }
 
