@@ -207,6 +207,7 @@ public class AttackAction : MonoBehaviour
 
     public void changeStats()
     {
+        Debug.Log(clickedAttack.attack.data.Name);
         for (int i = 0; i < playerStats.attributes.Length; i++)
         {
             for (int j = 0; j < clickedAttack.attack.data.buffs.Length; j++)

@@ -1280,7 +1280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -244.69995, y: -4.4000244}
+  m_AnchoredPosition: {x: -244.69992, y: -4.4000244}
   m_SizeDelta: {x: -585.6799, y: -87.41519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273639702
@@ -1830,7 +1830,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.238075
+  orthographic size: 3.456187
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1854,7 +1854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.61213076, y: -0.07709876, z: -10}
+  m_LocalPosition: {x: -0.8146681, y: -0.08229202, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37789,7 +37789,7 @@ GameObject:
   - component: {fileID: 1315154608}
   m_Layer: 5
   m_Name: Attack 1
-  m_TagString: Untagged
+  m_TagString: Attack 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37859,11 +37859,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1315154608}
         m_TargetAssemblyTypeName: AttackAction, Assembly-CSharp
-        m_MethodName: Meditate
-        m_Mode: 1
+        m_MethodName: playerAttacks
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1315154603}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -37934,6 +37934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce59ca33f748674c9d3b84c3bdade0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackButton1: {fileID: 11400000, guid: 651dfe3b34ce27549b48f2b4fb62cb6f, type: 2}
+  attackButton2: {fileID: 11400000, guid: b664926cf29fe674eac184588b734d3e, type: 2}
+  attackButton3: {fileID: 11400000, guid: 0ffdc9da69599524ca22ecaca2a200a9, type: 2}
+  attackButton4: {fileID: 11400000, guid: ad69039b8ab43d64bb0eb202530a17c5, type: 2}
   attack: {fileID: 11400000, guid: e1f69f5163d2bf24ba655b190bf72700, type: 2}
 --- !u!1 &1329493303
 GameObject:
@@ -38271,6 +38275,8 @@ GameObject:
   - component: {fileID: 1343301326}
   - component: {fileID: 1343301325}
   - component: {fileID: 1343301324}
+  - component: {fileID: 1343301328}
+  - component: {fileID: 1343301327}
   m_Layer: 5
   m_Name: Attack 2
   m_TagString: Untagged
@@ -38340,7 +38346,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1343301325}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1343301328}
+        m_TargetAssemblyTypeName: AttackAction, Assembly-CSharp
+        m_MethodName: playerAttacks
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1343301322}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1343301325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38379,6 +38397,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343301322}
   m_CullTransparentMesh: 0
+--- !u!114 &1343301327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343301322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce59ca33f748674c9d3b84c3bdade0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackButton1: {fileID: 11400000, guid: e1f69f5163d2bf24ba655b190bf72700, type: 2}
+  attackButton2: {fileID: 11400000, guid: a4bde47f01fe88b4baa2db28c67f5295, type: 2}
+  attackButton3: {fileID: 11400000, guid: e585153640d16e543bc6d4efb7dde7af, type: 2}
+  attackButton4: {fileID: 11400000, guid: d36ab1205ca510d4caf1d82edff90a23, type: 2}
+  attack: {fileID: 0}
+--- !u!114 &1343301328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343301322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd162f1e1ee367419239bc5aa977f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfEncounters: 0
+  sameBattle: 0
+  numOfDrunkenEncounters: 0
 --- !u!1 &1344549164
 GameObject:
   m_ObjectHideFlags: 0
@@ -39253,6 +39303,8 @@ GameObject:
   - component: {fileID: 1444743866}
   - component: {fileID: 1444743865}
   - component: {fileID: 1444743864}
+  - component: {fileID: 1444743868}
+  - component: {fileID: 1444743867}
   m_Layer: 5
   m_Name: Attack 4
   m_TagString: Untagged
@@ -39322,7 +39374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1444743865}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1444743868}
+        m_TargetAssemblyTypeName: AttackAction, Assembly-CSharp
+        m_MethodName: playerAttacks
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1444743862}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1444743865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39361,6 +39425,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444743862}
   m_CullTransparentMesh: 0
+--- !u!114 &1444743867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444743862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce59ca33f748674c9d3b84c3bdade0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackButton1: {fileID: 11400000, guid: f7366b43f1baa7b4ebc76670d3ab3593, type: 2}
+  attackButton2: {fileID: 11400000, guid: 89b43cf367dcd2842b01095415f024ad, type: 2}
+  attackButton3: {fileID: 11400000, guid: 00ceb460738364d44b184005de4efe2e, type: 2}
+  attackButton4: {fileID: 11400000, guid: ae983ff13282a2f4eba1d02336bb852c, type: 2}
+  attack: {fileID: 0}
+--- !u!114 &1444743868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444743862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd162f1e1ee367419239bc5aa977f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfEncounters: 0
+  sameBattle: 0
+  numOfDrunkenEncounters: 0
 --- !u!1 &1484859338
 GameObject:
   m_ObjectHideFlags: 0
@@ -40123,6 +40219,8 @@ GameObject:
   - component: {fileID: 1571357229}
   - component: {fileID: 1571357228}
   - component: {fileID: 1571357227}
+  - component: {fileID: 1571357231}
+  - component: {fileID: 1571357230}
   m_Layer: 5
   m_Name: Attack 3
   m_TagString: Untagged
@@ -40147,7 +40245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25962028, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.100033, y: 0}
+  m_AnchoredPosition: {x: -55.10002, y: 0}
   m_SizeDelta: {x: 93.58905, y: 67.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571357227
@@ -40192,7 +40290,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1571357228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1571357231}
+        m_TargetAssemblyTypeName: AttackAction, Assembly-CSharp
+        m_MethodName: playerAttacks
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1571357225}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1571357228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40231,6 +40341,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571357225}
   m_CullTransparentMesh: 0
+--- !u!114 &1571357230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571357225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce59ca33f748674c9d3b84c3bdade0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackButton1: {fileID: 11400000, guid: 69f90dcdc48ea95498a65b7746f700b2, type: 2}
+  attackButton2: {fileID: 11400000, guid: 0ec9fa905c967534fae2c390b4f11c92, type: 2}
+  attackButton3: {fileID: 11400000, guid: 52e5f955c5c5a2e4daa52b2b82940502, type: 2}
+  attackButton4: {fileID: 11400000, guid: 550a1d4377ab4cd4b8477e6cc4a545cc, type: 2}
+  attack: {fileID: 0}
+--- !u!114 &1571357231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571357225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd162f1e1ee367419239bc5aa977f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfEncounters: 0
+  sameBattle: 0
+  numOfDrunkenEncounters: 0
 --- !u!1 &1597939469
 GameObject:
   m_ObjectHideFlags: 3
@@ -97286,7 +97428,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1400751132}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.238075
+    OrthographicSize: 3.456187
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -97307,7 +97449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.61213076, y: -0.07709876, z: -10}
+  m_LocalPosition: {x: -0.8146681, y: -0.08229202, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}
