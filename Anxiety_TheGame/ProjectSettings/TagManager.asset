@@ -16,7 +16,14 @@ TagManager:
   - Tutorial Cloud
   - Darkness Effect
   - Enemy
+<<<<<<< Updated upstream
   - Final Boss Cloud
+=======
+  - Attack 1
+  - Attack 2
+  - Attack 3
+  - Attack 4
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
