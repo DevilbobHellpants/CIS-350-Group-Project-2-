@@ -10,6 +10,7 @@ public class AttackAction : MonoBehaviour
     private OverworldAnxietyEffect cloudSpwanRate;
     private OpenFightMenu enemy;
     private EnemiesTurn enemyTurn;
+    private CloseFightMenu endEncounter;
 
     public int numOfEncounters;
     public bool sameBattle;
@@ -20,6 +21,7 @@ public class AttackAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endEncounter = GameObject.FindGameObjectWithTag("FightMenu").GetComponent<CloseFightMenu>();
         enemyTurn = GetComponent<EnemiesTurn>();
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         cloudSpwanRate = GameObject.FindGameObjectWithTag("Player").GetComponent<OverworldAnxietyEffect>();
@@ -169,21 +171,21 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "It's too much. Everyone's staring. You can't do this.";
         changeStats();
-        //Force encounter to end
+        endEncounter.EndFightEarly();
     }
 
     public void Isolation()
     {
         description.text = "They're right, none of my friends actually care.";
         changeStats();
-        //Force encounter to end
+        endEncounter.EndFightEarly();
     }
 
     public void LeaveTheRoom()
     {
         description.text = "You know what? This isn't worth it. You leave the room.";
         changeStats();
-        //Force encounter to end
+        endEncounter.EndFightEarly();
     }
 
     public void PunchAWall()
@@ -201,7 +203,7 @@ public class AttackAction : MonoBehaviour
     public void shiftDoubt()
     {
         changeStats();
-        //Force encounter to end
+        endEncounter.EndFightEarly();
     }
 
     public void ShiftFocus()
@@ -229,7 +231,10 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "You imagine yourself somewhere else. This is nice.";
         changeStats();
-        //chance to end encounter
+        if (UnityEngine.Random.Range(1, 10) == 1)
+        {
+            endEncounter.EndFightEarly();
+        }
     }
 
     public void changeStats()

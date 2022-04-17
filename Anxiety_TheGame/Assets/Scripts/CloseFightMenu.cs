@@ -30,7 +30,7 @@ public class CloseFightMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerStats.attributes[2].value.BaseValue < 0)
+        if(playerStats.attributes[2].value.BaseValue <= 0)
         {
             description.text = "Problem defeated!";
             StartCoroutine(BattleOver());
@@ -45,11 +45,26 @@ public class CloseFightMenu : MonoBehaviour
         }
     }
 
+    public void EndFightEarly()
+    {
+        StartCoroutine(BattleOverEarly());
+    }
+
     IEnumerator BattleOver()
     {
         yield return new WaitForSeconds(5);
         worldEffect.inBattle = false;
         fightMenu.SetActive(false);
         player.canMove = true;
+        playerStats.attributes[2].value.BaseValue = 1;
+    }
+
+    IEnumerator BattleOverEarly()
+    {
+        yield return new WaitForSeconds(5);
+        worldEffect.inBattle = false;
+        fightMenu.SetActive(false);
+        player.canMove = true;
+        playerStats.attributes[2].value.BaseValue = 1;
     }
 }

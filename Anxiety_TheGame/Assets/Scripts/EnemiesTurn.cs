@@ -7,6 +7,11 @@ public class EnemiesTurn : MonoBehaviour
 {
     private AttackAction playerTurn;
     private PlayerStats playerSanity;
+
+    public Button Attack1;
+    public Button Attack2;
+    public Button Attack3;
+    public Button Attack4;
     // Start is called before the first frame update
 
     //public bool enemyTurn;
@@ -31,10 +36,18 @@ public class EnemiesTurn : MonoBehaviour
         StartCoroutine(StartEnemiesTurn());
     }
 
+    public void enemyTripleTurn()
+    {
+        StartCoroutine(StartEnemiesTripleTurn());
+    }
+
     IEnumerator StartEnemiesTurn()
     {
-        playerTurn.enabled = false;
-        Debug.Log("Turn Started");
+        Attack1.enabled = false;
+        Attack2.enabled = false;
+        Attack3.enabled = false;
+        Attack4.enabled = false;
+        //Debug.Log("Turn Started");
         fightMenu.enemyPortrait.enabled = false;
         yield return new WaitForSeconds(.15f);
         fightMenu.enemyPortrait.enabled = true;
@@ -49,10 +62,34 @@ public class EnemiesTurn : MonoBehaviour
 
         //yield return new WaitForSeconds(.3f);
 
-        playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 20);
+        playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 20);  //enemy attack
 
-        //insert enemy attack here
+        Attack1.enabled = true;
+        Attack2.enabled = true;
+        Attack3.enabled = true;
+        Attack4.enabled = true;
+    }
+
+    IEnumerator StartEnemiesTripleTurn()
+    {
+        Attack1.enabled = false;
+        Attack2.enabled = false;
+        Attack3.enabled = false;
+        Attack4.enabled = false;
+        playerTurn.enabled = false;
+        //Debug.Log("Turn Started");
+
+        for (int i = 0; i < 2; i++)
+        {
+            yield return new WaitForSeconds(.4f);
+
+            playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 20); //enemy attack
+        }
 
         playerTurn.enabled = true;
+        Attack1.enabled = true;
+        Attack2.enabled = true;
+        Attack3.enabled = true;
+        Attack4.enabled = true;
     }
 }

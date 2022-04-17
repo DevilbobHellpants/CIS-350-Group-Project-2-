@@ -1280,7 +1280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -244.69989, y: -4.4000244}
+  m_AnchoredPosition: {x: -244.69992, y: -4.4000244}
   m_SizeDelta: {x: -585.6799, y: -87.41519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273639702
@@ -1830,7 +1830,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.456187
+  orthographic size: 3.401874
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1854,7 +1854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65344006, y: -0.08229202, z: -10}
+  m_LocalPosition: {x: -0.8018659, y: -0.08099881, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37819,8 +37819,9 @@ GameObject:
   - component: {fileID: 1315154607}
   - component: {fileID: 1315154606}
   - component: {fileID: 1315154605}
-  - component: {fileID: 1315154609}
   - component: {fileID: 1315154608}
+  - component: {fileID: 1315154609}
+  - component: {fileID: 1315154610}
   m_Layer: 5
   m_Name: Attack 1
   m_TagString: Attack 1
@@ -37973,6 +37974,22 @@ MonoBehaviour:
   attackButton3: {fileID: 11400000, guid: 0ffdc9da69599524ca22ecaca2a200a9, type: 2}
   attackButton4: {fileID: 11400000, guid: ad69039b8ab43d64bb0eb202530a17c5, type: 2}
   attack: {fileID: 11400000, guid: e1f69f5163d2bf24ba655b190bf72700, type: 2}
+--- !u!114 &1315154610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315154603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92be007a9fc811845bb0229490db0aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack1: {fileID: 1315154605}
+  Attack2: {fileID: 1343301324}
+  Attack3: {fileID: 1571357227}
+  Attack4: {fileID: 1444743864}
 --- !u!1 &1329493303
 GameObject:
   m_ObjectHideFlags: 0
@@ -38311,6 +38328,7 @@ GameObject:
   - component: {fileID: 1343301324}
   - component: {fileID: 1343301328}
   - component: {fileID: 1343301327}
+  - component: {fileID: 1343301329}
   m_Layer: 5
   m_Name: Attack 2
   m_TagString: Attack 2
@@ -38463,6 +38481,22 @@ MonoBehaviour:
   numOfEncounters: 0
   sameBattle: 0
   numOfDrunkenEncounters: 0
+--- !u!114 &1343301329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343301322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92be007a9fc811845bb0229490db0aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack1: {fileID: 1315154605}
+  Attack2: {fileID: 1343301324}
+  Attack3: {fileID: 1571357227}
+  Attack4: {fileID: 1444743864}
 --- !u!1 &1344549164
 GameObject:
   m_ObjectHideFlags: 0
@@ -39348,6 +39382,24 @@ MonoBehaviour:
     value: {fileID: 0}
   - type: 1
     value: {fileID: 0}
+  - type: 2
+    value: {fileID: 0}
+  - type: 3
+    value: {fileID: 0}
+  - type: 4
+    value: {fileID: 0}
+  - type: 5
+    value: {fileID: 0}
+  - type: 6
+    value: {fileID: 0}
+  - type: 7
+    value: {fileID: 0}
+  - type: 8
+    value: {fileID: 0}
+  - type: 10
+    value: {fileID: 0}
+  - type: 11
+    value: {fileID: 0}
 --- !u!1 &1444743862
 GameObject:
   m_ObjectHideFlags: 0
@@ -39362,6 +39414,7 @@ GameObject:
   - component: {fileID: 1444743864}
   - component: {fileID: 1444743868}
   - component: {fileID: 1444743867}
+  - component: {fileID: 1444743869}
   m_Layer: 5
   m_Name: Attack 4
   m_TagString: Attack 4
@@ -39514,6 +39567,22 @@ MonoBehaviour:
   numOfEncounters: 0
   sameBattle: 0
   numOfDrunkenEncounters: 0
+--- !u!114 &1444743869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444743862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92be007a9fc811845bb0229490db0aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack1: {fileID: 1315154605}
+  Attack2: {fileID: 1343301324}
+  Attack3: {fileID: 1571357227}
+  Attack4: {fileID: 1444743864}
 --- !u!1 &1484859338
 GameObject:
   m_ObjectHideFlags: 0
@@ -40278,6 +40347,7 @@ GameObject:
   - component: {fileID: 1571357227}
   - component: {fileID: 1571357231}
   - component: {fileID: 1571357230}
+  - component: {fileID: 1571357232}
   m_Layer: 5
   m_Name: Attack 3
   m_TagString: Attack 3
@@ -40302,7 +40372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25962028, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.10006, y: 0}
+  m_AnchoredPosition: {x: -55.10005, y: 0}
   m_SizeDelta: {x: 93.58905, y: 67.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571357227
@@ -40430,6 +40500,22 @@ MonoBehaviour:
   numOfEncounters: 0
   sameBattle: 0
   numOfDrunkenEncounters: 0
+--- !u!114 &1571357232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571357225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92be007a9fc811845bb0229490db0aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attack1: {fileID: 1315154605}
+  Attack2: {fileID: 1343301324}
+  Attack3: {fileID: 1571357227}
+  Attack4: {fileID: 1444743864}
 --- !u!1 &1597939469
 GameObject:
   m_ObjectHideFlags: 3
@@ -97506,7 +97592,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1400751132}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.456187
+    OrthographicSize: 3.401874
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -97527,7 +97613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65344006, y: -0.08229202, z: -10}
+  m_LocalPosition: {x: -0.8018659, y: -0.08099881, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}
