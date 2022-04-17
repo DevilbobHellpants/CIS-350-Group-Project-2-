@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f1ece8f924aca4bb1f68180fc910d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySprite: {fileID: 21300000, guid: a25c495f38253c14d84e6f8a665ca773, type: 3}
+  enemySprite: {fileID: 21300000, guid: 620f9ceee3a392a42b0e7649e22ea8f3, type: 3}
   health: 50
   enemyName: Scramble Sound
