@@ -24,7 +24,7 @@ public class AttackAction : MonoBehaviour
         endEncounter = GameObject.FindGameObjectWithTag("FightMenu").GetComponent<CloseFightMenu>();
         enemyTurn = GetComponent<EnemiesTurn>();
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
-        cloudSpwanRate = GameObject.FindGameObjectWithTag("Player").GetComponent<OverworldAnxietyEffect>();
+        cloudSpwanRate = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         clickedAttack = GetComponent<ClickedAttack>();
         numOfEncounters = 0;
@@ -32,6 +32,14 @@ public class AttackAction : MonoBehaviour
         numOfDrunkenEncounters = 0;
 
         description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            BoxBreath();
+        }
     }
 
     // gets called when attack button is pressed in the fight menu
@@ -211,7 +219,7 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "This isn't worth it- you can't do this. Who ever wanted to actually ask questions anyway?";
         changeStats();
-        //cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;
+        cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;
         // increase cloud spawn rate
     }
 

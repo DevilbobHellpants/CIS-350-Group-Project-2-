@@ -24,15 +24,15 @@ public class ClickedAttack : MonoBehaviour
         {
             attack = attackButton1;
         }
-        if (enemy.enemyNameDisplayed.text == "Question Air")
+        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
         {
             attack = attackButton2;
         }
-        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
         {
             attack = attackButton3;
         }
-        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+        if (enemy.enemyNameDisplayed.text == "Question Air")
         {
             attack = attackButton4;
         }
