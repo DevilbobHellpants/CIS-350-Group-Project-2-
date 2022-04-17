@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2624987267041117242}
   - component: {fileID: 7175368741907969544}
   m_Layer: 0
-  m_Name: LierSmiler
+  m_Name: LiarSmiler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f1ece8f924aca4bb1f68180fc910d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySprite: {fileID: 21300000, guid: 36229fc021396ea4ab92184829a61641, type: 3}
+  enemySprite: {fileID: 21300000, guid: 20114ecf3543e1e4e9311a5a54c4be45, type: 3}
   health: 80
   enemyName: Liar Smiler
   attackDescriptions:
