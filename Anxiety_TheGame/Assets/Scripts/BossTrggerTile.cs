@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/* Caleb Kahn
+ * Project 5
+ * Slowly adds tiles and resets some variables
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

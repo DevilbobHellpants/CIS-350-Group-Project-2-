@@ -72,7 +72,7 @@ public class CloseFightMenu : MonoBehaviour
         attack3.enabled = false;
         attack4.enabled = false;
         yield return new WaitForSeconds(5);
-        worldEffect.inBattle = false;
+        worldEffect.resetVariables();
         fightMenu.SetActive(false);
         player.canMove = true;
         playerStats.attributes[2].value.BaseValue = 1;
@@ -89,7 +89,7 @@ public class CloseFightMenu : MonoBehaviour
     IEnumerator BattleOverEarly()
     {
         yield return new WaitForSeconds(5);
-        worldEffect.inBattle = false;
+        worldEffect.resetVariables();
         fightMenu.SetActive(false);
         player.canMove = true;
         playerStats.attributes[2].value.BaseValue = 1;

@@ -59,7 +59,7 @@ public class OpenFightMenu : MonoBehaviour
         else if (other.CompareTag("Final Boss Cloud") && !startingBattle)
         {
             Debug.Log("Boss Fight Start");
-            StartCoroutine(StartBossFight());
+            StartCoroutine(StartBossFight(other.gameObject));
         }
     }
 
@@ -153,7 +153,7 @@ public class OpenFightMenu : MonoBehaviour
         }
     }
 
-    IEnumerator StartBossFight()
+    IEnumerator StartBossFight(GameObject boss)
     {
         StartCoroutine(playSmoke());
         player.canMove = false;
@@ -161,6 +161,7 @@ public class OpenFightMenu : MonoBehaviour
         yield return new WaitForSeconds(menuDelayTime);
 
         //When the time has been waited
+        boss.SetActive(false);
         startingBattle = false;
         TutorialText.SetActive(false);
         fightMenu.SetActive(true);

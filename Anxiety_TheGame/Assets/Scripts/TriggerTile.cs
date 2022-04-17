@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/* Caleb Kahn
+ * Project 5
+ * Once hit, it makes the list disapear and appear
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
