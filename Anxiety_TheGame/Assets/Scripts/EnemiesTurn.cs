@@ -61,8 +61,9 @@ public class EnemiesTurn : MonoBehaviour
         fightMenu.enemyPortrait.enabled = true;
 
         //yield return new WaitForSeconds(.3f);
+        playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 30);  //enemy attack
 
-        playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 20);  //enemy attack
+        Debug.Log(playerSanity.attributes[0].value.BaseValue);
 
         Attack1.enabled = true;
         Attack2.enabled = true;

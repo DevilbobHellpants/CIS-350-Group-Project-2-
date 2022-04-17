@@ -15,6 +15,11 @@ public class CloseFightMenu : MonoBehaviour
 
     public GameObject fightMenu;
 
+    public Button attack1;
+    public Button attack2;
+    public Button attack3;
+    public Button attack4;
+
     private PlayerMovement player;
 
     // Start is called before the first frame update
@@ -52,11 +57,23 @@ public class CloseFightMenu : MonoBehaviour
 
     IEnumerator BattleOver()
     {
+        attack1.enabled = false;
+        attack2.enabled = false;
+        attack3.enabled = false;
+        attack4.enabled = false;
         yield return new WaitForSeconds(5);
         worldEffect.inBattle = false;
         fightMenu.SetActive(false);
         player.canMove = true;
         playerStats.attributes[2].value.BaseValue = 1;
+        if (playerStats.attributes[2].value.BaseValue > 0)
+        {
+            playerStats.attributes[2].value.BaseValue--;
+        }
+        attack1.enabled = true;
+        attack2.enabled = true;
+        attack3.enabled = true;
+        attack4.enabled = true;
     }
 
     IEnumerator BattleOverEarly()

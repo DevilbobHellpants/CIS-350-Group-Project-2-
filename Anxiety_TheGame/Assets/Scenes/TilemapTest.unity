@@ -1280,7 +1280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -244.69992, y: -4.4000244}
+  m_AnchoredPosition: {x: -244.69995, y: -4.4000244}
   m_SizeDelta: {x: -585.6799, y: -87.41519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273639702
@@ -1830,7 +1830,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.401874
+  orthographic size: 2.704086
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1854,7 +1854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8018659, y: -0.08099881, z: -10}
+  m_LocalPosition: {x: -0.63738817, y: -0.06438446, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3286,6 +3286,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightMenu: {fileID: 822004501}
+  attack1: {fileID: 1315154605}
+  attack2: {fileID: 1343301324}
+  attack3: {fileID: 1571357227}
+  attack4: {fileID: 1444743864}
 --- !u!1 &878878554
 GameObject:
   m_ObjectHideFlags: 0
@@ -97592,7 +97596,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1400751132}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.401874
+    OrthographicSize: 2.704086
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -97613,7 +97617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8018659, y: -0.08099881, z: -10}
+  m_LocalPosition: {x: -0.63738817, y: -0.06438446, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}

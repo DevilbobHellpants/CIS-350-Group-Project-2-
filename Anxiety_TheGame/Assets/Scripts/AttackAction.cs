@@ -147,11 +147,6 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "Maybe drinking will help?";
         changeStats();
-        if (clickedAttack.attack.data.buffs[2].value == 3)
-        {
-            //movementMultiplyer = -1;
-        }
-        //Make when encounter ending making the drinking stat decrease
     }
 
     public void EmotionalSupport()
@@ -247,8 +242,23 @@ public class AttackAction : MonoBehaviour
                 if (playerStats.attributes[i].type == clickedAttack.attack.data.buffs[j].attribute)
                 {
                     clickedAttack.attack.data.buffs[j].GenerateValue();
-                    playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
-                    Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
+                    if (playerStats.attributes[i] == playerStats.attributes[0])
+                    {
+                        if (playerStats.attributes[0].value.BaseValue <= ((clickedAttack.attack.data.buffs[j].value) * -1))
+                        {
+                            playerStats.attributes[i].value.BaseValue = 0;
+                        }
+                        else
+                        {
+                            playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
+                        }
+                        Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
+                    }
+                    else
+                    {
+                        playerStats.attributes[i].value.BaseValue = (playerStats.attributes[i].value.BaseValue) + clickedAttack.attack.data.buffs[j].value;
+                        Debug.Log(string.Concat(playerStats.attributes[i].type, " was updated! Value is now ", playerStats.attributes[i].value.ModifiedValue));
+                    }
                 }
             }
         }
