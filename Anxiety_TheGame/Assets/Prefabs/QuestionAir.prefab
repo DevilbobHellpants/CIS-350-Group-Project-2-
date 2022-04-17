@@ -46,3 +46,8 @@ MonoBehaviour:
   enemySprite: {fileID: 21300000, guid: a6edd1263b2d72b45973e2bc0c7bfee1, type: 3}
   health: 60
   enemyName: Question Air
+  attackDescriptions:
+  - '"You''re so stupid, the professor already went over this section 20 minutes
+    ago."'
+  - '"Everyone''s going to stare, did you even brush your hair this morning?"'
+  - '"What if your voice cracks? Everyone will laugh."'

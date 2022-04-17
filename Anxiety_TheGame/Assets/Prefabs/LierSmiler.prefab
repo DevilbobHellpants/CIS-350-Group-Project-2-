@@ -46,3 +46,7 @@ MonoBehaviour:
   enemySprite: {fileID: 21300000, guid: 36229fc021396ea4ab92184829a61641, type: 3}
   health: 80
   enemyName: Liar Smiler
+  attackDescriptions:
+  - '"Your friends don''t really like you, they''re just trying to be nice."'
+  - '"Do you hear the things your friends say behind your back?"'
+  - '"Aw, you think people care about you? Cute."'

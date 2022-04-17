@@ -21,6 +21,9 @@ public class OpenFightMenu : MonoBehaviour
     public Text enemyNameDisplayed;
     public Enemy[] enemies;
     public Enemy finalBoss;
+    public Enemy enemyEncountered;
+
+    public Text description;
 
     public GameObject[] attackButtons;
     public string[] attackNames;
@@ -43,6 +46,7 @@ public class OpenFightMenu : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         TutorialText = GameObject.FindGameObjectWithTag("Tutorial Text");
         darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
+        //description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -120,7 +124,9 @@ public class OpenFightMenu : MonoBehaviour
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
+        description.text = "A problem appears...";
         int enemyNum = Random.Range(0, enemies.Length);
+        enemyEncountered = enemies[enemyNum];
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
         enemyStats.attributes[2].value.BaseValue = enemies[enemyNum].health;

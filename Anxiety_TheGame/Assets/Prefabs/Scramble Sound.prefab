@@ -46,3 +46,7 @@ MonoBehaviour:
   enemySprite: {fileID: 21300000, guid: 620f9ceee3a392a42b0e7649e22ea8f3, type: 3}
   health: 50
   enemyName: Scramble Sound
+  attackDescriptions:
+  - You hear the clicking of a pen. It's constant.
+  - There's a leaky facuet somewhere. Where is it coming from?
+  - Is that the fire alarm?

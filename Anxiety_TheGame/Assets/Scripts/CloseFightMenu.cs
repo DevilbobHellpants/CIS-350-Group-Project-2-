@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 /*
  * Anna Breuker
  * Project 5 
@@ -14,6 +15,8 @@ public class CloseFightMenu : MonoBehaviour
     private Text description;
 
     public GameObject fightMenu;
+    public GameObject gameOverScreen;
+    public bool gameOver;
 
     public Button attack1;
     public Button attack2;
@@ -44,9 +47,16 @@ public class CloseFightMenu : MonoBehaviour
         if (playerStats.attributes[0].value.BaseValue > 100)
         {
             description.text = "You are overwhelmed...";
-            StartCoroutine(BattleOver());
 
-            //gameOver = true (we don't have a game over state made yet but i'll implement it later
+            gameOver = true;
+            fightMenu.SetActive(false);
+            gameOverScreen.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+
         }
     }
 

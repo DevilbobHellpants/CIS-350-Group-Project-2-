@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public Sprite enemySprite;
     public int health;
     public string enemyName;
+    public string[] attackDescriptions;
     
     // Start is called before the first frame update
     void Start()

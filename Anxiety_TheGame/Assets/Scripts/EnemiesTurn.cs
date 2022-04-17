@@ -12,6 +12,8 @@ public class EnemiesTurn : MonoBehaviour
     public Button Attack2;
     public Button Attack3;
     public Button Attack4;
+
+    private Text description;
     // Start is called before the first frame update
 
     //public bool enemyTurn;
@@ -23,6 +25,7 @@ public class EnemiesTurn : MonoBehaviour
         playerTurn = GetComponent<AttackAction>();
         fightMenu = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         playerSanity = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -60,7 +63,11 @@ public class EnemiesTurn : MonoBehaviour
         yield return new WaitForSeconds(.15f);
         fightMenu.enemyPortrait.enabled = true;
 
-        //yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(2f);
+        //text indicating what the enemy attack is
+        int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
+        description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
+
         playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 30);  //enemy attack
 
         Debug.Log(playerSanity.attributes[0].value.BaseValue);
@@ -83,6 +90,9 @@ public class EnemiesTurn : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             yield return new WaitForSeconds(.4f);
+
+            int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
+            description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
 
             playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 20); //enemy attack
         }
