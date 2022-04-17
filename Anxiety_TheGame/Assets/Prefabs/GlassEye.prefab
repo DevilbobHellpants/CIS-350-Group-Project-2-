@@ -47,6 +47,6 @@ MonoBehaviour:
   health: 40
   enemyName: Glass Eye
   attackDescriptions:
-  - Your glasses make you look weird.
-  - What a nerd, get a load of this four-eyes over here-
-  - Everyone's been talking about how stupid your new glasses look.
+  - '"Your glasses make you look weird."'
+  - '"What a nerd, get a load of this four-eyes over here-"'
+  - '"Everyone''s been talking about how stupid your new glasses look."'

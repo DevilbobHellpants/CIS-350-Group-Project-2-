@@ -129,13 +129,13 @@ public class AttackAction : MonoBehaviour
         changeStats();
         description.text = "You focus on 3 things you can see, 3 things you can hear, " +
             "and 3 things you can feel, moving 3 different parts of your body." +
-            "\n\nTaking a deep breath, you feel lighter. ";
+            " Taking a deep breath, you feel lighter. ";
     }
     public void Grounding()
     {
         changeStats();
         description.text = "You focus on 5 things you can see, 4 you can touch, " +
-            "3 you can hear, 2 you can smell, and 1 you can taste.\n\nYou feel grounded.";
+            "3 you can hear, 2 you can smell, and 1 you can taste. You feel grounded.";
     }
 
     public void BlastMusic()

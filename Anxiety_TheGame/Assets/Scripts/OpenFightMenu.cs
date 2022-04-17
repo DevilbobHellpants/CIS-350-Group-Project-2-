@@ -22,6 +22,7 @@ public class OpenFightMenu : MonoBehaviour
     public Enemy[] enemies;
     public Enemy finalBoss;
     public Enemy enemyEncountered;
+    public GameObject enemyHealthBar;
 
     public Text description;
 
@@ -38,6 +39,8 @@ public class OpenFightMenu : MonoBehaviour
     public Image darknessEffect;
     public bool startingBattle = false;
 
+    public int encounterNum = 0;
+
     void Start()
     {
         enemyStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
@@ -51,7 +54,7 @@ public class OpenFightMenu : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud"))  && !startingBattle)
+        if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud")) && !startingBattle)
         {
             Debug.Log("cloud hit");
             StartCoroutine(OpenMenuOnDelay(other.gameObject));
@@ -124,12 +127,20 @@ public class OpenFightMenu : MonoBehaviour
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
-        description.text = "A problem appears...";
+        if (encounterNum == 0)
+        {
+            description.text = "A problem appears! You can see the problem's name and information on the left side of the screen.\nPress[space] to continue.";
+        }
+        if (encounterNum >= 1)
+        {
+            description.text = "A problem appears...";
+        }
         int enemyNum = Random.Range(0, enemies.Length);
         enemyEncountered = enemies[enemyNum];
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
         enemyStats.attributes[2].value.BaseValue = enemies[enemyNum].health;
+        enemyHealthBar.GetComponent<ProgressBar>().maximum = enemies[enemyNum].health;
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
@@ -140,7 +151,7 @@ public class OpenFightMenu : MonoBehaviour
             }
             if (enemyNameDisplayed.text == "Liar Smiler")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4+i];
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
             }
             if (enemyNameDisplayed.text == "Scramble Sound")
             {
@@ -167,8 +178,12 @@ public class OpenFightMenu : MonoBehaviour
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
+        description.text = "You feel a chill run up your spine...";
+        enemyEncountered = finalBoss;
         enemyPortrait.sprite = finalBoss.enemySprite;
         enemyNameDisplayed.text = finalBoss.enemyName;
+        enemyStats.attributes[2].value.BaseValue = finalBoss.health;
+        enemyHealthBar.GetComponent<ProgressBar>().maximum = finalBoss.health;
     }
 
     //enemyPortrait.sprite = enemies[1].enemySprite; 

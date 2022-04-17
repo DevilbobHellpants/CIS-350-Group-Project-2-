@@ -68,7 +68,14 @@ public class EnemiesTurn : MonoBehaviour
         int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
         description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
 
-        playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 30);  //enemy attack
+        if (fightMenu.enemyEncountered.enemyName == "Final Boss")
+        {
+            playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(20, 50);  //enemy attack
+        }
+        else
+        {
+            playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 30);  //enemy attack
+        }
 
         Debug.Log(playerSanity.attributes[0].value.BaseValue);
 
