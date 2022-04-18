@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DigitalRuby.SimpleLUT;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +41,8 @@ public class OpenFightMenu : MonoBehaviour
     public bool startingBattle = false;
 
     public int encounterNum = 0;
+
+    public SimpleLUT cameraLUT;
 
     void Start()
     {
@@ -85,7 +88,8 @@ public class OpenFightMenu : MonoBehaviour
         {
             clouds[i].GetComponent<CloudMovement>().canDie = false;
         }
-        float darknessAlpha = darknessEffect.color.a;
+        //float darknessAlpha = darknessEffect.color.a;
+        float darknessAlpha = -cameraLUT.Brightness;
         if (darknessAlpha == 0)
         {
             darknessAlpha = .01f;
@@ -106,7 +110,8 @@ public class OpenFightMenu : MonoBehaviour
             {
                 effects[i].GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha[i] * (menuDelayTime - timer) / menuDelayTime);
             }
-            darknessEffect.color = new Color(0f, 0f, 0f, darknessAlpha * (menuDelayTime - timer) / menuDelayTime);
+            cameraLUT.Brightness = -darknessAlpha * (menuDelayTime - timer) / menuDelayTime;
+            //darknessEffect.color = new Color(0f, 0f, 0f, darknessAlpha * (menuDelayTime - timer) / menuDelayTime);
         }
 
         //When the time has been waited

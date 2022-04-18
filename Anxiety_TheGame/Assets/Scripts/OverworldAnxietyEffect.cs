@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using DigitalRuby.SimpleLUT;
 
 public class OverworldAnxietyEffect : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class OverworldAnxietyEffect : MonoBehaviour
     public float minCloudSpawnTime = 1f;
     public float maxCloudSpawnTime = 5f;
     private bool skipedFirst = false;
+
+    public SimpleLUT cameraLUT;
 
     // Start is called before the first frame update
     void Start()
@@ -163,7 +166,8 @@ public class OverworldAnxietyEffect : MonoBehaviour
                     alphaUp = true;
                 }
             }
-            darknessEffect.color = new Color(0f, 0f, 0f, alpha);
+            cameraLUT.Brightness = -alpha;
+            //darknessEffect.color = new Color(0f, 0f, 0f, alpha);
         }
     }
 
