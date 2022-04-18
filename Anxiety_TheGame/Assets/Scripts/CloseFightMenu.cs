@@ -85,9 +85,9 @@ public class CloseFightMenu : MonoBehaviour
         fightMenu.SetActive(false);
         player.canMove = true;
         playerStats.attributes[2].value.BaseValue = 1;
-        if (playerStats.attributes[2].value.BaseValue > 0)
+        if (playerStats.attributes[1].value.BaseValue > 0)
         {
-            playerStats.attributes[2].value.BaseValue--;
+            playerStats.attributes[1].value.BaseValue--;
         }
         attack1.enabled = true;
         attack2.enabled = true;
