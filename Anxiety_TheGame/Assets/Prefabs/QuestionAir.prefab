@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f1ece8f924aca4bb1f68180fc910d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySprite: {fileID: 21300000, guid: a6edd1263b2d72b45973e2bc0c7bfee1, type: 3}
+  enemySprite: {fileID: 21300000, guid: cf5976df35db9ef4eb781d3882456f31, type: 3}
   health: 60
   enemyName: Question Air
   attackDescriptions:
