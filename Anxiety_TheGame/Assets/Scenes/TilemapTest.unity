@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d51cdc8e4155474abafbe6991b900f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalBoss: {fileID: 0}
+  finalBoss: {fileID: 2971139465738391787, guid: d0f6d5fe28aa46a42a65f5770a6494aa, type: 3}
   fightMenu: {fileID: 822004501}
   fightMenuScript: {fileID: 0}
   gameOverScreen: {fileID: 1918497488}
