@@ -7,6 +7,7 @@ public class EnemiesTurn : MonoBehaviour
 {
     private AttackAction playerTurn;
     private PlayerStats playerSanity;
+    private ClickedAttack clickedAttack;
 
     public Button Attack1;
     public Button Attack2;
@@ -22,6 +23,7 @@ public class EnemiesTurn : MonoBehaviour
     
     void Start()
     {
+        clickedAttack = GetComponent<ClickedAttack>();
         playerTurn = GetComponent<AttackAction>();
         fightMenu = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         playerSanity = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
@@ -83,6 +85,7 @@ public class EnemiesTurn : MonoBehaviour
         Attack2.enabled = true;
         Attack3.enabled = true;
         Attack4.enabled = true;
+        clickedAttack.changeAttack = true;
     }
 
     IEnumerator StartEnemiesTripleTurn()
@@ -101,7 +104,7 @@ public class EnemiesTurn : MonoBehaviour
             int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
             description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
 
-            playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 20); //enemy attack
+            playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 30); //enemy attack
         }
 
         playerTurn.enabled = true;
@@ -109,5 +112,6 @@ public class EnemiesTurn : MonoBehaviour
         Attack2.enabled = true;
         Attack3.enabled = true;
         Attack4.enabled = true;
+        clickedAttack.changeAttack = true;
     }
 }

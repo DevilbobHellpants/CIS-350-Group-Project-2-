@@ -12,6 +12,8 @@ public class AttackAction : MonoBehaviour
     private EnemiesTurn enemyTurn;
     private CloseFightMenu endEncounter;
 
+    private AudioSource MainMusic;
+
     public int numOfEncounters;
     public bool sameBattle;
     public int numOfDrunkenEncounters;
@@ -21,6 +23,7 @@ public class AttackAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MainMusic = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         endEncounter = GameObject.FindGameObjectWithTag("FightMenu").GetComponent<CloseFightMenu>();
         enemyTurn = GetComponent<EnemiesTurn>();
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
@@ -38,7 +41,7 @@ public class AttackAction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            BoxBreath();
+            BlastMusic();
         }
     }
 
@@ -121,7 +124,87 @@ public class AttackAction : MonoBehaviour
                 Visualization();
             }
         }
+        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety") //Final Boss
+        {
+            if (clickedAttack.randomNum == 1)
+            {
+                if (attackButton.tag == "Attack 1")
+                {
+                    TripleRule();
+                }
+                if (attackButton.tag == "Attack 2")
+                {
+                    EmotionalSupport();
+                }
+                if (attackButton.tag == "Attack 3")
+                {
+                    SelfDoubt();
+                }
+                if (attackButton.tag == "Attack 4")
+                {
+                    TakeOffGlasses();
+                }
+            }
+            if (clickedAttack.randomNum == 2)
+            {
+                if (attackButton.tag == "Attack 1")
+                {
+                    Grounding();
+                }
+                if (attackButton.tag == "Attack 2")
+                {
+                    DrinkToForget();
+                }
+                if (attackButton.tag == "Attack 3")
+                {
+                    GoToSleep();
+                }
+                if (attackButton.tag == "Attack 4")
+                {
+                    Isolation();
+                }
+            }
+            if (clickedAttack.randomNum == 3)
+            {
+                if (attackButton.tag == "Attack 1")
+                {
+                    BlastMusic();
+                }
+                if (attackButton.tag == "Attack 2")
+                {
+                    BoxBreath();
+                }
+                if (attackButton.tag == "Attack 3")
+                {
+                    LeaveTheRoom();
+                }
+                if (attackButton.tag == "Attack 4")
+                {
+                    PunchAWall();
+                }
+            }
+            if (clickedAttack.randomNum == 4)
+            {
+                if (attackButton.tag == "Attack 1")
+                {
+                    Hide();
+                }
+                if (attackButton.tag == "Attack 2")
+                {
+                    ShiftFocus();
+                }
+                if (attackButton.tag == "Attack 3")
+                {
+                    ShutDown();
+                }
+                if (attackButton.tag == "Attack 4")
+                {
+                    Visualization();
+                }
+            }
+        }
         enemyTurn.enemyTurn();
+        //clickedAttack.changeAttack = true;
     }
 
     public void TripleRule()
@@ -142,6 +225,7 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "You turn the music up. The noise seems fainter.";
         changeStats();
+        StartCoroutine(MusicChange());
         //m_MyAudioSource.volume = m_MySliderValue;
     }
 
@@ -270,5 +354,12 @@ public class AttackAction : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator MusicChange()
+    {
+        MainMusic.volume = .9f;
+        yield return new WaitForSeconds(3f);
+        MainMusic.volume = .35f;
     }
 }

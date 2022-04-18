@@ -144,7 +144,7 @@ public class OpenFightMenu : MonoBehaviour
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
-            Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
+            //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
             if (enemyNameDisplayed.text == "Glass Eye")
             {
                 attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
@@ -168,6 +168,7 @@ public class OpenFightMenu : MonoBehaviour
     {
         StartCoroutine(playSmoke());
         player.canMove = false;
+        worldEffect.inBattle = true;
         startingBattle = true;
         yield return new WaitForSeconds(menuDelayTime);
 

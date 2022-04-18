@@ -1280,7 +1280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -244.70004, y: -4.400009}
+  m_AnchoredPosition: {x: -244.7001, y: -4.4000244}
   m_SizeDelta: {x: -585.6799, y: -87.41519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273639702
@@ -1441,7 +1441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 143.70001, y: -4.400009}
+  m_AnchoredPosition: {x: 143.70001, y: -4.4000244}
   m_SizeDelta: {x: -382.2097, y: -87.41519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &314977632
@@ -1910,7 +1910,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.073029
+  orthographic size: 3.465014
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1934,7 +1934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.58131236, y: -0.07316902, z: -10}
+  m_LocalPosition: {x: -0.81674874, y: -0.082502216, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38183,6 +38183,8 @@ MonoBehaviour:
   attackButton3: {fileID: 11400000, guid: 0ffdc9da69599524ca22ecaca2a200a9, type: 2}
   attackButton4: {fileID: 11400000, guid: ad69039b8ab43d64bb0eb202530a17c5, type: 2}
   attack: {fileID: 11400000, guid: e1f69f5163d2bf24ba655b190bf72700, type: 2}
+  changeAttack: 0
+  randomNum: 0
 --- !u!114 &1315154610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38675,6 +38677,8 @@ MonoBehaviour:
   attackButton3: {fileID: 11400000, guid: e585153640d16e543bc6d4efb7dde7af, type: 2}
   attackButton4: {fileID: 11400000, guid: d36ab1205ca510d4caf1d82edff90a23, type: 2}
   attack: {fileID: 0}
+  changeAttack: 0
+  randomNum: 0
 --- !u!114 &1343301328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39182,8 +39186,8 @@ GameObject:
   - component: {fileID: 1400751134}
   - component: {fileID: 1400751135}
   - component: {fileID: 1400751136}
-  - component: {fileID: 1400751138}
   - component: {fileID: 1400751137}
+  - component: {fileID: 1400751138}
   - component: {fileID: 1400751139}
   m_Layer: 0
   m_Name: Player
@@ -39841,6 +39845,8 @@ MonoBehaviour:
   attackButton3: {fileID: 11400000, guid: 00ceb460738364d44b184005de4efe2e, type: 2}
   attackButton4: {fileID: 11400000, guid: ae983ff13282a2f4eba1d02336bb852c, type: 2}
   attack: {fileID: 0}
+  changeAttack: 0
+  randomNum: 0
 --- !u!114 &1444743868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40661,7 +40667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25962028, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.100163, y: 0}
+  m_AnchoredPosition: {x: -55.100174, y: 0}
   m_SizeDelta: {x: 93.58905, y: 67.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571357227
@@ -40774,6 +40780,8 @@ MonoBehaviour:
   attackButton3: {fileID: 11400000, guid: 52e5f955c5c5a2e4daa52b2b82940502, type: 2}
   attackButton4: {fileID: 11400000, guid: 550a1d4377ab4cd4b8477e6cc4a545cc, type: 2}
   attack: {fileID: 0}
+  changeAttack: 0
+  randomNum: 0
 --- !u!114 &1571357231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98196,7 +98204,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1400751132}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.073029
+    OrthographicSize: 3.465014
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -98217,7 +98225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095361380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.58131236, y: -0.07316902, z: -10}
+  m_LocalPosition: {x: -0.81674874, y: -0.082502216, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597939470}
