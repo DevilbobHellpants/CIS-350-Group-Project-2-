@@ -43,17 +43,17 @@ public class CloseFightMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerStats.attributes[2].value.BaseValue <= 0)
+        if (playerStats.attributes[2].value.BaseValue <= 0 && fightMenuScript.enemyEncountered == finalBoss)
+        {
+            description.text = "Is this it..? Is it really over?";
+            StartCoroutine(Win());
+        }
+        else if (playerStats.attributes[2].value.BaseValue <= 0)
         {
             description.text = "Problem defeated!";
             fightMenuScript.encounterNum++;
             StartCoroutine(BattleOver());
 
-        }
-        if (playerStats.attributes[2].value.BaseValue <= 0 && fightMenuScript.enemyEncountered == finalBoss)
-        {
-            description.text = "Is this it..? Is it really over?";
-            StartCoroutine(Win());
         }
         if (playerStats.attributes[0].value.BaseValue > 100)
         {
