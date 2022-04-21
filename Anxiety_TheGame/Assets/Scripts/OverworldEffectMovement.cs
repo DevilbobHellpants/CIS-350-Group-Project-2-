@@ -13,7 +13,7 @@ public class OverworldEffectMovement : MonoBehaviour
     public float effectTimer = 5f;
     public Image image;
     public Text text;
-    public bool inBattle = false;
+    public bool inBattle = true;
 
     private float timer = 0f;
     private Vector3 direction;

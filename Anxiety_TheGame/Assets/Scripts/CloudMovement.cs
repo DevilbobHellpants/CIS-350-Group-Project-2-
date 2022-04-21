@@ -22,6 +22,7 @@ public class CloudMovement : MonoBehaviour
 
     private bool increaseSpeed = false;
     public bool canDie = true;
+    public ParticleSystem smoke;
 
     private void Start()
     {

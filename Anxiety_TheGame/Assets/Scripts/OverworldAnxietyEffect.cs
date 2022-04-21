@@ -12,7 +12,7 @@ using DigitalRuby.SimpleLUT;
 public class OverworldAnxietyEffect : MonoBehaviour
 {
     public GameObject[] imagePrefabs;
-    public bool inBattle = false;
+    public bool inBattle = true;
     public Image darknessEffect;
     public CinemachineVirtualCamera cinemachine;
     public GameObject player;
@@ -32,8 +32,8 @@ public class OverworldAnxietyEffect : MonoBehaviour
 
     public GameObject neuronPrefab;
     public GameObject cloudPrefab;
-    public float minCloudSpawnTime = 1f;
-    public float maxCloudSpawnTime = 5f;
+    public float minCloudSpawnTime = 3f;
+    public float maxCloudSpawnTime = 10f;
     private bool skipedFirst = false;
 
     public SimpleLUT cameraLUT;

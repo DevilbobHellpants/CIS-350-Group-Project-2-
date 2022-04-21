@@ -16,7 +16,7 @@ public class OpenFightMenu : MonoBehaviour
     private PlayerStats enemyStats;
 
     public GameObject fightMenu;
-    public ParticleSystem smokeEffect;
+    //public ParticleSystem smokeEffect;
 
     public Image enemyPortrait;
     public Text enemyNameDisplayed;
@@ -36,11 +36,11 @@ public class OpenFightMenu : MonoBehaviour
     public float menuDelayTime = 2f;
     private float timer;
     private PlayerMovement player;
-    public GameObject TutorialText;
     public Image darknessEffect;
     public bool startingBattle = false;
 
     public int encounterNum = 0;
+    public int enemyChoice = 0;
 
     public SimpleLUT cameraLUT;
 
@@ -50,7 +50,6 @@ public class OpenFightMenu : MonoBehaviour
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        TutorialText = GameObject.FindGameObjectWithTag("Tutorial Text");
         darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
         //description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
     }
@@ -71,7 +70,11 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator OpenMenuOnDelay(GameObject cloud)
     {
-        StartCoroutine(playSmoke());
+        playerAudio.PlayOneShot(encounterSound, .75f);
+        if (cloud.GetComponent<CloudMovement>().smoke != null)
+        {
+            cloud.GetComponent<CloudMovement>().smoke.gameObject.SetActive(true);
+        }
         player.canMove = false;
         worldEffect.inBattle = true;
         startingBattle = true;
@@ -117,7 +120,7 @@ public class OpenFightMenu : MonoBehaviour
         //When the time has been waited
         if (cloud.CompareTag("Tutorial Cloud"))
         {
-            Destroy(cloud);
+            cloud.SetActive(false);
         }
         for (int i = 0; i < clouds.Length; i++)
         {
@@ -128,7 +131,6 @@ public class OpenFightMenu : MonoBehaviour
             Destroy(effects[i]);
         }
         startingBattle = false;
-        TutorialText.SetActive(false);
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
@@ -140,7 +142,19 @@ public class OpenFightMenu : MonoBehaviour
         {
             description.text = "A problem appears...";
         }
-        int enemyNum = Random.Range(0, enemies.Length);
+        int enemyNum = Random.Range(0, 2);
+        if (enemyChoice > enemies.Length)
+        {
+            enemyNum = Random.Range(0, enemies.Length);
+        }
+        else if (enemyNum == 0)//50%
+        {
+            enemyNum = Random.Range(0, enemyChoice);
+        }
+        else//50%
+        {
+            enemyNum = enemyChoice - 1;
+        }
         enemyEncountered = enemies[enemyNum];
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
@@ -171,7 +185,7 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator StartBossFight(GameObject boss)
     {
-        StartCoroutine(playSmoke());
+        playerAudio.PlayOneShot(encounterSound, .75f);
         player.canMove = false;
         worldEffect.inBattle = true;
         startingBattle = true;
@@ -180,7 +194,6 @@ public class OpenFightMenu : MonoBehaviour
         //When the time has been waited
         boss.SetActive(false);
         startingBattle = false;
-        TutorialText.SetActive(false);
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
@@ -192,23 +205,5 @@ public class OpenFightMenu : MonoBehaviour
         enemyHealthBar.GetComponent<ProgressBar>().maximum = finalBoss.health;
     }
 
-    //enemyPortrait.sprite = enemies[1].enemySprite; 
-
-    //Plays enemy entry anim and stops time
-    IEnumerator playSmoke()
-    {
-        //yield return new WaitForSeconds(0.5f);
-
-        //if (smokeEffect != null) This doesn't work because smoke gets destroyed after one use, it shoulde be a prefab also smoke doesn't work anymore anyways
-        //{
-            playerAudio.PlayOneShot(encounterSound, .75f);
-            
-            //smokeEffect.Play();
-            yield return new WaitForSeconds(2f);
-            //Time.timeScale = 0f; Do we need to do this, this would mess up the code for the sprites when we animate them
-            
-            
-        //}
-
-    }
+    //enemyPortrait.sprite = enemies[1].enemySprite;
 }

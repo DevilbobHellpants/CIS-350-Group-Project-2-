@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 /*
- * Anna Breuker
+ * Anna Breuker, Caleb Kahn
  * Project 5 
  * Closes the fight menu when a battle is won or lost.
  */
@@ -28,6 +28,7 @@ public class CloseFightMenu : MonoBehaviour
     public Button attack4;
 
     private PlayerMovement player;
+    private CheckpointTrigger[] checkpoints;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,12 @@ public class CloseFightMenu : MonoBehaviour
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Checkpoint");
+        checkpoints = new CheckpointTrigger[temp.Length];
+        for (int i = 0; i < temp.Length; i++)
+        {
+            checkpoints[i] = temp[i].GetComponent<CheckpointTrigger>();
+        }
     }
 
     // Update is called once per frame
@@ -55,7 +62,7 @@ public class CloseFightMenu : MonoBehaviour
             StartCoroutine(BattleOver());
 
         }
-        if (playerStats.attributes[0].value.BaseValue > 100)
+        if (playerStats.attributes[0].value.BaseValue > 100 && !gameOver)
         {
             description.text = "You are overwhelmed...";
             StartCoroutine(Lose());
@@ -64,7 +71,17 @@ public class CloseFightMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                gameOverScreen.SetActive(false);
+                gameOver = false;
+                for (int i = 0; i < checkpoints.Length; i++)
+                {
+                    if (checkpoints[i].currentCheckpoint)
+                    {
+                        checkpoints[i].Respawn();
+                    }
+                }
+                fightMenu.SetActive(false);
             }
         }
     }

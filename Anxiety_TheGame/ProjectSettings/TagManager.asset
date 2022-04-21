@@ -19,6 +19,8 @@ TagManager:
   - Attack 4
   - Attack 3
   - DescriptionBox
+  - Checkpoint
+  - Neuron Effect
   layers:
   - Default
   - TransparentFX
