@@ -20,9 +20,12 @@ public class AttackAction : MonoBehaviour
 
     private Text description;
 
+    private RandomNumGen randomNum;
+
     // Start is called before the first frame update
     void Start()
     {
+        randomNum = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomNumGen>();
         MainMusic = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         endEncounter = GameObject.FindGameObjectWithTag("FightMenu").GetComponent<CloseFightMenu>();
         enemyTurn = GetComponent<EnemiesTurn>();
@@ -126,7 +129,8 @@ public class AttackAction : MonoBehaviour
         }
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety") //Final Boss
         {
-            if (clickedAttack.randomNum == 1)
+            Debug.Log("Random Num in AttackAction = " + randomNum.randomNum);
+            if (randomNum.randomNum == 1)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -145,7 +149,7 @@ public class AttackAction : MonoBehaviour
                     TakeOffGlasses();
                 }
             }
-            if (clickedAttack.randomNum == 2)
+            if (randomNum.randomNum == 2)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -164,7 +168,7 @@ public class AttackAction : MonoBehaviour
                     Isolation();
                 }
             }
-            if (clickedAttack.randomNum == 3)
+            if (randomNum.randomNum == 3)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -183,7 +187,7 @@ public class AttackAction : MonoBehaviour
                     PunchAWall();
                 }
             }
-            if (clickedAttack.randomNum == 4)
+            if (randomNum.randomNum == 4)
             {
                 if (attackButton.tag == "Attack 1")
                 {

@@ -18,13 +18,12 @@ public class ClickedAttack : MonoBehaviour
     [HideInInspector]
     public bool changeAttack;
 
-    [HideInInspector]
-    public int randomNum;
+    private RandomNumGen randomNum;
 
     private void Start()
     {
         changeAttack = true;
-        randomNum = UnityEngine.Random.Range(1, 4);
+        randomNum = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomNumGen>();
         attackAction = GetComponent<AttackAction>();
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
     }
@@ -52,24 +51,24 @@ public class ClickedAttack : MonoBehaviour
         {
             if (changeAttack == true)
             {
-                randomNum = UnityEngine.Random.Range(1, 4);
-                //Debug.Log("Random Num = " + randomNum);
-                if (randomNum == 1)
+                randomNum.makeRandomNum(1,4);
+                Debug.Log("Random Num in clickedAttack = " + randomNum);
+                if (randomNum.randomNum == 1)
                 {
                     //Debug.Log("Random Num = " + 1);
                     attack = attackButton1;
                 }
-                if (randomNum == 2)
+                if (randomNum.randomNum == 2)
                 {
                     //Debug.Log("Random Num = " + 2);
                     attack = attackButton2;
                 }
-                if (randomNum == 3)
+                if (randomNum.randomNum == 3)
                 {
                     //Debug.Log("Random Num = " + 3);
                     attack = attackButton3;
                 }
-                if (randomNum == 4)
+                if (randomNum.randomNum == 4)
                 {
                     //Debug.Log("Random Num = " + 4);
                     attack = attackButton4;
@@ -78,19 +77,19 @@ public class ClickedAttack : MonoBehaviour
                 for (int i = 0; i < enemy.attackButtons.Length; i++)
                 {
                     //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
-                    if (randomNum == 1)
+                    if (randomNum.randomNum == 1)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[i];
                     }
-                    if (randomNum == 2)
+                    if (randomNum.randomNum == 2)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[4 + i];
                     }
-                    if (randomNum == 3)
+                    if (randomNum.randomNum == 3)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[8 + i];
                     }
-                    if (randomNum == 4)
+                    if (randomNum.randomNum == 4)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[12 + i];
                     }

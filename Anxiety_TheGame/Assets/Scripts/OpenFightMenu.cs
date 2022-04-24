@@ -58,8 +58,10 @@ public class OpenFightMenu : MonoBehaviour
     {
         if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud")) && !startingBattle)
         {
-            Debug.Log("cloud hit");
-            StartCoroutine(OpenMenuOnDelay(other.gameObject));
+            Debug.Log("Boss Fight Start");
+            StartCoroutine(StartBossFight(other.gameObject));
+            //Debug.Log("cloud hit");
+            //StartCoroutine(OpenMenuOnDelay(other.gameObject));
         }
         else if (other.CompareTag("Final Boss Cloud") && !startingBattle)
         {
