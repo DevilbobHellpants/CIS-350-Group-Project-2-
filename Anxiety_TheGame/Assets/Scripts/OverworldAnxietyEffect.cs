@@ -32,10 +32,11 @@ public class OverworldAnxietyEffect : MonoBehaviour
 
     public GameObject neuronPrefab;
     public GameObject cloudPrefab;
-    public float minCloudSpawnTime = 3f;
-    public float maxCloudSpawnTime = 10f;
+    public float minCloudSpawnTime = 5f;
+    public float maxCloudSpawnTime = 12f;
     private bool skipedFirst = false;
 
+    private float simSpeed = 1f;
     public SimpleLUT cameraLUT;
 
     // Start is called before the first frame update
@@ -53,6 +54,8 @@ public class OverworldAnxietyEffect : MonoBehaviour
             if (!inBattle)
             {
                 GameObject neuron = Instantiate(neuronPrefab, player.transform.position, neuronPrefab.transform.rotation);
+                var main = neuron.GetComponent<ParticleSystem>().main;
+                main.simulationSpeed = simSpeed;
                 yield return new WaitForSeconds(2f);
                 Destroy(neuron);
             }
@@ -124,6 +127,8 @@ public class OverworldAnxietyEffect : MonoBehaviour
                 effectTimer = 3f + (1.5f * (timer / 30f));
                 minAlpha = .3f * (timer / 30f);
                 maxAlpha = .1f + (.4f * (timer / 30f));
+                minCloudSpawnTime = 5f - (2f * (timer / 30f));
+                maxCloudSpawnTime = 12f - (4f * (timer / 30f));
             }
             else if (timer <= 60)
             {
@@ -134,10 +139,14 @@ public class OverworldAnxietyEffect : MonoBehaviour
                 effectTimer = 4.5f + (1.5f * ((timer - 30f) / 30f));
                 minAlpha = .2f + (.3f * ((timer - 30f) / 30f));
                 maxAlpha = .5f + (.5f * ((timer - 30f) / 30f));
+                minCloudSpawnTime = 3f - (2f * ((timer - 30f) / 30f));
+                maxCloudSpawnTime = 8f - (3f * ((timer - 30f) / 30f));
+                simSpeed = 2f;
             }
             else
             {
                 effectTimer = 6f + (1.5f * ((timer - 60f) / 30f));
+                simSpeed = 4f;
             }
             if (randomTimer >= .1f && cooldownTimer >= minCooldown) {
                 randomTimer = 0f;
@@ -185,6 +194,9 @@ public class OverworldAnxietyEffect : MonoBehaviour
         minAlpha = 0f;
         maxAlpha = .1f;
         alphaChangeTime = 2f;
+        minCloudSpawnTime = 5f;
+        maxCloudSpawnTime = 12f;
+        simSpeed = 1f;
         alphaUp = true;
         skipedFirst = false;
     }

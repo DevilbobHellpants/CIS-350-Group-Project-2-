@@ -56,10 +56,17 @@ public class OpenFightMenu : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.CompareTag("Cloud") || other.CompareTag("Tutorial Cloud")) && !startingBattle)
+        if (other.CompareTag("Cloud") && !startingBattle)
         {
-            Debug.Log("Boss Fight Start");
-            StartCoroutine(StartBossFight(other.gameObject));
+            Debug.Log("Normal Fight Start");
+            StartCoroutine(OpenMenuOnDelay(other.gameObject));
+            //Debug.Log("cloud hit");
+            //StartCoroutine(OpenMenuOnDelay(other.gameObject));
+        }
+        else if (other.CompareTag("Tutorial Cloud") && !startingBattle)
+        {
+            Debug.Log("Tutorial Fight Start");
+            StartCoroutine(OpenMenuOnDelay(other.gameObject));
             //Debug.Log("cloud hit");
             //StartCoroutine(OpenMenuOnDelay(other.gameObject));
         }

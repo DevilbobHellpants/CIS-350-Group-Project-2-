@@ -16,13 +16,16 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove;
 
     private PlayerStats drunkStat;
-
     private bool inDrunkenMovment;
+
+    public float maxDistence = .3f;
+    private Vector2 previousLocation;
 
     private void Start()
     {
         canMove = false;
         StartCoroutine(WaitOnStart());
+        StartCoroutine(UpdatePosition());
         drunkStat = GetComponent<PlayerStats>();
         inDrunkenMovment = false;
     }
@@ -41,6 +44,15 @@ public class PlayerMovement : MonoBehaviour
         inDrunkenMovment = false;
     }
 
+    IEnumerator UpdatePosition()
+    {
+        while(true)
+        {
+            previousLocation = transform.position;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -57,11 +69,11 @@ public class PlayerMovement : MonoBehaviour
         {
             xSpeed = Input.GetAxis("Horizontal");
             ySpeed = Input.GetAxis("Vertical");
-
-            transform.Translate(Vector2.right * Time.deltaTime * walkSpeed * xSpeed);
-
-
-            transform.Translate(Vector2.up * Time.deltaTime * walkSpeed * ySpeed);
+            Vector2 addedPosition = new Vector2(xSpeed, ySpeed).normalized * walkSpeed * Time.deltaTime;
+            if (Mathf.Abs(previousLocation.x - (transform.position.x + addedPosition.x)) < maxDistence && Mathf.Abs(previousLocation.y - (transform.position.y + addedPosition.y)) < maxDistence)
+            {
+                transform.Translate(addedPosition);
+            }
 
 
             /*WalkDir:
