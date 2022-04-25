@@ -65,7 +65,7 @@ public class EnemiesTurn : MonoBehaviour
         yield return new WaitForSeconds(.15f);
         fightMenu.enemyPortrait.enabled = true;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         //text indicating what the enemy attack is
         int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
         description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
@@ -99,7 +99,7 @@ public class EnemiesTurn : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            yield return new WaitForSeconds(.4f);
+            yield return new WaitForSeconds(2f);
 
             int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
             description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
