@@ -49,9 +49,13 @@ public class EnemiesTurn : MonoBehaviour
     IEnumerator StartEnemiesTurn()
     {
         Attack1.enabled = false;
+        Attack1.GetComponentInChildren<Text>().enabled = false;
         Attack2.enabled = false;
+        Attack2.GetComponentInChildren<Text>().enabled = false;
         Attack3.enabled = false;
+        Attack3.GetComponentInChildren<Text>().enabled = false;
         Attack4.enabled = false;
+        Attack4.GetComponentInChildren<Text>().enabled = false;
         //Debug.Log("Turn Started");
         fightMenu.enemyPortrait.enabled = false;
         yield return new WaitForSeconds(.15f);
@@ -65,7 +69,7 @@ public class EnemiesTurn : MonoBehaviour
         yield return new WaitForSeconds(.15f);
         fightMenu.enemyPortrait.enabled = true;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         //text indicating what the enemy attack is
         int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
         description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
@@ -82,9 +86,13 @@ public class EnemiesTurn : MonoBehaviour
         Debug.Log(playerSanity.attributes[0].value.BaseValue);
 
         Attack1.enabled = true;
+        Attack1.GetComponentInChildren<Text>().enabled = true;
         Attack2.enabled = true;
+        Attack2.GetComponentInChildren<Text>().enabled = true;
         Attack3.enabled = true;
+        Attack3.GetComponentInChildren<Text>().enabled = true;
         Attack4.enabled = true;
+        Attack4.GetComponentInChildren<Text>().enabled = true;
         clickedAttack.changeAttack = true;
     }
 
