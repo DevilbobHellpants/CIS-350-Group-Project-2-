@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f1ece8f924aca4bb1f68180fc910d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySprite: {fileID: 21300000, guid: dbb1dcfd337711349897213dc7c06211, type: 3}
+  enemySprite: {fileID: 21300000, guid: 2c2b58df434f76a44a2a2ce962b5a7c7, type: 3}
   health: 200
   enemyName: You
   attackDescriptions:
