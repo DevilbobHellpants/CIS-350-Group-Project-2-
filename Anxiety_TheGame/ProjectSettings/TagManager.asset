@@ -21,6 +21,7 @@ TagManager:
   - DescriptionBox
   - Checkpoint
   - Neuron Effect
+  - Lightbulb
   layers:
   - Default
   - TransparentFX

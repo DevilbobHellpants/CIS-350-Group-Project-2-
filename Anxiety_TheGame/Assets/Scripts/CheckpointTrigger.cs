@@ -11,6 +11,7 @@ public class CheckpointTrigger : MonoBehaviour
     public Vector3 respawnPoint;
     public bool currentCheckpoint = false;
     public bool isTutorial = false;
+    public Animator anim;
     private CheckpointTrigger[] checkpoints;
     public GameObject tutorialCloud;
     private PlayerMovement player;
@@ -22,6 +23,7 @@ public class CheckpointTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim.SetBool("Opened", false);
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Checkpoint");
         checkpoints = new CheckpointTrigger[temp.Length];
         for (int i = 0; i < temp.Length; i++)
@@ -41,8 +43,10 @@ public class CheckpointTrigger : MonoBehaviour
             for (int i = 0; i < checkpoints.Length; i++)
             {
                 checkpoints[i].currentCheckpoint = false;
+                checkpoints[i].anim.SetBool("Opened", false);
             }
             currentCheckpoint = true;
+            anim.SetBool("Opened", true);
             if (playerStats.attributes[0].value.BaseValue != 0)
             {
                 playerStats.attributes[0].value.BaseValue /= 2;
