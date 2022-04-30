@@ -154,11 +154,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -809813343
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 008e0e833ddb5074f994d08bd9bd47cb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5724238, g: 0.7667766, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -196,10 +196,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7982710874951046244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cdb207f902c3d48b4964aaf55032a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 56717762bde58b144ab33988a9ae53f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 7982710874951046247}
+  respawnPoint: {x: 0, y: 0, z: 0}
+  currentCheckpoint: 0
+  isTutorial: 0
+  anim: {fileID: 0}
+  tutorialCloud: {fileID: 0}
 --- !u!58 &7982710874951046267
 CircleCollider2D:
   m_ObjectHideFlags: 0
