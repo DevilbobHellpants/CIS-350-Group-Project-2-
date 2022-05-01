@@ -22,6 +22,7 @@ TagManager:
   - Checkpoint
   - Neuron Effect
   - Lightbulb
+  - HoverBox
   layers:
   - Default
   - TransparentFX
