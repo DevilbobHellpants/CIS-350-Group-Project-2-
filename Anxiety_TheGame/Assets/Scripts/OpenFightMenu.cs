@@ -31,7 +31,16 @@ public class OpenFightMenu : MonoBehaviour
     public string[] attackNames;
 
     public AudioSource playerAudio;
+    public AudioSource fightAudio;
+    public AudioSource effectAudio;
+    public AudioSource calmEndMusic;
+    public AudioSource bossMusic;
+    public AudioSource lossMusic;
     public AudioClip encounterSound;
+
+
+
+
 
     public float menuDelayTime = 2f;
     private float timer;
@@ -46,6 +55,13 @@ public class OpenFightMenu : MonoBehaviour
 
     void Start()
     {
+        //stop all looping music
+        lossMusic.Stop();
+        bossMusic.Stop();
+        fightAudio.Stop();
+        effectAudio.Stop();
+        calmEndMusic.Stop();
+
         enemyStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
@@ -86,15 +102,21 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator OpenMenuOnDelay(GameObject cloud)
     {
-        playerAudio.PlayOneShot(encounterSound, .75f);
+        playerAudio.Stop();
+        effectAudio.PlayOneShot(encounterSound, .7f);
         if (cloud.GetComponent<CloudMovement>().smoke != null)
         {
             cloud.GetComponent<CloudMovement>().smoke.gameObject.SetActive(true);
         }
+
+        fightAudio.PlayDelayed(2.5f);
+
         player.canMove = false;
         worldEffect.inBattle = true;
         worldEffect.isStart = false;
         startingBattle = true;
+
+        
         cloud.GetComponent<CloudMovement>().inBattle = true;
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
@@ -108,6 +130,9 @@ public class OpenFightMenu : MonoBehaviour
         {
             clouds[i].GetComponent<CloudMovement>().canDie = false;
         }
+
+      
+
         //float darknessAlpha = darknessEffect.color.a;
         float darknessAlpha = -cameraLUT.Brightness;
         if (darknessAlpha == 0)
@@ -149,6 +174,7 @@ public class OpenFightMenu : MonoBehaviour
         }
         startingBattle = false;
         fightMenu.SetActive(true);
+
 
         //setting up the menu for the specific enemy
         if (encounterNum == 0)
@@ -378,7 +404,10 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator StartBossFight(GameObject boss)
     {
+        playerAudio.Stop();
         playerAudio.PlayOneShot(encounterSound, .75f);
+        bossMusic.PlayDelayed(2.5f);
+
         player.canMove = false;
         worldEffect.inBattle = true;
         startingBattle = true;

@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
  */
 public class CloseFightMenu : MonoBehaviour
 {
+    private OpenFightMenu openFMScript;
+
     private OverworldAnxietyEffect worldEffect;
     private PlayerStats playerStats;
     private Text description;
@@ -22,6 +24,9 @@ public class CloseFightMenu : MonoBehaviour
     public GameObject youWinScreen;
     public bool gameOver;
 
+    public AudioClip encounterLose;
+    public AudioClip encounterWin;
+
     public Button attack1;
     public Button attack2;
     public Button attack3;
@@ -33,6 +38,8 @@ public class CloseFightMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        openFMScript = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
+
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         fightMenuScript = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
@@ -93,10 +100,15 @@ public class CloseFightMenu : MonoBehaviour
 
     IEnumerator BattleOver()
     {
+        openFMScript.bossMusic.Stop();
+        openFMScript.fightAudio.Stop();
+        openFMScript.playerAudio.PlayOneShot(encounterWin);
+
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
         attack4.enabled = false;
+        openFMScript.playerAudio.Play();
         yield return new WaitForSeconds(2);
         worldEffect.resetVariables();
         fightMenu.SetActive(false);
@@ -110,10 +122,20 @@ public class CloseFightMenu : MonoBehaviour
         attack2.enabled = true;
         attack3.enabled = true;
         attack4.enabled = true;
+
+        
     }
 
     IEnumerator Win()
     {
+        openFMScript.fightAudio.Stop();
+
+        if(!openFMScript.calmEndMusic.isPlaying)
+        {
+            openFMScript.calmEndMusic.Play();
+        }
+        
+
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
@@ -121,10 +143,19 @@ public class CloseFightMenu : MonoBehaviour
         gameOver = true;
         yield return new WaitForSeconds(3);
         youWinScreen.SetActive(true);
+
+      
     }
 
     IEnumerator Lose()
     {
+        openFMScript.fightAudio.Stop();
+
+        if (!openFMScript.calmEndMusic.isPlaying)
+        {
+            openFMScript.lossMusic.Play();
+        }
+
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
