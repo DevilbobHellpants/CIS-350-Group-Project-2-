@@ -55,10 +55,6 @@ public class AttackAction : MonoBehaviour
         {
             if (attackButton.tag == "Attack 1")
             {
-                if (true)
-                {
-
-                }
                 TripleRule();
             }
             if (attackButton.tag == "Attack 2")
@@ -82,11 +78,11 @@ public class AttackAction : MonoBehaviour
             }
             if (attackButton.tag == "Attack 2")
             {
-                GoToSleep();
+                DrinkToForget();
             }
             if (attackButton.tag == "Attack 3")
             {
-                DrinkToForget();
+                GoToSleep();
             }
             if (attackButton.tag == "Attack 4")
             {
@@ -116,7 +112,7 @@ public class AttackAction : MonoBehaviour
         {
             if (attackButton.tag == "Attack 1")
             {
-                Visualization();
+                Hide();
             }
             if (attackButton.tag == "Attack 2")
             {
@@ -128,7 +124,7 @@ public class AttackAction : MonoBehaviour
             }
             if (attackButton.tag == "Attack 4")
             {
-                Hide();
+                Visualization();
             }
         }
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety") //Final Boss
