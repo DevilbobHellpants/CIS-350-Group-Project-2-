@@ -38,6 +38,7 @@ public class OverworldAnxietyEffect : MonoBehaviour
 
     private float simSpeed = 1f;
     public SimpleLUT cameraLUT;
+    public bool isStart = true;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,7 @@ public class OverworldAnxietyEffect : MonoBehaviour
         while (true)
         {
             yield return new WaitForEndOfFrame();
-            if (!inBattle)
+            if (!inBattle || isStart)
             {
                 GameObject neuron = Instantiate(neuronPrefab, player.transform.position, neuronPrefab.transform.rotation);
                 var main = neuron.GetComponent<ParticleSystem>().main;

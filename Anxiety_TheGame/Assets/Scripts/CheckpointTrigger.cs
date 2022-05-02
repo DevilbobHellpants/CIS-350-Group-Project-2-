@@ -66,6 +66,7 @@ public class CheckpointTrigger : MonoBehaviour
         if (isTutorial && openFightMenu.enemyChoice == 1)
         {
             worldEffect.inBattle = true;
+            worldEffect.isStart = true;
             openFightMenu.encounterNum = 0;
             tutorialCloud.SetActive(true);
         }

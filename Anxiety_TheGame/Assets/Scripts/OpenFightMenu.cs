@@ -70,6 +70,13 @@ public class OpenFightMenu : MonoBehaviour
             //Debug.Log("cloud hit");
             //StartCoroutine(OpenMenuOnDelay(other.gameObject));
         }
+        else if (other.CompareTag("Lightbulb") && !startingBattle)
+        {
+            Debug.Log("Tutorial Fight Start");
+            StartCoroutine(StartLightbulbFight(other.gameObject));
+            //Debug.Log("cloud hit");
+            //StartCoroutine(OpenMenuOnDelay(other.gameObject));
+        }
         else if (other.CompareTag("Final Boss Cloud") && !startingBattle)
         {
             Debug.Log("Boss Fight Start");
@@ -86,6 +93,7 @@ public class OpenFightMenu : MonoBehaviour
         }
         player.canMove = false;
         worldEffect.inBattle = true;
+        worldEffect.isStart = false;
         startingBattle = true;
         cloud.GetComponent<CloudMovement>().inBattle = true;
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
@@ -163,6 +171,94 @@ public class OpenFightMenu : MonoBehaviour
         else//50%
         {
             enemyNum = enemyChoice - 1;
+        }
+        enemyEncountered = enemies[enemyNum];
+        enemyPortrait.sprite = enemies[enemyNum].enemySprite;
+        enemyNameDisplayed.text = enemies[enemyNum].enemyName;
+        enemyStats.attributes[2].value.BaseValue = enemies[enemyNum].health;
+        enemyHealthBar.GetComponent<ProgressBar>().maximum = enemies[enemyNum].health;
+
+        for (int i = 0; i < attackButtons.Length; i++)
+        {
+            //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
+            if (enemyNameDisplayed.text == "Glass Eye")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+            }
+            if (enemyNameDisplayed.text == "Liar Smiler")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
+            }
+            if (enemyNameDisplayed.text == "Scramble Sound")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+            }
+            if (enemyNameDisplayed.text == "Question Air")
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
+            }
+        }
+    }
+
+    IEnumerator StartLightbulbFight(GameObject lightbulb)
+    {
+        player.canMove = false;
+        worldEffect.inBattle = true;
+        startingBattle = true;
+        GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
+        GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
+        float[] alpha = new float[effects.Length];
+        for (int i = 0; i < effects.Length; i++)
+        {
+            effects[i].GetComponent<OverworldEffectMovement>().inBattle = true;
+            alpha[i] = effects[i].GetComponent<SpriteRenderer>().color.a;
+        }
+        for (int i = 0; i < clouds.Length; i++)
+        {
+            clouds[i].GetComponent<CloudMovement>().canDie = false;
+        }
+        //float darknessAlpha = darknessEffect.color.a;
+        float darknessAlpha = -cameraLUT.Brightness;
+        if (darknessAlpha == 0)
+        {
+            darknessAlpha = .01f;
+        }
+        timer = 0;
+        while (timer < menuDelayTime)
+        {
+            yield return new WaitForEndOfFrame();
+            timer += Time.deltaTime;
+            for (int i = 0; i < clouds.Length; i++)
+            {
+                clouds[i].GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, (menuDelayTime - timer) / menuDelayTime);
+            }
+            for (int i = 0; i < effects.Length; i++)
+            {
+                effects[i].GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha[i] * (menuDelayTime - timer) / menuDelayTime);
+            }
+            cameraLUT.Brightness = -darknessAlpha * (menuDelayTime - timer) / menuDelayTime;
+            //darknessEffect.color = new Color(0f, 0f, 0f, darknessAlpha * (menuDelayTime - timer) / menuDelayTime);
+        }
+
+        //When the time has been waited
+        Destroy(lightbulb);
+        for (int i = 0; i < clouds.Length; i++)
+        {
+            Destroy(clouds[i]);
+        }
+        for (int i = 0; i < effects.Length; i++)
+        {
+            Destroy(effects[i]);
+        }
+        startingBattle = false;
+        fightMenu.SetActive(true);
+
+        //setting up the menu for the specific enemy
+        description.text = "A problem appears...";
+        int enemyNum = (enemyChoice % enemies.Length) - 1;
+        if (encounterNum == -1)
+        {
+            enemyNum = enemies.Length - 1;
         }
         enemyEncountered = enemies[enemyNum];
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
