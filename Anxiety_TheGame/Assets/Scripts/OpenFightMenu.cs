@@ -31,6 +31,14 @@ public class OpenFightMenu : MonoBehaviour
     public string[] attackNames;
 
     public AudioSource playerAudio;
+    public AudioSource fightMusic;
+    public AudioSource bossMusic;
+    public AudioSource calmEndMusic;
+    public AudioSource lossMusic;
+    public AudioSource effectSource;
+
+    public AudioClip winBattleSound;
+    public AudioClip wrongChoice;
     public AudioClip encounterSound;
 
     public float menuDelayTime = 2f;
@@ -46,6 +54,12 @@ public class OpenFightMenu : MonoBehaviour
 
     void Start()
     {
+        fightMusic.Stop();
+        bossMusic.Stop();
+        calmEndMusic.Stop();
+        lossMusic.Stop();
+        effectSource.Stop();
+
         enemyStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
@@ -86,11 +100,18 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator OpenMenuOnDelay(GameObject cloud)
     {
-        playerAudio.PlayOneShot(encounterSound, .75f);
+        playerAudio.Stop();
+        effectSource.PlayOneShot(encounterSound, .75f);
         if (cloud.GetComponent<CloudMovement>().smoke != null)
         {
             cloud.GetComponent<CloudMovement>().smoke.gameObject.SetActive(true);
         }
+
+        if (!fightMusic.isPlaying)
+        {
+            fightMusic.PlayDelayed(2.5f);
+        }
+
         player.canMove = false;
         worldEffect.inBattle = true;
         worldEffect.isStart = false;
@@ -379,7 +400,15 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator StartBossFight(GameObject boss)
     {
-        playerAudio.PlayOneShot(encounterSound, .75f);
+        playerAudio.Stop();
+        effectSource.PlayOneShot(encounterSound, .75f);
+
+        if (!bossMusic.isPlaying)
+        {
+            bossMusic.PlayDelayed(2.5f);
+        }
+
+      
         player.canMove = false;
         worldEffect.inBattle = true;
         startingBattle = true;

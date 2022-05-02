@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 /*
- * Anna Breuker, Caleb Kahn
+ * Anna Breuker, Caleb Kahn, Jacob Zydorowicz
  * Project 5 
  * Closes the fight menu when a battle is won or lost.
  */
@@ -15,6 +15,8 @@ public class CloseFightMenu : MonoBehaviour
     private Text description;
 
     public Enemy finalBoss;
+
+    private OpenFightMenu openFMScript;
 
     public GameObject fightMenu;
     public OpenFightMenu fightMenuScript;
@@ -33,6 +35,8 @@ public class CloseFightMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        openFMScript = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
+
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         fightMenuScript = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
@@ -93,6 +97,11 @@ public class CloseFightMenu : MonoBehaviour
 
     IEnumerator BattleOver()
     {
+        openFMScript.fightMusic.Stop();
+        openFMScript.bossMusic.Stop();
+        openFMScript.effectSource.PlayOneShot(openFMScript.winBattleSound, .2f);
+        openFMScript.playerAudio.PlayDelayed(2f);
+
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
@@ -114,6 +123,12 @@ public class CloseFightMenu : MonoBehaviour
 
     IEnumerator Win()
     {
+        openFMScript.playerAudio.Stop();
+        openFMScript.fightMusic.Stop();
+        openFMScript.bossMusic.Stop();
+
+        openFMScript.effectSource.PlayOneShot(openFMScript.winBattleSound, .2f);
+
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
@@ -121,10 +136,21 @@ public class CloseFightMenu : MonoBehaviour
         gameOver = true;
         yield return new WaitForSeconds(3);
         youWinScreen.SetActive(true);
+
+        if (!openFMScript.calmEndMusic.isPlaying)
+        {
+            openFMScript.calmEndMusic.Play();
+        }
     }
 
     IEnumerator Lose()
     {
+        openFMScript.playerAudio.Stop();
+        openFMScript.fightMusic.Stop();
+        openFMScript.bossMusic.Stop();
+
+        openFMScript.effectSource.PlayOneShot(openFMScript.wrongChoice, .2f);
+
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
@@ -132,6 +158,11 @@ public class CloseFightMenu : MonoBehaviour
         gameOver = true;
         yield return new WaitForSeconds(3);
         gameOverScreen.SetActive(true);
+
+        if (!openFMScript.lossMusic.isPlaying)
+        {
+            openFMScript.lossMusic.Play();
+        }
     }
 
     IEnumerator BattleOverEarly()
