@@ -185,7 +185,6 @@ public class OpenFightMenu : MonoBehaviour
             {
                 if (enemyStats.Lightbulb01pickedup == false && i == 0)
                 {
-                    Debug.Log("false and 0");
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
                 }
                 else if (enemyStats.Lightbulb02pickedup == false && i == 1)
@@ -341,7 +340,7 @@ public class OpenFightMenu : MonoBehaviour
                 }
                 else
                 {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
                 }
             }
             if (enemyNameDisplayed.text == "Scramble Sound")
@@ -356,7 +355,7 @@ public class OpenFightMenu : MonoBehaviour
                 }
                 else
                 {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
                 }
             }
             if (enemyNameDisplayed.text == "Question Air")
@@ -371,7 +370,7 @@ public class OpenFightMenu : MonoBehaviour
                 }
                 else
                 {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
                 }
             }
         }
