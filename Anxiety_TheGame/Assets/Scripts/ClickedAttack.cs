@@ -19,6 +19,7 @@ public class ClickedAttack : MonoBehaviour
     public bool changeAttack;
 
     private RandomNumGen randomNum;
+    private PlayerStats Lightbulbs;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class ClickedAttack : MonoBehaviour
         randomNum = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomNumGen>();
         attackAction = GetComponent<AttackAction>();
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
+        Lightbulbs = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
     private void Update()

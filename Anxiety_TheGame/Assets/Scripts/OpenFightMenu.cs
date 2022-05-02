@@ -183,19 +183,64 @@ public class OpenFightMenu : MonoBehaviour
             //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
             if (enemyNameDisplayed.text == "Glass Eye")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                if (enemyStats.Lightbulb01pickedup == false && i == 0)
+                {
+                    Debug.Log("false and 0");
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb02pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                }
             }
             if (enemyNameDisplayed.text == "Liar Smiler")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
+                if (enemyStats.Lightbulb03pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb04pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
+                }
             }
             if (enemyNameDisplayed.text == "Scramble Sound")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+                if (enemyStats.Lightbulb05pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb06pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+                }
             }
             if (enemyNameDisplayed.text == "Question Air")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
+                if (enemyStats.Lightbulb07pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb08pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
+                }
             }
         }
     }
@@ -271,19 +316,63 @@ public class OpenFightMenu : MonoBehaviour
             //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
             if (enemyNameDisplayed.text == "Glass Eye")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                if (enemyStats.Lightbulb01pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb02pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                }
             }
             if (enemyNameDisplayed.text == "Liar Smiler")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
+                if (enemyStats.Lightbulb03pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb04pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                }
             }
             if (enemyNameDisplayed.text == "Scramble Sound")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+                if (enemyStats.Lightbulb05pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb06pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                }
             }
             if (enemyNameDisplayed.text == "Question Air")
             {
-                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
+                if (enemyStats.Lightbulb07pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb08pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                }
             }
         }
     }
