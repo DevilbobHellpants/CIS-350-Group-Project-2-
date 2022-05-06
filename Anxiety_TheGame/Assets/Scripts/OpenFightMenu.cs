@@ -206,7 +206,6 @@ public class OpenFightMenu : MonoBehaviour
             {
                 if (enemyStats.Lightbulb01pickedup == false && i == 0)
                 {
-                    Debug.Log("false and 0");
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
                 }
                 else if (enemyStats.Lightbulb02pickedup == false && i == 1)

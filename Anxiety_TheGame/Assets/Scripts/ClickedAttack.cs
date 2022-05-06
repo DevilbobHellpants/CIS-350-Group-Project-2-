@@ -81,19 +81,63 @@ public class ClickedAttack : MonoBehaviour
                     //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
                     if (randomNum.randomNum == 1)
                     {
-                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[i];
+                        if (Lightbulbs.Lightbulb01pickedup == false && i == 0)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else if (Lightbulbs.Lightbulb02pickedup == false && i == 1)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[i];
+                        }
                     }
                     if (randomNum.randomNum == 2)
                     {
-                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[4 + i];
+                        if (Lightbulbs.Lightbulb03pickedup == false && i == 0)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else if (Lightbulbs.Lightbulb04pickedup == false && i == 1)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[4 + i];
+                        }
                     }
                     if (randomNum.randomNum == 3)
                     {
-                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[8 + i];
+                        if (Lightbulbs.Lightbulb05pickedup == false && i == 0)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else if (Lightbulbs.Lightbulb06pickedup == false && i == 1)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[8 + i];
+                        }
                     }
                     if (randomNum.randomNum == 4)
                     {
-                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[12 + i];
+                        if (Lightbulbs.Lightbulb07pickedup == false && i == 0)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else if (Lightbulbs.Lightbulb08pickedup == false && i == 1)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[12 + i];
+                        }
                     }
                 }
             }
