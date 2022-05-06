@@ -262,21 +262,39 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "It's too much. Everyone's staring. You can't do this.";
         changeStats();
-        endEncounter.EndFightEarly();
+        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        {
+        }
+        else
+        {
+            endEncounter.EndFightEarly();
+        }
     }
 
     public void Isolation()
     {
         description.text = "They're right, none of my friends actually care.";
         changeStats();
-        endEncounter.EndFightEarly();
+        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        {
+        }
+        else
+        {
+            endEncounter.EndFightEarly();
+        }
     }
 
     public void LeaveTheRoom()
     {
         description.text = "You know what? This isn't worth it. You leave the room.";
         changeStats();
-        endEncounter.EndFightEarly();
+        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        {
+        }
+        else
+        {
+            endEncounter.EndFightEarly();
+        }
     }
 
     public void PunchAWall()
@@ -294,7 +312,13 @@ public class AttackAction : MonoBehaviour
     public void shiftDoubt()
     {
         changeStats();
-        endEncounter.EndFightEarly();
+        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        {
+        }
+        else
+        {
+            endEncounter.EndFightEarly();
+        }
     }
 
     public void ShiftFocus()
@@ -324,7 +348,13 @@ public class AttackAction : MonoBehaviour
         changeStats();
         if (UnityEngine.Random.Range(1, 10) == 1)
         {
-            endEncounter.EndFightEarly();
+            if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+            {
+            }
+            else
+            {
+                endEncounter.EndFightEarly();
+            }
         }
     }
 

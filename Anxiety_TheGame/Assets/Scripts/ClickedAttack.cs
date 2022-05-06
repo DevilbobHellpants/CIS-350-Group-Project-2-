@@ -54,7 +54,6 @@ public class ClickedAttack : MonoBehaviour
             if (changeAttack == true)
             {
                 randomNum.makeRandomNum(1,4);
-                Debug.Log("Random Num in clickedAttack = " + randomNum);
                 if (randomNum.randomNum == 1)
                 {
                     //Debug.Log("Random Num = " + 1);
