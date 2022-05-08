@@ -70,21 +70,23 @@ public class EnemiesTurn : MonoBehaviour
         fightMenu.enemyPortrait.enabled = true;
 
         yield return new WaitForSeconds(2f);
-        //text indicating what the enemy attack is
-        int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
-        description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
-
-        if (fightMenu.enemyEncountered.enemyName == "Final Boss")
+        if (fightMenu.description.text != "You ran away.") //making sure the enemy doesn't attack after the player runs away.
         {
-            playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(20, 50);  //enemy attack
-        }
-        else
-        {
-            playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 30);  //enemy attack
-        }
+            //text indicating what the enemy attack is
+            int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
+            description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
 
-        Debug.Log(playerSanity.attributes[0].value.BaseValue);
+            if (fightMenu.enemyEncountered.enemyName == "Final Boss")
+            {
+                playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(20, 50);  //enemy attack
+            }
+            else
+            {
+                playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(10, 30);  //enemy attack
+            }
 
+            Debug.Log(playerSanity.attributes[0].value.BaseValue);
+        }
         Attack1.enabled = true;
         Attack1.GetComponentInChildren<Text>().enabled = true;
         Attack2.enabled = true;

@@ -36,7 +36,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
     {
         mouseOver = true;
         descriptionCanvas.SetActive(true);
-        displayText.text = "This is a test!";
+        //displayText.text = "This is a test!";
         //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
 
         if (this.tag == "Attack 1")

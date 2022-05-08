@@ -307,6 +307,13 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "Maybe they're right... I do look stupid.";
         changeStats();
+        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        {
+        }
+        else
+        {
+            endEncounter.EndFightEarly();
+        }
     }
 
     public void shiftDoubt()
