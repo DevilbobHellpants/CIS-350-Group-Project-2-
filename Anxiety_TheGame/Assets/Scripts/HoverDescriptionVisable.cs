@@ -17,6 +17,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
     public Text displayText;
     private OpenFightMenu enemy;
     private bool mouseOver = false;
+    private PlayerStats enemyStats;
 
     //TODO
     //---going to put code and variables here that reads what
@@ -27,6 +28,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
     {
         descriptionCanvas.SetActive(false);
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
+        enemyStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
 
@@ -41,19 +43,47 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
         {
             if (enemy.enemyNameDisplayed.text == "Glass Eye")
             {
-                displayText.text = "\"Ground\" yourself in the present moment, decreasing your anxiety and chipping away at the problem at hand.";
+                if (enemyStats.Lightbulb01pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                else
+                {
+                    displayText.text = "\"Ground\" yourself in the present moment, decreasing your anxiety and chipping away at the problem at hand.";
+                }
             }
             else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
             {
-                displayText.text = "\"Ground\" yourself in the present moment, decreasing your anxiety and chipping away at the problem at hand.";
+                if (enemyStats.Lightbulb03pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                else
+                {
+                    displayText.text = "\"Ground\" yourself in the present moment, decreasing your anxiety and chipping away at the problem at hand.";
+                }
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
             {
-                displayText.text = "Sometimes, loud music can help drown out your thoughts, decreasing your anxiety and chipping away at the problem at hand.";
+                if (enemyStats.Lightbulb05pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                else
+                {
+                    displayText.text = "Sometimes, loud music can help drown out your thoughts, decreasing your anxiety and chipping away at the problem at hand.";
+                }
             }
             else if (enemy.enemyNameDisplayed.text == "Question Air")
             {
-                displayText.text = "Hide from your problems, anxiety staying the same but ending the encounter early.";
+                if (enemyStats.Lightbulb07pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                else
+                {
+                    displayText.text = "Hide from your problems, anxiety staying the same but ending the encounter early.";
+                }
             }
 
         }
@@ -61,19 +91,46 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
         {
             if (enemy.enemyNameDisplayed.text == "Glass Eye")
             {
-                displayText.text = "Gather support from friends, decreasing your anxiety and chipping away at the problem at hand.";
+                if (enemyStats.Lightbulb02pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                else
+                {
+                    displayText.text = "Gather support from friends, decreasing your anxiety and chipping away at the problem at hand.";
+                }
             }
             else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
             {
-                displayText.text = "Decreasing your anxiety, but at the cost of increasing your problems. And some other... unintended side effects.";
+                if (enemyStats.Lightbulb04pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                else
+                {
+                    displayText.text = "Decreasing your anxiety, but at the cost of increasing your problems. And some other... unintended side effects.";
+                }
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
             {
-                displayText.text = "Take a few deep breaths, decreasing your anxiety and chipping away at the problem at hand.";
+                if (enemyStats.Lightbulb06pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                else
+                {
+                    displayText.text = "Take a few deep breaths, decreasing your anxiety and chipping away at the problem at hand.";
+                }
             }
             else if (enemy.enemyNameDisplayed.text == "Question Air")
             {
-                displayText.text = "Shift your focus elsewhere, decreasing your anxiety and chipping away at the problem at hand.";
+                if (enemyStats.Lightbulb08pickedup == false)
+                {
+                    displayText.text = "Coping skill not unlocked.";
+                }
+                {
+                    displayText.text = "Shift your focus elsewhere, decreasing your anxiety and chipping away at the problem at hand.";
+                }
             }
         }
         else if (this.tag == "Attack 3")
