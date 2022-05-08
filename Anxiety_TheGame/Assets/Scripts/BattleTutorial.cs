@@ -32,17 +32,22 @@ public class BattleTutorial : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 2)
             {
-                description.text = "Here on this side is how you fight back. Above this box is your 4 options to cope (attacks.) Not all mechanisms are good for you, so choose wisely! \nPress [space] to continue.";
+                description.text = "Here on this side is how you fight back. Above this box are your 4 options to cope (attacks.) Not all mechanisms are good for you, so choose wisely! \nPress [space] to continue.";
                 phase++;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 3)
             {
-                description.text = "This box is where you can see everything that's happening. Your attacks, enemy attacks, and other useful information. \nPress [space] to continue.";
+                description.text = "You can hover over the individual coping mechanisms to see more details about what they will do. \nPress [space] to continue.";
                 phase++;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 4)
             {
-                description.text = "Now, go forth and cope with this problem! \nPress any of the 4 attack buttons to continue.";
+                description.text = "This box is where you can see everything that's happening. Your attacks, enemy attacks, and other useful information. \nPress [space] to continue.";
+                phase++;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && phase == 5)
+            {
+                description.text = "Now, go forth and cope with this problem! \nClick any of the 4 attack buttons to continue.";
                 phase++;
             }
         }
