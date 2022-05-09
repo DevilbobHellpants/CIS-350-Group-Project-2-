@@ -1,70 +1,70 @@
 fileFormatVersion: 2
-guid: 5aedada957b440244993909e5cbab79a
+guid: 75a3bb739cd931744848d719354596d3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 502380227583591747
-    second: AGmcSprites_0
+      213: -8413464782102813203
+    second: AGmcSpritesv2_0
   - first:
-      213: 5273618962033030924
-    second: AGmcSprites_1
+      213: -6689086860918689792
+    second: AGmcSpritesv2_1
   - first:
-      213: -1580602988939282013
-    second: AGmcSprites_2
+      213: -615864029502983637
+    second: AGmcSpritesv2_2
   - first:
-      213: -834324877971084709
-    second: AGmcSprites_3
+      213: 7365147815967843124
+    second: AGmcSpritesv2_3
   - first:
-      213: 3361765051621347762
-    second: AGmcSprites_4
+      213: 8377472136128167710
+    second: AGmcSpritesv2_4
   - first:
-      213: -6894335194888451235
-    second: AGmcSprites_5
+      213: -8769100089967861594
+    second: AGmcSpritesv2_5
   - first:
-      213: -5883637847185838662
-    second: AGmcSprites_6
+      213: 2825955873185149255
+    second: AGmcSpritesv2_6
   - first:
-      213: 2617681420541064451
-    second: AGmcSprites_7
+      213: -3567759133275440795
+    second: AGmcSpritesv2_7
   - first:
-      213: -6057298823451492071
-    second: AGmcSprites_8
+      213: -6286810454980064228
+    second: AGmcSpritesv2_8
   - first:
-      213: 8073025568990296845
-    second: AGmcSprites_9
+      213: -2285938266239550901
+    second: AGmcSpritesv2_9
   - first:
-      213: -5966079424807871732
-    second: AGmcSprites_10
+      213: 924891067200864247
+    second: AGmcSpritesv2_10
   - first:
-      213: -1915435158635909590
-    second: AGmcSprites_11
+      213: 955196025793249562
+    second: AGmcSpritesv2_11
   - first:
-      213: 4193506562986565028
-    second: AGmcSprites_12
+      213: -1650473591775673798
+    second: AGmcSpritesv2_12
   - first:
-      213: 2841713683476392641
-    second: AGmcSprites_13
+      213: -6292081840922938017
+    second: AGmcSpritesv2_13
   - first:
-      213: 1911841555160392234
-    second: AGmcSprites_14
+      213: 1111641144010663904
+    second: AGmcSpritesv2_14
   - first:
-      213: 8287565888543228041
-    second: AGmcSprites_15
+      213: 1910126932920494646
+    second: AGmcSpritesv2_15
   - first:
-      213: 591639260993603196
-    second: AGmcSprites_16
+      213: -6949800124580644349
+    second: AGmcSpritesv2_16
   - first:
-      213: 4447987000746215521
-    second: AGmcSprites_17
+      213: 6709730046635297363
+    second: AGmcSpritesv2_17
   - first:
-      213: 4094214995512154916
-    second: AGmcSprites_18
+      213: -3021168837012218548
+    second: AGmcSpritesv2_18
   - first:
-      213: -3090444600282667091
-    second: AGmcSprites_19
+      213: -122720165103981730
+    second: AGmcSpritesv2_19
   - first:
-      213: 7454336344612148679
-    second: AGmcSprites_20
+      213: -3393192188448411912
+    second: AGmcSpritesv2_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +109,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -164,13 +164,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AGmcSprites_0
+      name: AGmcSpritesv2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 448
-        width: 64
-        height: 64
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,41 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345cc4fb720d8f600800000000000000
-      internalID: 502380227583591747
+      spriteID: de5a08c6b5e5d3b80800000000000000
+      internalID: -8413464782102813203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AGmcSprites_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 448
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c073eb05188af2940800000000000000
-      internalID: 5273618962033030924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_2
+      name: AGmcSpritesv2_1
       rect:
         serializedVersion: 2
         x: 128
-        y: 448
-        width: 64
-        height: 64
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a97a59b4f1901ae0800000000000000
-      internalID: -1580602988939282013
+      spriteID: 0007537b0f69b23a0800000000000000
+      internalID: -6689086860918689792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AGmcSprites_3
+      name: AGmcSpritesv2_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 448
-        width: 64
-        height: 64
+        x: 256
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,20 +220,293 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5a2345a1f1eb64f0800000000000000
-      internalID: -834324877971084709
+      spriteID: b22b88b9de20477f0800000000000000
+      internalID: -615864029502983637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AGmcSprites_4
+      name: AGmcSpritesv2_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 433e1099ae2463660800000000000000
+      internalID: 7365147815967843124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ff6a5a582c24470800000000000000
+      internalID: 8377472136128167710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a0ae99cde5ed4680800000000000000
+      internalID: -8769100089967861594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7413124e4efc73720800000000000000
+      internalID: 2825955873185149255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56936f898f5cc7ec0800000000000000
+      internalID: -3567759133275440795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c83bc3333c0c8a0800000000000000
+      internalID: -6286810454980064228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ab15e1247b640e0800000000000000
+      internalID: -2285938266239550901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff707c768fd5dc00800000000000000
+      internalID: 924891067200864247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11854089b9814d00800000000000000
+      internalID: 955196025793249562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a324c0b43075819e0800000000000000
+      internalID: -1650473591775673798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_13
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f553a1e07e80ea8a0800000000000000
+      internalID: -6292081840922938017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7e6721bb75d6f00800000000000000
+      internalID: 1111641144010663904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ae1a04352228a10800000000000000
+      internalID: 1910126932920494646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AGmcSpritesv2_16
       rect:
         serializedVersion: 2
         x: 0
         y: 384
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,41 +514,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b19638c08367ae20800000000000000
-      internalID: 3361765051621347762
+      spriteID: 30ab76abb995d8f90800000000000000
+      internalID: -6949800124580644349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AGmcSprites_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d5b43320ba66250a0800000000000000
-      internalID: -6894335194888451235
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_6
+      name: AGmcSpritesv2_17
       rect:
         serializedVersion: 2
         x: 128
         y: 384
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,20 +535,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abda1730d8e195ea0800000000000000
-      internalID: -5883637847185838662
+      spriteID: 35a46708defbd1d50800000000000000
+      internalID: 6709730046635297363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AGmcSprites_7
+      name: AGmcSpritesv2_18
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 384
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,20 +556,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3057d76026fd35420800000000000000
-      internalID: 2617681420541064451
+      spriteID: c4d186713f6a216d0800000000000000
+      internalID: -3021168837012218548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AGmcSprites_8
+      name: AGmcSpritesv2_19
       rect:
         serializedVersion: 2
-        x: 0
-        y: 320
-        width: 64
-        height: 64
+        x: 384
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,83 +577,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91148c120d620fba0800000000000000
-      internalID: -6057298823451492071
+      spriteID: e5b2338f8a20c4ef0800000000000000
+      internalID: -122720165103981730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AGmcSprites_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0bff467bf5290070800000000000000
-      internalID: 8073025568990296845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_10
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0b5f8e6f5a343da0800000000000000
-      internalID: -5966079424807871732
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_11
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2e66332fd10b65e0800000000000000
-      internalID: -1915435158635909590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_12
+      name: AGmcSpritesv2_20
       rect:
         serializedVersion: 2
         x: 0
         y: 256
-        width: 64
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,176 +598,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ad551a3004523a30800000000000000
-      internalID: 4193506562986565028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_13
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ca2af00a8bcf6720800000000000000
-      internalID: 2841713683476392641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_14
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a226a2ad3c9388a10800000000000000
-      internalID: 1911841555160392234
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_15
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98083472449530370800000000000000
-      internalID: 8287565888543228041
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_16
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c76c2b2f5cce53800800000000000000
-      internalID: 591639260993603196
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_17
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16888095c9c6abd30800000000000000
-      internalID: 4447987000746215521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_18
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42b5499a8d291d830800000000000000
-      internalID: 4094214995512154916
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_19
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da7a02a82098c15d0800000000000000
-      internalID: -3090444600282667091
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_20
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c514e0296f137760800000000000000
-      internalID: 7454336344612148679
+      spriteID: 8fee6e8bea5f8e0d0800000000000000
+      internalID: -3393192188448411912
       vertices: []
       indices: 
       edges: []
@@ -607,7 +607,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 569598568dbaab844901cf534876837b
+    spriteID: a15abab329e25b54398acad510adebd5
     internalID: 0
     vertices: []
     indices: 

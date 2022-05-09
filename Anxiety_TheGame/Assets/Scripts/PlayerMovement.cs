@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         canMove = false;
         StartCoroutine(WaitOnStart());
         StartCoroutine(UpdatePosition());
+        StartCoroutine(SpriteGlitch());
         drunkStat = GetComponent<PlayerStats>();
         inDrunkenMovment = false;
     }
@@ -51,6 +52,19 @@ public class PlayerMovement : MonoBehaviour
             previousLocation = transform.position;
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    IEnumerator SpriteGlitch()
+	{
+        while (true)
+		{
+            yield return new WaitForSeconds(Random.Range(0.6f, 1.4f));
+            Anim.SetBool("Glitch", true);
+            yield return new WaitForSeconds(Random.Range(0.2f, 0.7f));
+            Anim.SetBool("Glitch", false);
+		}
+        
+
     }
 
     // Update is called once per frame
@@ -87,11 +101,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 Anim.SetInteger("WalkDir", 0);
             }
-            else if (xSpeed > 0.5f)
+            else if (xSpeed > 0)
             {
                 Anim.SetInteger("WalkDir", 3);
             }
-            else if (xSpeed < -0.5f)
+            else if (xSpeed < 0)
             {
                 Anim.SetInteger("WalkDir", 4);
             }

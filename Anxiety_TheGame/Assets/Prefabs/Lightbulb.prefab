@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5196578931944456732}
   - component: {fileID: 5196578931944456733}
   - component: {fileID: 3560099061667076078}
+  - component: {fileID: 8081881809086393965}
   m_Layer: 0
   m_Name: Lightbulb
   m_TagString: Lightbulb
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -809813343
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84f72a963e155544889f469779638c58, type: 3}
+  m_Sprite: {fileID: 3955255558220673233, guid: 84f72a963e155544889f469779638c58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,3 +100,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.045}
   m_Size: {x: 0.5, y: 0.825}
   m_Direction: 0
+--- !u!95 &8081881809086393965
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196578931944456734}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84388094d3d2b694a9d35b9629849e1a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
