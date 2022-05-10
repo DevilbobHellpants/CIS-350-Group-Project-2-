@@ -17,6 +17,7 @@ public class CloseFightMenu : MonoBehaviour
     public Enemy finalBoss;
 
     private OpenFightMenu openFMScript;
+    private HoverDescriptionVisable hoverDesc;
 
     public GameObject fightMenu;
     public OpenFightMenu fightMenuScript;
@@ -36,6 +37,8 @@ public class CloseFightMenu : MonoBehaviour
     void Start()
     {
         openFMScript = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
+
+        hoverDesc = GameObject.FindGameObjectWithTag("Attack 1").GetComponent<HoverDescriptionVisable>();
 
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
@@ -86,6 +89,8 @@ public class CloseFightMenu : MonoBehaviour
                     }
                 }
                 fightMenu.SetActive(false);
+                hoverDesc.mouseOver = false;
+                hoverDesc.descriptionCanvas.SetActive(false);
             }
         }
     }
@@ -127,6 +132,8 @@ public class CloseFightMenu : MonoBehaviour
         {
             playerStats.attributes[1].value.BaseValue--;
         }
+        hoverDesc.mouseOver = false;
+        hoverDesc.descriptionCanvas.SetActive(false);
     }
 
     IEnumerator Win()
@@ -149,6 +156,8 @@ public class CloseFightMenu : MonoBehaviour
         {
             openFMScript.calmEndMusic.Play();
         }
+        hoverDesc.mouseOver = false;
+        hoverDesc.descriptionCanvas.SetActive(false);
     }
 
     IEnumerator Lose()
@@ -171,6 +180,9 @@ public class CloseFightMenu : MonoBehaviour
         {
             openFMScript.lossMusic.Play();
         }
+        hoverDesc.mouseOver = false;
+        hoverDesc.descriptionCanvas.SetActive(false);
+
     }
 
     IEnumerator BattleOverEarly()
@@ -185,5 +197,8 @@ public class CloseFightMenu : MonoBehaviour
         fightMenu.SetActive(false);
         player.canMove = true;
         playerStats.attributes[2].value.BaseValue = 1;
+
+        hoverDesc.mouseOver = false;
+        hoverDesc.descriptionCanvas.SetActive(false);
     }
 }

@@ -16,7 +16,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
     public GameObject descriptionCanvas;
     public Text displayText;
     private OpenFightMenu enemy;
-    private bool mouseOver = false;
+    public bool mouseOver = false;
     private PlayerStats enemyStats;
 
     //TODO
