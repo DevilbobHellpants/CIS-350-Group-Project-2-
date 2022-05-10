@@ -353,6 +353,14 @@ public class AttackAction : MonoBehaviour
         changeStats();
         cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;//This doesn't work anymore
         // increase cloud spawn rate
+        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        {
+            Debug.Log("Failed to end encounter");
+        }
+        else
+        {
+            endEncounter.EndFightEarly();
+        }
     }
 
     public void TakeOffGlasses()
