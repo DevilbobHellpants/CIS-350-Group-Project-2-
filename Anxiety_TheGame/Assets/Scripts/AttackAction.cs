@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*
- * Noah Trillizio, Anna Breuker
+ * Noah Trillizio, Anna Breuker, Jacob Zydorowicz
  * Project 5 
  * Controls what happens when an attack button is pressed
  */
@@ -24,12 +24,15 @@ public class AttackAction : MonoBehaviour
     public bool sameBattle;
     public int numOfDrunkenEncounters;
 
+    private OpenFightMenu openFMScript;
+
     private Text description;
     private BattleTutorial battleTutorial;
 
     // Start is called before the first frame update
     void Start()
     {
+        openFMScript = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         MainMusic = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         endEncounter = GameObject.FindGameObjectWithTag("FightMenu").GetComponent<CloseFightMenu>();
         enemyTurn = GetComponent<EnemiesTurn>();
@@ -45,13 +48,6 @@ public class AttackAction : MonoBehaviour
         battleTutorial = FindObjectOfType<BattleTutorial>();
     }
 
-    void Update()
-    {
-        /*if (Input.GetKeyDown(KeyCode.P))
-        {
-            BlastMusic();
-        }*/
-    }
 
     // gets called when attack button is pressed in the fight menu
     public void playerAttacks(GameObject attackButton)
@@ -66,6 +62,7 @@ public class AttackAction : MonoBehaviour
             if (attackButton.tag == "Attack 2")
             {
                 EmotionalSupport();
+
             }
             if (attackButton.tag == "Attack 3")
             {
@@ -220,6 +217,7 @@ public class AttackAction : MonoBehaviour
 
     public void TripleRule()
     {
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
         description.text = "You focus on 3 things you can see, 3 things you can hear, " +
             "and 3 things you can feel, moving 3 different parts of your body." +
@@ -227,6 +225,7 @@ public class AttackAction : MonoBehaviour
     }
     public void Grounding()
     {
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
         description.text = "You focus on 5 things you can see, 4 you can touch, " +
             "3 you can hear, 2 you can smell, and 1 you can taste. You feel grounded.\n<Press SPACE To Continue>";
@@ -235,6 +234,7 @@ public class AttackAction : MonoBehaviour
     public void BlastMusic()
     {
         description.text = "You turn the music up. The noise seems fainter.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
         StartCoroutine(MusicChange());
         //m_MyAudioSource.volume = m_MySliderValue;
@@ -243,24 +243,28 @@ public class AttackAction : MonoBehaviour
     public void BoxBreath()
     {
         description.text = "You breathe in for 4, hold for 4, out for 4, hold for 4. As you repeat, the noise seems fainter.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
     }
 
     public void DrinkToForget()
     {
         description.text = "Maybe drinking will help?\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
     }
 
     public void EmotionalSupport()
     {
         description.text = "You ask a friend for reassurance. They smile and say you look fine.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
     }
 
     public void GoToSleep()
     {
         description.text = "There's nothing a good nap can't fix.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
         // skip next two turns
     }
@@ -268,6 +272,7 @@ public class AttackAction : MonoBehaviour
     public void Hide()
     {
         description.text = "It's too much. Everyone's staring. You can't do this.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -282,6 +287,7 @@ public class AttackAction : MonoBehaviour
     public void Isolation()
     {
         description.text = "They're right, none of my friends actually care.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -296,6 +302,7 @@ public class AttackAction : MonoBehaviour
     public void LeaveTheRoom()
     {
         description.text = "You know what? This isn't worth it. You leave the room.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -310,12 +317,14 @@ public class AttackAction : MonoBehaviour
     public void PunchAWall()
     {
         description.text = "You punch a wall out of frustration. ...that kind of hurt.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
     }
 
     public void SelfDoubt()
     {
         description.text = "Maybe they're right... I do look stupid.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -329,7 +338,6 @@ public class AttackAction : MonoBehaviour
 
     public void shiftDoubt()
     {
-        //qqqq
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -344,12 +352,14 @@ public class AttackAction : MonoBehaviour
     public void ShiftFocus()
     {
         description.text = "You shift your focus to something other than the people around you.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
     }
 
     public void ShutDown()
     {
         description.text = "This isn't worth it- you can't do this. Who ever wanted to actually ask questions anyway?\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
         cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;//This doesn't work anymore
         // increase cloud spawn rate
@@ -366,6 +376,7 @@ public class AttackAction : MonoBehaviour
     public void TakeOffGlasses()
     {
         description.text = "Who needs glasses anyways? Not you, that's for sure.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats();
         // blindness?
     }
@@ -373,6 +384,7 @@ public class AttackAction : MonoBehaviour
     public void Visualization()
     {
         description.text = "You imagine yourself somewhere else. This is nice.\n<Press SPACE To Continue>";
+        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         changeStats();
         if (UnityEngine.Random.Range(1, 10) == 1)
         {

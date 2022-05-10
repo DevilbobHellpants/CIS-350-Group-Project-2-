@@ -40,6 +40,8 @@ public class OpenFightMenu : MonoBehaviour
     public AudioClip winBattleSound;
     public AudioClip wrongChoice;
     public AudioClip encounterSound;
+    public AudioClip positiveAction;
+    public AudioClip negativeAction;
 
     public float menuDelayTime = 2f;
     private float timer;
@@ -266,6 +268,13 @@ public class OpenFightMenu : MonoBehaviour
         startingBattle = true;
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
+
+        playerAudio.Stop();
+        if (!fightMusic.isPlaying)
+        {
+            fightMusic.PlayDelayed(2.5f);
+        }
+
         float[] alpha = new float[effects.Length];
         for (int i = 0; i < effects.Length; i++)
         {

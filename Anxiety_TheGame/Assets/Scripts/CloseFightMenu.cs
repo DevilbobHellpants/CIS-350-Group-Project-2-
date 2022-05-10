@@ -91,6 +91,10 @@ public class CloseFightMenu : MonoBehaviour
                 fightMenu.SetActive(false);
                 hoverDesc.mouseOver = false;
                 hoverDesc.descriptionCanvas.SetActive(false);
+
+                openFMScript.calmEndMusic.Stop();
+                openFMScript.lossMusic.Stop();
+                openFMScript.playerAudio.PlayDelayed(0.5f);
             }
         }
     }
@@ -106,7 +110,7 @@ public class CloseFightMenu : MonoBehaviour
         openFMScript.fightMusic.Stop();
         openFMScript.bossMusic.Stop();
         openFMScript.effectSource.PlayOneShot(openFMScript.winBattleSound, .2f);
-        openFMScript.playerAudio.PlayDelayed(2f);
+        openFMScript.playerAudio.PlayDelayed(0.5f);
 
         attack1.enabled = false;
         attack2.enabled = false;
@@ -200,5 +204,8 @@ public class CloseFightMenu : MonoBehaviour
 
         hoverDesc.mouseOver = false;
         hoverDesc.descriptionCanvas.SetActive(false);
+
+        openFMScript.fightMusic.Stop();
+        openFMScript.playerAudio.PlayDelayed(0.5f);
     }
 }
