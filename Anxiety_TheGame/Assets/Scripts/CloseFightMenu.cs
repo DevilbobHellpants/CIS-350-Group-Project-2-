@@ -56,19 +56,19 @@ public class CloseFightMenu : MonoBehaviour
     {
         if (playerStats.attributes[2].value.BaseValue <= 0 && fightMenuScript.enemyEncountered == finalBoss)
         {
-            description.text = "Is this it..? Is it really over?";
+            description.text = "Is this it..? Is it really over? [Press space to continue]";
             StartCoroutine(Win());
         }
         else if (playerStats.attributes[2].value.BaseValue <= 0)
         {
-            description.text = "Problem defeated!";
+            description.text = "Problem defeated! [Press space to continue]";
             fightMenuScript.encounterNum++;
             StartCoroutine(BattleOver());
 
         }
         if (playerStats.attributes[0].value.BaseValue > 100 && !gameOver)
         {
-            description.text = "You are overwhelmed...";
+            description.text = "You are overwhelmed... [Press space to continue]";
             StartCoroutine(Lose());
         }
         if (gameOver)
@@ -111,6 +111,14 @@ public class CloseFightMenu : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+        attack1.enabled = true;
+        attack1.GetComponentInChildren<Text>().enabled = true;
+        attack2.enabled = true;
+        attack2.GetComponentInChildren<Text>().enabled = true;
+        attack3.enabled = true;
+        attack3.GetComponentInChildren<Text>().enabled = true;
+        attack4.enabled = true;
+        attack4.GetComponentInChildren<Text>().enabled = true;
         worldEffect.resetVariables();
         fightMenu.SetActive(false);
         player.canMove = true;
@@ -119,10 +127,6 @@ public class CloseFightMenu : MonoBehaviour
         {
             playerStats.attributes[1].value.BaseValue--;
         }
-        attack1.enabled = true;
-        attack2.enabled = true;
-        attack3.enabled = true;
-        attack4.enabled = true;
     }
 
     IEnumerator Win()

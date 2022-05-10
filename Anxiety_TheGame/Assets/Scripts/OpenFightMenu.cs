@@ -213,21 +213,6 @@ public class OpenFightMenu : MonoBehaviour
             }
             if (enemyNameDisplayed.text == "Liar Smiler")
             {
-                if (enemyStats.Lightbulb03pickedup == false && i == 0)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else if (enemyStats.Lightbulb04pickedup == false && i == 1)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
-                }
-            }
-            if (enemyNameDisplayed.text == "Scramble Sound")
-            {
                 if (enemyStats.Lightbulb05pickedup == false && i == 0)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
@@ -238,16 +223,31 @@ public class OpenFightMenu : MonoBehaviour
                 }
                 else
                 {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
                 }
             }
-            if (enemyNameDisplayed.text == "Question Air")
+            if (enemyNameDisplayed.text == "Scramble Sound")
             {
                 if (enemyStats.Lightbulb07pickedup == false && i == 0)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
                 }
                 else if (enemyStats.Lightbulb08pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+                }
+            }
+            if (enemyNameDisplayed.text == "Question Air")
+            {
+                if (enemyStats.Lightbulb03pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb04pickedup == false && i == 1)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
                 }
@@ -345,21 +345,6 @@ public class OpenFightMenu : MonoBehaviour
             }
             if (enemyNameDisplayed.text == "Liar Smiler")
             {
-                if (enemyStats.Lightbulb03pickedup == false && i == 0)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else if (enemyStats.Lightbulb04pickedup == false && i == 1)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
-                }
-            }
-            if (enemyNameDisplayed.text == "Scramble Sound")
-            {
                 if (enemyStats.Lightbulb05pickedup == false && i == 0)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
@@ -370,10 +355,10 @@ public class OpenFightMenu : MonoBehaviour
                 }
                 else
                 {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
                 }
             }
-            if (enemyNameDisplayed.text == "Question Air")
+            if (enemyNameDisplayed.text == "Scramble Sound")
             {
                 if (enemyStats.Lightbulb07pickedup == false && i == 0)
                 {
@@ -385,7 +370,22 @@ public class OpenFightMenu : MonoBehaviour
                 }
                 else
                 {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
+                }
+            }
+            if (enemyNameDisplayed.text == "Question Air")
+            {
+                if (enemyStats.Lightbulb03pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb04pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
                 }
             }
         }
