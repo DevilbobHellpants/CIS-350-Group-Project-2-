@@ -54,7 +54,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             }
             else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
             {
-                if (enemyStats.Lightbulb03pickedup == false)
+                if (enemyStats.Lightbulb05pickedup == false)
                 {
                     displayText.text = "Coping skill not unlocked.";
                 }
@@ -65,7 +65,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
             {
-                if (enemyStats.Lightbulb05pickedup == false)
+                if (enemyStats.Lightbulb07pickedup == false)
                 {
                     displayText.text = "Coping skill not unlocked.";
                 }
@@ -76,7 +76,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             }
             else if (enemy.enemyNameDisplayed.text == "Question Air")
             {
-                if (enemyStats.Lightbulb07pickedup == false)
+                if (enemyStats.Lightbulb03pickedup == false)
                 {
                     displayText.text = "Coping skill not unlocked.";
                 }
@@ -102,7 +102,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             }
             else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
             {
-                if (enemyStats.Lightbulb04pickedup == false)
+                if (enemyStats.Lightbulb06pickedup == false)
                 {
                     displayText.text = "Coping skill not unlocked.";
                 }
@@ -113,7 +113,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
             {
-                if (enemyStats.Lightbulb06pickedup == false)
+                if (enemyStats.Lightbulb08pickedup == false)
                 {
                     displayText.text = "Coping skill not unlocked.";
                 }
@@ -124,7 +124,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             }
             else if (enemy.enemyNameDisplayed.text == "Question Air")
             {
-                if (enemyStats.Lightbulb08pickedup == false)
+                if (enemyStats.Lightbulb04pickedup == false)
                 {
                     displayText.text = "Coping skill not unlocked.";
                 }
