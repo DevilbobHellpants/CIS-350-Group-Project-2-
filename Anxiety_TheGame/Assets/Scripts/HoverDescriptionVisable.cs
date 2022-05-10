@@ -39,6 +39,8 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
         //displayText.text = "This is a test!";
         //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
 
+            displayText.text = "It's getting hard to focus. You can remember what this does, right?";
+
         if (this.tag == "Attack 1")
         {
             if (enemy.enemyNameDisplayed.text == "Glass Eye")
@@ -171,7 +173,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
                 displayText.text = "Visualize yourself somewhere else. Decrease problem health.";
             }
         }
-
+        
         //displayText = 
         //Debug.Log("Mouse enter");
     }
