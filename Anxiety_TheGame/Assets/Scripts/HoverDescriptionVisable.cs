@@ -108,7 +108,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
                 }
                 else
                 {
-                    displayText.text = "Decreasing your anxiety, but at the cost of increasing your problems. And some other... unintended side effects.";
+                    displayText.text = "Sometimes you just need to sleep it off. Decrease anxiety, but at the cost of a few turns.";
                 }
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
@@ -141,7 +141,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             }
             else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
             {
-                displayText.text = "Sometimes you just need to sleep it off. Decrease anxiety, but at the cost of a few turns.";
+                displayText.text = "Decreasing your anxiety, but at the cost of increasing your problems. And some other... unintended side effects.";
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
             {

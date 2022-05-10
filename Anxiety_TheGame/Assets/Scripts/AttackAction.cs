@@ -84,11 +84,11 @@ public class AttackAction : MonoBehaviour
             }
             if (attackButton.tag == "Attack 2")
             {
-                DrinkToForget();
+                GoToSleep();
             }
             if (attackButton.tag == "Attack 3")
             {
-                GoToSleep();
+                DrinkToForget();
             }
             if (attackButton.tag == "Attack 4")
             {
