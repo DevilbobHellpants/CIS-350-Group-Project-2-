@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 	{
         while (true)
 		{
-            yield return new WaitForSeconds(Random.Range(0.6f, 1.4f));
+            yield return new WaitForSeconds(Random.Range(1.1f, 2.1f));
             Anim.SetBool("Glitch", true);
             yield return new WaitForSeconds(Random.Range(0.2f, 0.7f));
             Anim.SetBool("Glitch", false);

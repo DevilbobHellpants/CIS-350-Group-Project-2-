@@ -62,9 +62,6 @@ TextureImporter:
   - first:
       213: -3090444600282667091
     second: AGmcSprites_19
-  - first:
-      213: 7454336344612148679
-    second: AGmcSprites_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +106,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -168,9 +165,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 448
-        width: 64
-        height: 64
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,10 +185,10 @@ TextureImporter:
       name: AGmcSprites_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 448
-        width: 64
-        height: 64
+        x: 128
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,10 +206,10 @@ TextureImporter:
       name: AGmcSprites_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 448
-        width: 64
-        height: 64
+        x: 256
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,10 +227,10 @@ TextureImporter:
       name: AGmcSprites_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 448
-        width: 64
-        height: 64
+        x: 384
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,9 +249,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
-        width: 64
-        height: 64
+        y: 768
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,10 +269,10 @@ TextureImporter:
       name: AGmcSprites_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 384
-        width: 64
-        height: 64
+        x: 128
+        y: 768
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,10 +290,10 @@ TextureImporter:
       name: AGmcSprites_6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 384
-        width: 64
-        height: 64
+        x: 256
+        y: 768
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -314,10 +311,10 @@ TextureImporter:
       name: AGmcSprites_7
       rect:
         serializedVersion: 2
-        x: 192
-        y: 384
-        width: 64
-        height: 64
+        x: 384
+        y: 768
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,9 +333,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
-        width: 64
-        height: 64
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,10 +353,10 @@ TextureImporter:
       name: AGmcSprites_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 320
-        width: 64
-        height: 64
+        x: 128
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -377,10 +374,10 @@ TextureImporter:
       name: AGmcSprites_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 320
-        width: 64
-        height: 64
+        x: 256
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -398,10 +395,10 @@ TextureImporter:
       name: AGmcSprites_11
       rect:
         serializedVersion: 2
-        x: 192
-        y: 320
-        width: 64
-        height: 64
+        x: 384
+        y: 640
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -420,9 +417,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 64
-        height: 64
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -440,10 +437,10 @@ TextureImporter:
       name: AGmcSprites_13
       rect:
         serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 64
+        x: 128
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -461,10 +458,10 @@ TextureImporter:
       name: AGmcSprites_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 256
-        width: 64
-        height: 64
+        x: 256
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -482,10 +479,10 @@ TextureImporter:
       name: AGmcSprites_15
       rect:
         serializedVersion: 2
-        x: 192
-        y: 256
-        width: 64
-        height: 64
+        x: 384
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -504,9 +501,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 64
-        height: 64
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -524,10 +521,10 @@ TextureImporter:
       name: AGmcSprites_17
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
+        x: 128
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -545,10 +542,10 @@ TextureImporter:
       name: AGmcSprites_18
       rect:
         serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
+        x: 256
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -566,10 +563,10 @@ TextureImporter:
       name: AGmcSprites_19
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
+        x: 384
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -583,31 +580,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: AGmcSprites_20
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c514e0296f137760800000000000000
-      internalID: 7454336344612148679
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 569598568dbaab844901cf534876837b
+    spriteID: d30112d2022d97d48ab0af4a40b89a5c
     internalID: 0
     vertices: []
     indices: 
