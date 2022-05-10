@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Noah Trillizio
+ * Project 5 
+ * Decides which buttons get which attacks
+ */
+
 public class ClickedAttack : MonoBehaviour
 {
     private OpenFightMenu enemy;

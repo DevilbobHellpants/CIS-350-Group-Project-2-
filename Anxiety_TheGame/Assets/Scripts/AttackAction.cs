@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Noah Trillizio, Anna Breuker
+ * Project 5 
+ * Controls what happens when an attack button is pressed
+ */
+
 public class AttackAction : MonoBehaviour
 {
     private PlayerStats playerStats;
@@ -264,6 +270,7 @@ public class AttackAction : MonoBehaviour
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
+            Debug.Log("Failed to end encounter");
         }
         else
         {
@@ -277,6 +284,7 @@ public class AttackAction : MonoBehaviour
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
+            Debug.Log("Failed to end encounter");
         }
         else
         {
@@ -290,6 +298,7 @@ public class AttackAction : MonoBehaviour
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
+            Debug.Log("Failed to end encounter");
         }
         else
         {
@@ -309,6 +318,7 @@ public class AttackAction : MonoBehaviour
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
+            Debug.Log("Failed to end encounter");
         }
         else
         {
@@ -321,6 +331,7 @@ public class AttackAction : MonoBehaviour
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
+            Debug.Log("Failed to end encounter");
         }
         else
         {
@@ -357,6 +368,7 @@ public class AttackAction : MonoBehaviour
         {
             if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
             {
+                Debug.Log("Failed to end encounter");
             }
             else
             {

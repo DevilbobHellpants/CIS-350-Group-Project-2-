@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Noah Trillizio
+ * Project 5 
+ * Controls what happens when the enemie takes there turn
+ */
+
 public class EnemiesTurn : MonoBehaviour
 {
     private AttackAction playerTurn;

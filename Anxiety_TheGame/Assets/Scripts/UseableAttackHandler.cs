@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+/*
+ * Noah Trillizio
+ * Project 5 
+ * Decides which attacks can and cannot be used
+ */
+
 public class UseableAttackHandler : MonoBehaviour
 {
     private PlayerStats Lightbulbs;
@@ -21,9 +27,14 @@ public class UseableAttackHandler : MonoBehaviour
         randomNum = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomNumGen>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnable()
     {
+        StartCoroutine(SetUsableAttacks());
+    }
+
+    IEnumerator SetUsableAttacks()
+    {
+        yield return new WaitForSeconds(.02f);
         if (enemy.enemyNameDisplayed.text == "Glass Eye")
         {
             if (Lightbulbs.Lightbulb01pickedup == false)
@@ -48,7 +59,7 @@ public class UseableAttackHandler : MonoBehaviour
             }
         }
 
-        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+        if (enemy.enemyNameDisplayed.text == "Question Air")
         {
             if (Lightbulbs.Lightbulb03pickedup == false)
             {
@@ -60,7 +71,7 @@ public class UseableAttackHandler : MonoBehaviour
             }
         }
 
-        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+        if (enemy.enemyNameDisplayed.text == "Question Air")
         {
             if (Lightbulbs.Lightbulb04pickedup == false)
             {
@@ -72,7 +83,7 @@ public class UseableAttackHandler : MonoBehaviour
             }
         }
 
-        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
         {
             if (Lightbulbs.Lightbulb05pickedup == false)
             {
@@ -84,7 +95,7 @@ public class UseableAttackHandler : MonoBehaviour
             }
         }
 
-        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
         {
             if (Lightbulbs.Lightbulb06pickedup == false)
             {
@@ -96,7 +107,7 @@ public class UseableAttackHandler : MonoBehaviour
             }
         }
 
-        if (enemy.enemyNameDisplayed.text == "Question Air")
+        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
         {
             if (Lightbulbs.Lightbulb07pickedup == false)
             {
@@ -108,7 +119,7 @@ public class UseableAttackHandler : MonoBehaviour
             }
         }
 
-        if (enemy.enemyNameDisplayed.text == "Question Air")
+        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
         {
             if (Lightbulbs.Lightbulb08pickedup == false)
             {

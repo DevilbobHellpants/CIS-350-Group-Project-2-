@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Noah Trillizio, Anna Breuker
+ * Project 5 
+ * Controls the creation of the items and the data it can store
+ */
+
 public enum Attributes
 {
     /*Agility,

@@ -92,6 +92,7 @@ public class CloseFightMenu : MonoBehaviour
 
     public void EndFightEarly()
     {
+        Debug.Log("Ending Encounter");
         StartCoroutine(BattleOverEarly());
     }
 
