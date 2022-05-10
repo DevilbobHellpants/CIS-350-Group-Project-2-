@@ -74,22 +74,16 @@ public class OpenFightMenu : MonoBehaviour
         {
             Debug.Log("Normal Fight Start");
             StartCoroutine(OpenMenuOnDelay(other.gameObject));
-            //Debug.Log("cloud hit");
-            //StartCoroutine(OpenMenuOnDelay(other.gameObject));
         }
         else if (other.CompareTag("Tutorial Cloud") && !startingBattle)
         {
             Debug.Log("Tutorial Fight Start");
             StartCoroutine(OpenMenuOnDelay(other.gameObject));
-            //Debug.Log("cloud hit");
-            //StartCoroutine(OpenMenuOnDelay(other.gameObject));
         }
         else if (other.CompareTag("Lightbulb") && !startingBattle)
         {
-            Debug.Log("Tutorial Fight Start");
+            Debug.Log("Lightbulb Fight Start");
             StartCoroutine(StartLightbulbFight(other.gameObject));
-            //Debug.Log("cloud hit");
-            //StartCoroutine(OpenMenuOnDelay(other.gameObject));
         }
         else if (other.CompareTag("Final Boss Cloud") && !startingBattle)
         {

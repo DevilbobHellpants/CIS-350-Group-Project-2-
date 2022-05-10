@@ -107,7 +107,10 @@ public class CloseFightMenu : MonoBehaviour
         attack2.enabled = false;
         attack3.enabled = false;
         attack4.enabled = false;
-        yield return new WaitForSeconds(2);
+        while (!Input.GetKey(KeyCode.Space))
+        {
+            yield return new WaitForFixedUpdate();
+        }
         worldEffect.resetVariables();
         fightMenu.SetActive(false);
         player.canMove = true;
@@ -168,9 +171,12 @@ public class CloseFightMenu : MonoBehaviour
 
     IEnumerator BattleOverEarly()
     {
-        yield return new WaitForSeconds(2);
+        while (!Input.GetKey(KeyCode.Space))
+        {
+            yield return new WaitForFixedUpdate();
+        }
         description.text = "You ran away.";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2f);
         worldEffect.resetVariables();
         fightMenu.SetActive(false);
         player.canMove = true;

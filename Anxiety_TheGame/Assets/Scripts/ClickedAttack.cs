@@ -43,19 +43,19 @@ public class ClickedAttack : MonoBehaviour
         {
             attack = attackButton1;
         }
-        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+        else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
         {
             attack = attackButton2;
         }
-        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+        else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
         {
             attack = attackButton3;
         }
-        if (enemy.enemyNameDisplayed.text == "Question Air")
+        else if (enemy.enemyNameDisplayed.text == "Question Air")
         {
             attack = attackButton4;
         }
-        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        else if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
             if (changeAttack == true)
             {

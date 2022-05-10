@@ -69,6 +69,7 @@ public class CheckpointTrigger : MonoBehaviour
             worldEffect.isStart = true;
             openFightMenu.encounterNum = 0;
             tutorialCloud.SetActive(true);
+            FindObjectOfType<BattleTutorial>().phase = 0;
         }
     }
 }

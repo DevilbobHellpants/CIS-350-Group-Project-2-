@@ -25,13 +25,11 @@ public class AttackAction : MonoBehaviour
     public int numOfDrunkenEncounters;
 
     private Text description;
-
-    private RandomNumGen randomNum;
+    private BattleTutorial battleTutorial;
 
     // Start is called before the first frame update
     void Start()
     {
-        randomNum = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomNumGen>();
         MainMusic = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         endEncounter = GameObject.FindGameObjectWithTag("FightMenu").GetComponent<CloseFightMenu>();
         enemyTurn = GetComponent<EnemiesTurn>();
@@ -44,19 +42,21 @@ public class AttackAction : MonoBehaviour
         numOfDrunkenEncounters = 0;
 
         description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
+        battleTutorial = FindObjectOfType<BattleTutorial>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        /*if (Input.GetKeyDown(KeyCode.P))
         {
             BlastMusic();
-        }
+        }*/
     }
 
     // gets called when attack button is pressed in the fight menu
     public void playerAttacks(GameObject attackButton)
     {
+        battleTutorial.phase = 100;
         if (enemy.enemyNameDisplayed.text == "Glass Eye") //Glass-Eye
         {
             if (attackButton.tag == "Attack 1")
@@ -76,7 +76,7 @@ public class AttackAction : MonoBehaviour
                 TakeOffGlasses();
             }
         }
-        if (enemy.enemyNameDisplayed.text == "Liar Smiler") //Lier Smiler
+        else if (enemy.enemyNameDisplayed.text == "Liar Smiler") //Lier Smiler
         {
             if (attackButton.tag == "Attack 1")
             {
@@ -95,7 +95,7 @@ public class AttackAction : MonoBehaviour
                 Isolation();
             }
         }
-        if (enemy.enemyNameDisplayed.text == "Scramble Sound") //Scrambled Sound
+        else if (enemy.enemyNameDisplayed.text == "Scramble Sound") //Scrambled Sound
         {
             if (attackButton.tag == "Attack 1")
             {
@@ -114,7 +114,7 @@ public class AttackAction : MonoBehaviour
                 PunchAWall();
             }
         }
-        if (enemy.enemyNameDisplayed.text == "Question Air") //Question-Air
+        else if (enemy.enemyNameDisplayed.text == "Question Air") //Question-Air
         {
             if (attackButton.tag == "Attack 1")
             {
@@ -133,10 +133,11 @@ public class AttackAction : MonoBehaviour
                 Visualization();
             }
         }
-        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety") //Final Boss
+        else if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety") //Final Boss
         {
-            Debug.Log("Random Num in AttackAction = " + randomNum.randomNum);
-            if (randomNum.randomNum == 1)
+            int randomNum = Random.Range(1, 5);
+            Debug.Log("Random Num in AttackAction = " + randomNum);
+            if (randomNum == 1)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -155,7 +156,7 @@ public class AttackAction : MonoBehaviour
                     TakeOffGlasses();
                 }
             }
-            if (randomNum.randomNum == 2)
+            else if (randomNum == 2)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -174,7 +175,7 @@ public class AttackAction : MonoBehaviour
                     Isolation();
                 }
             }
-            if (randomNum.randomNum == 3)
+            else if (randomNum == 3)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -193,7 +194,7 @@ public class AttackAction : MonoBehaviour
                     PunchAWall();
                 }
             }
-            if (randomNum.randomNum == 4)
+            else
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -222,18 +223,18 @@ public class AttackAction : MonoBehaviour
         changeStats();
         description.text = "You focus on 3 things you can see, 3 things you can hear, " +
             "and 3 things you can feel, moving 3 different parts of your body." +
-            " Taking a deep breath, you feel lighter. ";
+            " Taking a deep breath, you feel lighter.\n<Press SPACE To Continue>";
     }
     public void Grounding()
     {
         changeStats();
         description.text = "You focus on 5 things you can see, 4 you can touch, " +
-            "3 you can hear, 2 you can smell, and 1 you can taste. You feel grounded.";
+            "3 you can hear, 2 you can smell, and 1 you can taste. You feel grounded.\n<Press SPACE To Continue>";
     }
 
     public void BlastMusic()
     {
-        description.text = "You turn the music up. The noise seems fainter.";
+        description.text = "You turn the music up. The noise seems fainter.\n<Press SPACE To Continue>";
         changeStats();
         StartCoroutine(MusicChange());
         //m_MyAudioSource.volume = m_MySliderValue;
@@ -241,32 +242,32 @@ public class AttackAction : MonoBehaviour
 
     public void BoxBreath()
     {
-        description.text = "You breathe in for 4, hold for 4, out for 4, hold for 4. As you repeat, the noise seems fainter.";
+        description.text = "You breathe in for 4, hold for 4, out for 4, hold for 4. As you repeat, the noise seems fainter.\n<Press SPACE To Continue>";
         changeStats();
     }
 
     public void DrinkToForget()
     {
-        description.text = "Maybe drinking will help?";
+        description.text = "Maybe drinking will help?\n<Press SPACE To Continue>";
         changeStats();
     }
 
     public void EmotionalSupport()
     {
-        description.text = "You ask a friend for reassurance. They smile and say you look fine.";
+        description.text = "You ask a friend for reassurance. They smile and say you look fine.\n<Press SPACE To Continue>";
         changeStats();
     }
 
     public void GoToSleep()
     {
-        description.text = "There's nothing a good nap can't fix.";
+        description.text = "There's nothing a good nap can't fix.\n<Press SPACE To Continue>";
         changeStats();
         // skip next two turns
     }
 
     public void Hide()
     {
-        description.text = "It's too much. Everyone's staring. You can't do this.";
+        description.text = "It's too much. Everyone's staring. You can't do this.\n<Press SPACE To Continue>";
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -280,7 +281,7 @@ public class AttackAction : MonoBehaviour
 
     public void Isolation()
     {
-        description.text = "They're right, none of my friends actually care.";
+        description.text = "They're right, none of my friends actually care.\n<Press SPACE To Continue>";
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -294,7 +295,7 @@ public class AttackAction : MonoBehaviour
 
     public void LeaveTheRoom()
     {
-        description.text = "You know what? This isn't worth it. You leave the room.";
+        description.text = "You know what? This isn't worth it. You leave the room.\n<Press SPACE To Continue>";
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -308,13 +309,13 @@ public class AttackAction : MonoBehaviour
 
     public void PunchAWall()
     {
-        description.text = "You punch a wall out of frustration. ...that kind of hurt.";
+        description.text = "You punch a wall out of frustration. ...that kind of hurt.\n<Press SPACE To Continue>";
         changeStats();
     }
 
     public void SelfDoubt()
     {
-        description.text = "Maybe they're right... I do look stupid.";
+        description.text = "Maybe they're right... I do look stupid.\n<Press SPACE To Continue>";
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -328,6 +329,7 @@ public class AttackAction : MonoBehaviour
 
     public void shiftDoubt()
     {
+        //qqqq
         changeStats();
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -341,28 +343,28 @@ public class AttackAction : MonoBehaviour
 
     public void ShiftFocus()
     {
-        description.text = "You shift your focus to something other than the people around you.";
+        description.text = "You shift your focus to something other than the people around you.\n<Press SPACE To Continue>";
         changeStats();
     }
 
     public void ShutDown()
     {
-        description.text = "This isn't worth it- you can't do this. Who ever wanted to actually ask questions anyway?";
+        description.text = "This isn't worth it- you can't do this. Who ever wanted to actually ask questions anyway?\n<Press SPACE To Continue>";
         changeStats();
-        cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;
+        cloudSpwanRate.maxCloudSpawnTime = (cloudSpwanRate.maxCloudSpawnTime) - .5f;//This doesn't work anymore
         // increase cloud spawn rate
     }
 
     public void TakeOffGlasses()
     {
-        description.text = "Who needs glasses anyways? Not you, that's for sure.";
+        description.text = "Who needs glasses anyways? Not you, that's for sure.\n<Press SPACE To Continue>";
         changeStats();
         // blindness?
     }
 
     public void Visualization()
     {
-        description.text = "You imagine yourself somewhere else. This is nice.";
+        description.text = "You imagine yourself somewhere else. This is nice.\n<Press SPACE To Continue>";
         changeStats();
         if (UnityEngine.Random.Range(1, 10) == 1)
         {
