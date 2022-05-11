@@ -20,6 +20,7 @@ public class CheckpointTrigger : MonoBehaviour
     private OverworldAnxietyEffect worldEffect;
     private OpenFightMenu openFightMenu;
     private GameObject bossCloud;
+    private ProgressBar progressBar;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class CheckpointTrigger : MonoBehaviour
         openFightMenu = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         bossCloud = GameObject.FindGameObjectWithTag("Final Boss Cloud");
+        progressBar = GameObject.FindGameObjectWithTag("PlayerAnxietyOverworld").GetComponent<ProgressBar>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,12 +51,10 @@ public class CheckpointTrigger : MonoBehaviour
             }
             currentCheckpoint = true;
             anim.SetBool("Opened", true);
-            if (playerStats.attributes[0].value.BaseValue != 0)
-            {
-                playerStats.attributes[0].value.BaseValue /= 2;
-            }
+            playerStats.attributes[0].value.BaseValue /= 2;
             anxiety = playerStats.attributes[0].value.BaseValue;
             openFightMenu.enemyChoice++;
+            progressBar.current /= 2;
         }
     }
 
@@ -74,5 +74,6 @@ public class CheckpointTrigger : MonoBehaviour
             FindObjectOfType<BattleTutorial>().phase = 0;
         }
         bossCloud.SetActive(true);
+        progressBar.current = anxiety;
     }
 }

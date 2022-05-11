@@ -324,7 +324,7 @@ public class OpenFightMenu : MonoBehaviour
         //setting up the menu for the specific enemy
         description.text = "A problem appears...";
         int enemyNum = (enemyChoice % enemies.Length) - 1;
-        if (encounterNum == -1)
+        if (enemyNum == -1)
         {
             enemyNum = enemies.Length - 1;
         }
