@@ -24,6 +24,7 @@ public class OpenFightMenu : MonoBehaviour
     public Enemy finalBoss;
     public Enemy enemyEncountered;
     public GameObject enemyHealthBar;
+    public GameObject bossAnim;
 
     public Text description;
 
@@ -98,6 +99,7 @@ public class OpenFightMenu : MonoBehaviour
     {
         playerAudio.Stop();
         effectSource.PlayOneShot(encounterSound, .75f);
+        enemyPortrait.color = Color.white;
         if (cloud.GetComponent<CloudMovement>().smoke != null)
         {
             cloud.GetComponent<CloudMovement>().smoke.gameObject.SetActive(true);
@@ -263,8 +265,11 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator StartLightbulbFight(GameObject lightbulb)
     {
+        playerAudio.Stop();
+        effectSource.PlayOneShot(encounterSound, .75f);
         player.canMove = false;
         worldEffect.inBattle = true;
+        enemyPortrait.color = Color.white;
         startingBattle = true;
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
@@ -424,7 +429,9 @@ public class OpenFightMenu : MonoBehaviour
         //setting up the menu for the specific enemy
         description.text = "You feel a chill run up your spine...";
         enemyEncountered = finalBoss;
-        enemyPortrait.sprite = finalBoss.enemySprite;
+        enemyPortrait.sprite = null;
+        enemyPortrait.color = Color.grey;
+        bossAnim.SetActive(true);
         enemyNameDisplayed.text = finalBoss.enemyName;
         enemyStats.attributes[2].value.BaseValue = finalBoss.health;
         enemyHealthBar.GetComponent<ProgressBar>().maximum = finalBoss.health;

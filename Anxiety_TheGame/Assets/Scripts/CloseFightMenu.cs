@@ -15,6 +15,7 @@ public class CloseFightMenu : MonoBehaviour
     private Text description;
 
     public Enemy finalBoss;
+    public GameObject bossAnim;
 
     private OpenFightMenu openFMScript;
     private HoverDescriptionVisable hoverDesc;
@@ -171,6 +172,7 @@ public class CloseFightMenu : MonoBehaviour
         win = true;
         yield return new WaitForSeconds(3);
         youWinScreen.SetActive(true);
+        bossAnim.SetActive(false);
 
         if (!openFMScript.calmEndMusic.isPlaying)
         {
@@ -195,6 +197,7 @@ public class CloseFightMenu : MonoBehaviour
         gameOver = true;
         yield return new WaitForSeconds(3);
         gameOverScreen.SetActive(true);
+        bossAnim.SetActive(false);
 
         if (!openFMScript.lossMusic.isPlaying)
         {
