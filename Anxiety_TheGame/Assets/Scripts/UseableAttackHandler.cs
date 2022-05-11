@@ -31,6 +31,11 @@ public class UseableAttackHandler : MonoBehaviour
     {
         StartCoroutine(SetUsableAttacks());
     }
+    
+    public void CallSetUsableAttacks()
+    {
+        StartCoroutine(SetUsableAttacks());
+    }
 
     IEnumerator SetUsableAttacks()
     {

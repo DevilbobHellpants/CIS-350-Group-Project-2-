@@ -26,6 +26,7 @@ public class EnemiesTurn : MonoBehaviour
     //public bool enemyTurn;
 
     private OpenFightMenu fightMenu;
+    private UseableAttackHandler useableAttacks;
     
     void Start()
     {
@@ -34,6 +35,7 @@ public class EnemiesTurn : MonoBehaviour
         fightMenu = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         playerSanity = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
+        useableAttacks = GameObject.FindGameObjectWithTag("Attack 1").GetComponent<UseableAttackHandler>();
     }
 
     // Update is called once per frame
@@ -106,6 +108,7 @@ public class EnemiesTurn : MonoBehaviour
         Attack4.enabled = true;
         Attack4.GetComponentInChildren<Text>().enabled = true;
         clickedAttack.changeAttack = true;
+        useableAttacks.CallSetUsableAttacks();
     }
 
     IEnumerator StartEnemiesTripleTurn()
