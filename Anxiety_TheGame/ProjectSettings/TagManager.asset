@@ -23,6 +23,7 @@ TagManager:
   - Neuron Effect
   - Lightbulb
   - HoverBox
+  - PlayerAnxietyOverworld
   layers:
   - Default
   - TransparentFX
