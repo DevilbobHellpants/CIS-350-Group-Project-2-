@@ -24,6 +24,7 @@ public class AttackAction : MonoBehaviour
     public bool sameBattle;
     public int numOfDrunkenEncounters;
 
+    private RandomNumGen randomNum;
     private OpenFightMenu openFMScript;
 
     private Text description;
@@ -32,6 +33,7 @@ public class AttackAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        randomNum = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomNumGen>();
         openFMScript = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         MainMusic = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         endEncounter = GameObject.FindGameObjectWithTag("FightMenu").GetComponent<CloseFightMenu>();
@@ -132,9 +134,8 @@ public class AttackAction : MonoBehaviour
         }
         else if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety") //Final Boss
         {
-            int randomNum = Random.Range(1, 5);
-            Debug.Log("Random Num in AttackAction = " + randomNum);
-            if (randomNum == 1)
+            Debug.Log("Random Num in AttackAction = " + randomNum.randomNum);
+            if (randomNum.randomNum == 1)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -153,7 +154,26 @@ public class AttackAction : MonoBehaviour
                     TakeOffGlasses();
                 }
             }
-            else if (randomNum == 2)
+            else if (randomNum.randomNum == 2)
+            {
+                if (attackButton.tag == "Attack 1")
+                {
+                    Hide();
+                }
+                if (attackButton.tag == "Attack 2")
+                {
+                    ShiftFocus();
+                }
+                if (attackButton.tag == "Attack 3")
+                {
+                    ShutDown();
+                }
+                if (attackButton.tag == "Attack 4")
+                {
+                    Visualization();
+                }
+            }
+            else if (randomNum.randomNum == 3)
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -172,7 +192,7 @@ public class AttackAction : MonoBehaviour
                     Isolation();
                 }
             }
-            else if (randomNum == 3)
+            else
             {
                 if (attackButton.tag == "Attack 1")
                 {
@@ -189,25 +209,6 @@ public class AttackAction : MonoBehaviour
                 if (attackButton.tag == "Attack 4")
                 {
                     PunchAWall();
-                }
-            }
-            else
-            {
-                if (attackButton.tag == "Attack 1")
-                {
-                    Hide();
-                }
-                if (attackButton.tag == "Attack 2")
-                {
-                    ShiftFocus();
-                }
-                if (attackButton.tag == "Attack 3")
-                {
-                    ShutDown();
-                }
-                if (attackButton.tag == "Attack 4")
-                {
-                    Visualization();
                 }
             }
         }

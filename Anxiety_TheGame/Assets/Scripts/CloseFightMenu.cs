@@ -24,6 +24,7 @@ public class CloseFightMenu : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject youWinScreen;
     public bool gameOver;
+    public bool win = false;
 
     public Button attack1;
     public Button attack2;
@@ -78,7 +79,6 @@ public class CloseFightMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 gameOverScreen.SetActive(false);
                 gameOver = false;
                 for (int i = 0; i < checkpoints.Length; i++)
@@ -88,6 +88,22 @@ public class CloseFightMenu : MonoBehaviour
                         checkpoints[i].Respawn();
                     }
                 }
+                fightMenu.SetActive(false);
+                hoverDesc.mouseOver = false;
+                hoverDesc.descriptionCanvas.SetActive(false);
+
+                openFMScript.calmEndMusic.Stop();
+                openFMScript.lossMusic.Stop();
+                openFMScript.playerAudio.PlayDelayed(0.5f);
+            }
+        }
+        if (win)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);//We can add restarting in later
+                youWinScreen.SetActive(false);
+                win = false;
                 fightMenu.SetActive(false);
                 hoverDesc.mouseOver = false;
                 hoverDesc.descriptionCanvas.SetActive(false);
@@ -152,7 +168,7 @@ public class CloseFightMenu : MonoBehaviour
         attack2.enabled = false;
         attack3.enabled = false;
         attack4.enabled = false;
-        gameOver = true;
+        win = true;
         yield return new WaitForSeconds(3);
         youWinScreen.SetActive(true);
 
