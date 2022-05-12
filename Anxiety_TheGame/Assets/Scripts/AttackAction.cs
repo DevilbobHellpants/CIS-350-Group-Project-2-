@@ -61,17 +61,55 @@ public class AttackAction : MonoBehaviour
             {
                 TripleRule();
             }
-            if (attackButton.tag == "Attack 2")
+            else if (attackButton.tag == "Attack 2")
             {
                 EmotionalSupport();
             }
-            if (attackButton.tag == "Attack 3")
+            else if (attackButton.tag == "Attack 3")
             {
                 SelfDoubt();
             }
-            if (attackButton.tag == "Attack 4")
+            else
             {
                 TakeOffGlasses();
+            }
+        }
+        else if (enemy.enemyNameDisplayed.text == "Question Air") //Question-Air
+        {
+            if (attackButton.tag == "Attack 1")
+            {
+                ShiftFocus();
+            }
+            else if (attackButton.tag == "Attack 2")
+            {
+                Hide();
+            }
+            else if (attackButton.tag == "Attack 3")
+            {
+                ShutDown();
+            }
+            else
+            {
+                Visualization();
+            }
+        }
+        else if (enemy.enemyNameDisplayed.text == "Scramble Sound") //Scrambled Sound
+        {
+            if (attackButton.tag == "Attack 1")
+            {
+                BoxBreath();
+            }
+            else if (attackButton.tag == "Attack 2")
+            {
+                BlastMusic();
+            }
+            else if  (attackButton.tag == "Attack 3")
+            {
+                LeaveTheRoom();
+            }
+            else
+            {
+                PunchAWall();
             }
         }
         else if (enemy.enemyNameDisplayed.text == "Liar Smiler") //Lier Smiler
@@ -80,134 +118,93 @@ public class AttackAction : MonoBehaviour
             {
                 Grounding();
             }
-            if (attackButton.tag == "Attack 2")
+            else if (attackButton.tag == "Attack 2")
             {
                 GoToSleep();
             }
-            if (attackButton.tag == "Attack 3")
-            {
-                DrinkToForget();
-            }
-            if (attackButton.tag == "Attack 4")
+            else if (attackButton.tag == "Attack 3")
             {
                 Isolation();
             }
-        }
-        else if (enemy.enemyNameDisplayed.text == "Scramble Sound") //Scrambled Sound
-        {
-            if (attackButton.tag == "Attack 1")
+            else
             {
-                BlastMusic();
-            }
-            if (attackButton.tag == "Attack 2")
-            {
-                BoxBreath();
-            }
-            if (attackButton.tag == "Attack 3")
-            {
-                LeaveTheRoom();
-            }
-            if (attackButton.tag == "Attack 4")
-            {
-                PunchAWall();
+                DrinkToForget();
             }
         }
-        else if (enemy.enemyNameDisplayed.text == "Question Air") //Question-Air
-        {
-            if (attackButton.tag == "Attack 1")
-            {
-                Hide();
-            }
-            if (attackButton.tag == "Attack 2")
-            {
-                ShiftFocus();
-            }
-            if (attackButton.tag == "Attack 3")
-            {
-                ShutDown();
-            }
-            if (attackButton.tag == "Attack 4")
-            {
-                Visualization();
-            }
-        }
-        else if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety") //Final Boss
+        else /*if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")*/
         {
             Debug.Log("Random Num in AttackAction = " + randomNum.randomNum);
-            if (randomNum.randomNum == 1)
-            {
+            if (randomNum.randomNum == 1) {//Glass Eye
                 if (attackButton.tag == "Attack 1")
                 {
                     TripleRule();
                 }
-                if (attackButton.tag == "Attack 2")
+                else if (attackButton.tag == "Attack 2")
                 {
                     EmotionalSupport();
                 }
-                if (attackButton.tag == "Attack 3")
+                else if (attackButton.tag == "Attack 3")
                 {
                     SelfDoubt();
                 }
-                if (attackButton.tag == "Attack 4")
+                else 
                 {
                     TakeOffGlasses();
                 }
             }
-            else if (randomNum.randomNum == 2)
-            {
+            else if (randomNum.randomNum == 2) {//Question Air
                 if (attackButton.tag == "Attack 1")
-                {
-                    Hide();
-                }
-                if (attackButton.tag == "Attack 2")
                 {
                     ShiftFocus();
                 }
-                if (attackButton.tag == "Attack 3")
+                else if (attackButton.tag == "Attack 2")
+                {
+                    Hide();
+                }
+                else if (attackButton.tag == "Attack 3")
                 {
                     ShutDown();
                 }
-                if (attackButton.tag == "Attack 4")
+                else
                 {
                     Visualization();
                 }
             }
-            else if (randomNum.randomNum == 3)
+            else if (randomNum.randomNum == 3)//Scrambled Sound
             {
+                if (attackButton.tag == "Attack 1")
+                {
+                    BoxBreath();
+                }
+                else if (attackButton.tag == "Attack 2")
+                {
+                    BlastMusic();
+                }
+                else if (attackButton.tag == "Attack 3")
+                {
+                    LeaveTheRoom();
+                }
+                else
+                {
+                    PunchAWall();
+                }
+            }
+            else {//Lier Smiler
                 if (attackButton.tag == "Attack 1")
                 {
                     Grounding();
                 }
-                if (attackButton.tag == "Attack 2")
+                else if (attackButton.tag == "Attack 2")
                 {
                     GoToSleep();
                 }
-                if (attackButton.tag == "Attack 3")
-                {
-                    DrinkToForget();
-                }
-                if (attackButton.tag == "Attack 4")
+                else if (attackButton.tag == "Attack 3")
                 {
                     Isolation();
                 }
-            }
-            else
-            {
-                if (attackButton.tag == "Attack 1")
+                else if (attackButton.tag == "Attack 4")
                 {
-                    BlastMusic();
-                }
-                if (attackButton.tag == "Attack 2")
-                {
-                    BoxBreath();
-                }
-                if (attackButton.tag == "Attack 3")
-                {
-                    LeaveTheRoom();
-                }
-                if (attackButton.tag == "Attack 4")
-                {
-                    PunchAWall();
+                    DrinkToForget();
                 }
             }
         }

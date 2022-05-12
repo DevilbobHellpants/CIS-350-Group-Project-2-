@@ -65,17 +65,7 @@ public class EnemiesTurn : MonoBehaviour
         Attack4.enabled = false;
         Attack4.GetComponentInChildren<Text>().enabled = false;
         //Debug.Log("Turn Started");
-        fightMenu.enemyPortrait.enabled = false;
-        yield return new WaitForSeconds(.15f);
-        fightMenu.enemyPortrait.enabled = true;
-        yield return new WaitForSeconds(.15f);
-        fightMenu.enemyPortrait.enabled = false;
-        yield return new WaitForSeconds(.15f);
-        fightMenu.enemyPortrait.enabled = true;
-        yield return new WaitForSeconds(.15f);
-        fightMenu.enemyPortrait.enabled = false;
-        yield return new WaitForSeconds(.15f);
-        fightMenu.enemyPortrait.enabled = true;
+        StartCoroutine(EnemyFlash());
 
         while (!Input.GetKey(KeyCode.Space))
         {
@@ -99,6 +89,7 @@ public class EnemiesTurn : MonoBehaviour
 
             Debug.Log(playerSanity.attributes[0].value.BaseValue);
         }
+        //Change Later
         Attack1.enabled = true;
         Attack1.GetComponentInChildren<Text>().enabled = true;
         Attack2.enabled = true;
@@ -109,6 +100,21 @@ public class EnemiesTurn : MonoBehaviour
         Attack4.GetComponentInChildren<Text>().enabled = true;
         clickedAttack.changeAttack = true;
         useableAttacks.CallSetUsableAttacks();
+    }
+
+    IEnumerator EnemyFlash()
+    {
+        fightMenu.enemyPortrait.enabled = false;
+        yield return new WaitForSeconds(.15f);
+        fightMenu.enemyPortrait.enabled = true;
+        yield return new WaitForSeconds(.15f);
+        fightMenu.enemyPortrait.enabled = false;
+        yield return new WaitForSeconds(.15f);
+        fightMenu.enemyPortrait.enabled = true;
+        yield return new WaitForSeconds(.15f);
+        fightMenu.enemyPortrait.enabled = false;
+        yield return new WaitForSeconds(.15f);
+        fightMenu.enemyPortrait.enabled = true;
     }
 
     IEnumerator StartEnemiesTripleTurn()

@@ -39,150 +39,145 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
         //displayText.text = "This is a test!";
         //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
 
-            displayText.text = "It's getting hard to focus. You can remember what this does, right?";
+        displayText.text = "It's getting hard to focus. You can't remember what this does.";
 
         if (this.tag == "Attack 1")
         {
-            if (enemy.enemyNameDisplayed.text == "Glass Eye")
+            if (enemy.enemyNameDisplayed.text == "Glass Eye")//333 Grounding
             {
-                if (enemyStats.Lightbulb01pickedup == false)
+                if (!enemyStats.Lightbulb01pickedup)
                 {
-                    displayText.text = "Coping skill not unlocked.";
+                    displayText.text = "Coping skill not unlocked";
                 }
                 else
                 {
-                    displayText.text = "\"Ground\" yourself in the present moment, decreasing your anxiety and chipping away at the problem at hand.";
+                    displayText.text = "\"Ground\" yourself in the present moment: Expel 1 / 3 of your anxiety, slowly chip away at the problem";
                 }
             }
-            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+            else if (enemy.enemyNameDisplayed.text == "Question Air")//Shift Focus
             {
-                if (enemyStats.Lightbulb05pickedup == false)
+                if (!enemyStats.Lightbulb03pickedup)
                 {
-                    displayText.text = "Coping skill not unlocked.";
+                    displayText.text = "Coping skill not unlocked";
                 }
                 else
                 {
-                    displayText.text = "\"Ground\" yourself in the present moment, decreasing your anxiety and chipping away at the problem at hand.";
+                    displayText.text = "Shift your focus elsewhere: Enemy health is halved (less for stronger enemies)";
                 }
             }
-            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")//Box Breathing
             {
-                if (enemyStats.Lightbulb07pickedup == false)
+                if (!enemyStats.Lightbulb05pickedup)
                 {
-                    displayText.text = "Coping skill not unlocked.";
+                    displayText.text = "Coping skill not unlocked";
                 }
                 else
                 {
-                    displayText.text = "Sometimes, loud music can help drown out your thoughts, decreasing your anxiety and chipping away at the problem at hand.";
+                    displayText.text = "Take a few deep breaths: Slightly decrease anxiety, chip away at the problem by 1/4 max health (less for stronger enemies)";
                 }
             }
-            else if (enemy.enemyNameDisplayed.text == "Question Air")
+            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")//54321 Grounding
             {
-                if (enemyStats.Lightbulb03pickedup == false)
+                if (!enemyStats.Lightbulb07pickedup)
                 {
-                    displayText.text = "Coping skill not unlocked.";
+                    displayText.text = "Coping skill not unlocked";
                 }
                 else
                 {
-                    displayText.text = "Hide from your problems, anxiety staying the same but ending the encounter early.";
+                    displayText.text = "\"Ground\" yourself in the present moment: Randomly either slightly decrease anxiety or chip away at the problem 5 times";
                 }
             }
-
         }
         else if (this.tag == "Attack 2")
         {
-            if (enemy.enemyNameDisplayed.text == "Glass Eye")
+            if (enemy.enemyNameDisplayed.text == "Glass Eye")//Emotional Support
             {
-                if (enemyStats.Lightbulb02pickedup == false)
+                if (!enemyStats.Lightbulb02pickedup)
                 {
-                    displayText.text = "Coping skill not unlocked.";
+                    displayText.text = "Coping skill not unlocked";
                 }
                 else
                 {
-                    displayText.text = "Gather support from friends, decreasing your anxiety and chipping away at the problem at hand.";
+                    displayText.text = "Gather support from friends: Decrease anxiety, chip away at the problem, chance of critical hit";
                 }
             }
-            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+            else if (enemy.enemyNameDisplayed.text == "Question Air")//Hide
             {
-                if (enemyStats.Lightbulb06pickedup == false)
+                if (!enemyStats.Lightbulb04pickedup)
                 {
-                    displayText.text = "Coping skill not unlocked.";
+                    displayText.text = "Coping skill not unlocked";
+                }
+                {
+                    displayText.text = "Hide from your problems: Gain some anxiety, end encounter early, temporarily hidden from clouds";
+                }
+            }
+            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")//Blast Music
+            {
+                if (!enemyStats.Lightbulb06pickedup)
+                {
+                    displayText.text = "Coping skill not unlocked";
                 }
                 else
                 {
-                    displayText.text = "Sometimes you just need to sleep it off. Decrease anxiety, but at the cost of a few turns.";
+                    displayText.text = "Sometimes loud music drowns out your thoughts: Decrease anxiety, chip away at the problem, temporarily hide anxiety bar";
                 }
             }
-            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")//Go To Sleep
             {
-                if (enemyStats.Lightbulb08pickedup == false)
+                if (!enemyStats.Lightbulb08pickedup)
                 {
-                    displayText.text = "Coping skill not unlocked.";
+                    displayText.text = "Coping skill not unlocked";
                 }
                 else
                 {
-                    displayText.text = "Take a few deep breaths, decreasing your anxiety and chipping away at the problem at hand.";
-                }
-            }
-            else if (enemy.enemyNameDisplayed.text == "Question Air")
-            {
-                if (enemyStats.Lightbulb04pickedup == false)
-                {
-                    displayText.text = "Coping skill not unlocked.";
-                }
-                {
-                    displayText.text = "Shift your focus elsewhere, decreasing your anxiety and chipping away at the problem at hand.";
+                    displayText.text = "Sometimes you just need to sleep it off. Decrease anxiety, chance enemy attacks twice";
                 }
             }
         }
         else if (this.tag == "Attack 3")
         {
-            if (enemy.enemyNameDisplayed.text == "Glass Eye")
+            if (enemy.enemyNameDisplayed.text == "Glass Eye")//Self Doubt
             {
-                displayText.text = "Give in, increase your anxiety, but escape from the encounter early.";
+                displayText.text = "Give in: Increase your anxiety, escape from the encounter if enemy is not at full health";
             }
-            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+            else if (enemy.enemyNameDisplayed.text == "Question Air")//Shut Down
             {
-                displayText.text = "Decreasing your anxiety, but at the cost of increasing your problems. And some other... unintended side effects.";
+                displayText.text = "This is too much- shut down: Increase anxiety, end encounter early, temporarily slowed down";
             }
-            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")//Leave The Room
             {
-                displayText.text = "Sometimes you just need to leave the room. End encounter early.";
+                displayText.text = "Sometimes you just need to leave the room: End encounter early, temporarily greatly increase cloud spawn rate and speed";
             }
-            else if (enemy.enemyNameDisplayed.text == "Question Air")
+            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")//Isolation
             {
-                displayText.text = "This is too much- shut down, increase anxiety, end encounter early.";
+                displayText.text = "Who needs friends anyways: Greatly increase anxiety, end encounter early, temporarily lower cloud spawn rate";
             }
         }
-        else if (this.tag == "Attack 4")
+        else
         {
-            if (enemy.enemyNameDisplayed.text == "Glass Eye")
+            if (enemy.enemyNameDisplayed.text == "Glass Eye")//Take Off Glasses
             {
-                displayText.text = "Glasses are for nerds anyways. Decrease anxiety, but at the expense of your sight.";
+                displayText.text = "Glasses are for nerds anyways: Decrease anxiety, slight damage, temporarily blind";
             }
-            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+            else if (enemy.enemyNameDisplayed.text == "Question Air")//Visualisation
             {
-                displayText.text = "Who needs friends anyways? Increase anxiety, but end encounter early.";
+                displayText.text = "Visualize yourself somewhere else: Decrease problem health a random amount";
             }
-            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+            else if (enemy.enemyNameDisplayed.text == "Scramble Sound")//Punch A Wall
             {
-                displayText.text = "Get out some pent up rage! Decrease anxiety, but increase problem health.";
+                displayText.text = "Get out some pent up rage: Greatly decrease anxiety, but increase problem health";
             }
-            else if (enemy.enemyNameDisplayed.text == "Question Air")
+            else if (enemy.enemyNameDisplayed.text == "Liar Smiler")//Drink To Forget
             {
-                displayText.text = "Visualize yourself somewhere else. Decrease problem health.";
+                displayText.text = "Drink some lovely juice: Decreasing your anxiety, temporarily drunken movement";
             }
         }
-        
-        //displayText = 
-        //Debug.Log("Mouse enter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         mouseOver = false;
         descriptionCanvas.SetActive(false);
-        //Debug.Log("Mouse exit");
     }
 }
 

@@ -73,7 +73,7 @@ public class OpenFightMenu : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Cloud") && !startingBattle)
+        if (other.CompareTag("Cloud") && !startingBattle && !player.isHidden)
         {
             Debug.Log("Normal Fight Start");
             StartCoroutine(OpenMenuOnDelay(other.gameObject));
@@ -191,6 +191,11 @@ public class OpenFightMenu : MonoBehaviour
         {
             enemyNum = enemyChoice - 1;
         }
+        ChoseEnemy(enemyNum);
+    }
+
+    private void ChoseEnemy(int enemyNum)
+    {
         enemyEncountered = enemies[enemyNum];
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
@@ -199,7 +204,6 @@ public class OpenFightMenu : MonoBehaviour
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
-            //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
             if (enemyNameDisplayed.text == "Glass Eye")
             {
                 if (enemyStats.Lightbulb01pickedup == false && i == 0)
@@ -215,22 +219,7 @@ public class OpenFightMenu : MonoBehaviour
                     attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
                 }
             }
-            if (enemyNameDisplayed.text == "Liar Smiler")
-            {
-                if (enemyStats.Lightbulb05pickedup == false && i == 0)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else if (enemyStats.Lightbulb06pickedup == false && i == 1)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
-                }
-            }
-            if (enemyNameDisplayed.text == "Scramble Sound")
+            else if (enemyNameDisplayed.text == "Liar Smiler")
             {
                 if (enemyStats.Lightbulb07pickedup == false && i == 0)
                 {
@@ -242,10 +231,25 @@ public class OpenFightMenu : MonoBehaviour
                 }
                 else
                 {
+                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
+                }
+            }
+            else if (enemyNameDisplayed.text == "Scramble Sound")
+            {
+                if (enemyStats.Lightbulb05pickedup == false && i == 0)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else if (enemyStats.Lightbulb06pickedup == false && i == 1)
+                {
+                    attackButtons[i].GetComponentInChildren<Text>().text = "";
+                }
+                else
+                {
                     attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
                 }
             }
-            if (enemyNameDisplayed.text == "Question Air")
+            else /*if (enemyNameDisplayed.text == "Question Air")*/
             {
                 if (enemyStats.Lightbulb03pickedup == false && i == 0)
                 {
@@ -333,76 +337,7 @@ public class OpenFightMenu : MonoBehaviour
         {
             enemyNum = enemies.Length - 1;
         }
-        enemyEncountered = enemies[enemyNum];
-        enemyPortrait.sprite = enemies[enemyNum].enemySprite;
-        enemyNameDisplayed.text = enemies[enemyNum].enemyName;
-        enemyStats.attributes[2].value.BaseValue = enemies[enemyNum].health;
-        enemyHealthBar.GetComponent<ProgressBar>().maximum = enemies[enemyNum].health;
-
-        for (int i = 0; i < attackButtons.Length; i++)
-        {
-            //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
-            if (enemyNameDisplayed.text == "Glass Eye")
-            {
-                if (enemyStats.Lightbulb01pickedup == false && i == 0)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else if (enemyStats.Lightbulb02pickedup == false && i == 1)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
-                }
-            }
-            if (enemyNameDisplayed.text == "Liar Smiler")
-            {
-                if (enemyStats.Lightbulb05pickedup == false && i == 0)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else if (enemyStats.Lightbulb06pickedup == false && i == 1)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[4 + i];
-                }
-            }
-            if (enemyNameDisplayed.text == "Scramble Sound")
-            {
-                if (enemyStats.Lightbulb07pickedup == false && i == 0)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else if (enemyStats.Lightbulb08pickedup == false && i == 1)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[8 + i];
-                }
-            }
-            if (enemyNameDisplayed.text == "Question Air")
-            {
-                if (enemyStats.Lightbulb03pickedup == false && i == 0)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else if (enemyStats.Lightbulb04pickedup == false && i == 1)
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = "";
-                }
-                else
-                {
-                    attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
-                }
-            }
-        }
+        ChoseEnemy(enemyNum);
     }
 
     IEnumerator StartBossFight(GameObject boss)

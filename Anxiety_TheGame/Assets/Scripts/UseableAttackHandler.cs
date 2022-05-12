@@ -39,199 +39,47 @@ public class UseableAttackHandler : MonoBehaviour
 
     IEnumerator SetUsableAttacks()
     {
-        yield return new WaitForSeconds(.02f);
+        yield return new WaitForEndOfFrame();
         if (enemy.enemyNameDisplayed.text == "Glass Eye")
         {
-            if (Lightbulbs.Lightbulb01pickedup == false)
-            {
-                enemyTurn.Attack1.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack1.enabled = true;
-            }
+            enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb01pickedup;
+            enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb02pickedup;
         }
-
-        if (enemy.enemyNameDisplayed.text == "Glass Eye")
+        else if (enemy.enemyNameDisplayed.text == "Question Air")
         {
-            if (Lightbulbs.Lightbulb02pickedup == false)
-            {
-                enemyTurn.Attack2.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack2.enabled = true;
-            }
+            enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb03pickedup;
+            enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb04pickedup;
         }
-
-        if (enemy.enemyNameDisplayed.text == "Question Air")
+        else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
         {
-            if (Lightbulbs.Lightbulb03pickedup == false)
-            {
-                enemyTurn.Attack1.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack1.enabled = true;
-            }
+            enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb05pickedup;
+            enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb06pickedup;
         }
-
-        if (enemy.enemyNameDisplayed.text == "Question Air")
+        else if (enemy.enemyNameDisplayed.text == "Liar Smiler")
         {
-            if (Lightbulbs.Lightbulb04pickedup == false)
-            {
-                enemyTurn.Attack2.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack2.enabled = true;
-            }
+            enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb07pickedup;
+            enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb08pickedup;
         }
-
-        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
-        {
-            if (Lightbulbs.Lightbulb05pickedup == false)
-            {
-                enemyTurn.Attack1.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack1.enabled = true;
-            }
-        }
-
-        if (enemy.enemyNameDisplayed.text == "Liar Smiler")
-        {
-            if (Lightbulbs.Lightbulb06pickedup == false)
-            {
-                enemyTurn.Attack2.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack2.enabled = true;
-            }
-        }
-
-        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
-        {
-            if (Lightbulbs.Lightbulb07pickedup == false)
-            {
-                enemyTurn.Attack1.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack1.enabled = true;
-            }
-        }
-
-        if (enemy.enemyNameDisplayed.text == "Scramble Sound")
-        {
-            if (Lightbulbs.Lightbulb08pickedup == false)
-            {
-                enemyTurn.Attack2.enabled = false;
-            }
-            else
-            {
-                enemyTurn.Attack2.enabled = true;
-            }
-        }
-
-        if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        else//Boss
         {
             if (randomNum.randomNum == 1)
             {
-                if (Lightbulbs.Lightbulb01pickedup == false)
-                {
-                    enemyTurn.Attack1.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack1.enabled = true;
-                }
+                enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb01pickedup;
+                enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb02pickedup;
             }
-
-            if (randomNum.randomNum == 1)
+            else if (randomNum.randomNum == 2)
             {
-                if (Lightbulbs.Lightbulb02pickedup == false)
-                {
-                    enemyTurn.Attack2.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack2.enabled = true;
-                }
+                enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb03pickedup;
+                enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb04pickedup;
             }
-
-            if (randomNum.randomNum == 2)
+            else if (randomNum.randomNum == 3)
             {
-                if (Lightbulbs.Lightbulb03pickedup == false)
-                {
-                    enemyTurn.Attack1.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack1.enabled = true;
-                }
+                enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb05pickedup;
+                enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb06pickedup;
             }
-
-            if (randomNum.randomNum == 2)
-            {
-                if (Lightbulbs.Lightbulb04pickedup == false)
-                {
-                    enemyTurn.Attack2.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack2.enabled = true;
-                }
-            }
-
-            if (randomNum.randomNum == 3)
-            {
-                if (Lightbulbs.Lightbulb05pickedup == false)
-                {
-                    enemyTurn.Attack1.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack1.enabled = true;
-                }
-            }
-
-            if (randomNum.randomNum == 3)
-            {
-                if (Lightbulbs.Lightbulb06pickedup == false)
-                {
-                    enemyTurn.Attack2.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack2.enabled = true;
-                }
-            }
-
-            if (randomNum.randomNum == 4)
-            {
-                if (Lightbulbs.Lightbulb07pickedup == false)
-                {
-                    enemyTurn.Attack1.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack1.enabled = true;
-                }
-            }
-
-            if (randomNum.randomNum == 4)
-            {
-                if (Lightbulbs.Lightbulb08pickedup == false)
-                {
-                    enemyTurn.Attack2.enabled = false;
-                }
-                else
-                {
-                    enemyTurn.Attack2.enabled = true;
-                }
+            else {
+                enemyTurn.Attack1.enabled = Lightbulbs.Lightbulb07pickedup;
+                enemyTurn.Attack2.enabled = Lightbulbs.Lightbulb08pickedup;
             }
         }
         SetAttackNames();
@@ -246,11 +94,11 @@ public class UseableAttackHandler : MonoBehaviour
                 //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
                 if (enemy.enemyNameDisplayed.text == "Glass Eye")
                 {
-                    if (Lightbulbs.Lightbulb01pickedup == false && i == 0)
+                    if (!Lightbulbs.Lightbulb01pickedup && i == 0)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
-                    else if (Lightbulbs.Lightbulb02pickedup == false && i == 1)
+                    else if (!Lightbulbs.Lightbulb02pickedup && i == 1)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
@@ -259,28 +107,28 @@ public class UseableAttackHandler : MonoBehaviour
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[i];
                     }
                 }
-                if (enemy.enemyNameDisplayed.text == "Liar Smiler")
+                else if (enemy.enemyNameDisplayed.text == "Question Air")
                 {
-                    if (Lightbulbs.Lightbulb05pickedup == false && i == 0)
+                    if (!Lightbulbs.Lightbulb03pickedup && i == 0)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
-                    else if (Lightbulbs.Lightbulb06pickedup == false && i == 1)
+                    else if (!Lightbulbs.Lightbulb04pickedup && i == 1)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
                     else
                     {
-                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[4 + i];
+                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[12 + i];
                     }
                 }
-                if (enemy.enemyNameDisplayed.text == "Scramble Sound")
+                else if (enemy.enemyNameDisplayed.text == "Scramble Sound")
                 {
-                    if (Lightbulbs.Lightbulb07pickedup == false && i == 0)
+                    if (!Lightbulbs.Lightbulb05pickedup && i == 0)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
-                    else if (Lightbulbs.Lightbulb08pickedup == false && i == 1)
+                    else if (!Lightbulbs.Lightbulb06pickedup && i == 1)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
@@ -289,19 +137,19 @@ public class UseableAttackHandler : MonoBehaviour
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[8 + i];
                     }
                 }
-                if (enemy.enemyNameDisplayed.text == "Question Air")
+                else //Liar Smiler
                 {
-                    if (Lightbulbs.Lightbulb03pickedup == false && i == 0)
+                    if (!Lightbulbs.Lightbulb07pickedup && i == 0)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
-                    else if (Lightbulbs.Lightbulb04pickedup == false && i == 1)
+                    else if (!Lightbulbs.Lightbulb08pickedup && i == 1)
                     {
                         enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                     }
                     else
                     {
-                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[12 + i];
+                        enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[4 + i];
                     }
                 }
             }

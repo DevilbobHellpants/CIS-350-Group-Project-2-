@@ -15,8 +15,13 @@ public class PlayerMovement : MonoBehaviour
     public Animator Anim;
     public bool canMove;
 
-    private PlayerStats drunkStat;
-    private bool inDrunkenMovment;
+    public bool isBlind;
+    public bool isHidden;
+    public bool isSlow;
+    public bool isLoud;
+    public bool isIncreasedSpawnRate;
+    public bool isDecreasedSpawnRate;
+    public bool isDrunk;
 
     public float maxDistence = .3f;
     private Vector2 previousLocation;
@@ -27,8 +32,6 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(WaitOnStart());
         StartCoroutine(UpdatePosition());
         StartCoroutine(SpriteGlitch());
-        drunkStat = GetComponent<PlayerStats>();
-        inDrunkenMovment = false;
     }
 
     IEnumerator WaitOnStart()
@@ -39,10 +42,12 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator DrunkenMovment()
     {
-        inDrunkenMovment = true;
-        yield return new WaitForSeconds(UnityEngine.Random.Range(2f, 7f));
-        walkSpeed = walkSpeed * -1;
-        inDrunkenMovment = false;
+        while(isDrunk)
+        {
+            yield return new WaitForSeconds(UnityEngine.Random.Range(3f, 7f));
+            walkSpeed = walkSpeed * -1;
+        }
+        walkSpeed = Mathf.Abs(walkSpeed);
     }
 
     IEnumerator UpdatePosition()
@@ -60,24 +65,20 @@ public class PlayerMovement : MonoBehaviour
 		{
             yield return new WaitForSeconds(Random.Range(1.1f, 2.1f));
             Anim.SetBool("Glitch", true);
-            yield return new WaitForSeconds(Random.Range(0.2f, 0.7f));
-            Anim.SetBool("Glitch", false);
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.7f));
+            if (!isHidden)
+            {
+                Anim.SetBool("Glitch", false);
+            }
 		}
-        
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (drunkStat.attributes[1].value.BaseValue >= 3 && inDrunkenMovment == false)
+        if (isHidden)
         {
-            Debug.Log("Corutine Started");
-            StartCoroutine(DrunkenMovment());
-        }
-        if (drunkStat.attributes[1].value.BaseValue < 3 && Mathf.Sign(walkSpeed) == -1)
-        {
-            walkSpeed = walkSpeed * -1;
+            Anim.SetBool("Glitch", true);
         }
         if (canMove)
         {

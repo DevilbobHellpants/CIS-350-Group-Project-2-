@@ -55,42 +55,37 @@ public class ClickedAttack : MonoBehaviour
         {
             attack = attackButton4;
         }
-        else if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
+        else /*if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")*/
         {
             if (changeAttack == true)
             {
                 randomNum.makeRandomNum(1,5);
                 if (randomNum.randomNum == 1)
                 {
-                    //Debug.Log("Random Num = " + 1);
                     attack = attackButton1;
                 }
-                if (randomNum.randomNum == 2)
+                else if (randomNum.randomNum == 2)
                 {
-                    //Debug.Log("Random Num = " + 2);
                     attack = attackButton2;
                 }
-                if (randomNum.randomNum == 3)
+                else if (randomNum.randomNum == 3)
                 {
-                    //Debug.Log("Random Num = " + 3);
                     attack = attackButton3;
                 }
-                if (randomNum.randomNum == 4)
+                else if (randomNum.randomNum == 4)
                 {
-                    //Debug.Log("Random Num = " + 4);
                     attack = attackButton4;
                 }
                 changeAttack = false;
                 for (int i = 0; i < enemy.attackButtons.Length; i++)//Glass Eye
                 {
-                    //Debug.Log(attackButtons[i].GetComponentInChildren<Text>().text);
                     if (randomNum.randomNum == 1)
                     {
-                        if (Lightbulbs.Lightbulb01pickedup == false && i == 0)
+                        if (!Lightbulbs.Lightbulb01pickedup && i == 0)
                         {
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                         }
-                        else if (Lightbulbs.Lightbulb02pickedup == false && i == 1)
+                        else if (!Lightbulbs.Lightbulb02pickedup && i == 1)
                         {
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                         }
@@ -99,13 +94,13 @@ public class ClickedAttack : MonoBehaviour
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[i];
                         }
                     }
-                    if (randomNum.randomNum == 2)//Questionair
+                    else if (randomNum.randomNum == 2)//Question Air
                     {
-                        if (Lightbulbs.Lightbulb03pickedup == false && i == 0)
+                        if (!Lightbulbs.Lightbulb03pickedup && i == 0)
                         {
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                         }
-                        else if (Lightbulbs.Lightbulb04pickedup == false && i == 1)
+                        else if (!Lightbulbs.Lightbulb04pickedup&& i == 1)
                         {
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                         }
@@ -114,28 +109,13 @@ public class ClickedAttack : MonoBehaviour
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[12 + i];
                         }
                     }
-                    if (randomNum.randomNum == 3)//Liar Smiler
+                    else if (randomNum.randomNum == 3)//Scramble Sound
                     {
-                        if (Lightbulbs.Lightbulb05pickedup == false && i == 0)
+                        if (!Lightbulbs.Lightbulb05pickedup && i == 0)
                         {
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                         }
-                        else if (Lightbulbs.Lightbulb06pickedup == false && i == 1)
-                        {
-                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
-                        }
-                        else
-                        {
-                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[4 + i];
-                        }
-                    }
-                    if (randomNum.randomNum == 4)//Scramble Sound
-                    {
-                        if (Lightbulbs.Lightbulb07pickedup == false && i == 0)
-                        {
-                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
-                        }
-                        else if (Lightbulbs.Lightbulb08pickedup == false && i == 1)
+                        else if (!Lightbulbs.Lightbulb06pickedup && i == 1)
                         {
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
                         }
@@ -144,6 +124,22 @@ public class ClickedAttack : MonoBehaviour
                             enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[8 + i];
                         }
                     }
+                    else//Liar Smiler
+                    {
+                        if (!Lightbulbs.Lightbulb07pickedup && i == 0)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else if (!Lightbulbs.Lightbulb08pickedup && i == 1)
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = "";
+                        }
+                        else
+                        {
+                            enemy.attackButtons[i].GetComponentInChildren<Text>().text = enemy.attackNames[4 + i];
+                        }
+                    }
+                    
                 }
             }
         }
