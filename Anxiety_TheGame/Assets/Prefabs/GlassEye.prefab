@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5513136675159702748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72210836, y: -0.3433872, z: 89.9877}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,6 +47,13 @@ MonoBehaviour:
   health: 40
   enemyName: Glass Eye
   attackDescriptions:
-  - '"Your glasses make you look weird."'
-  - '"What a nerd, get a load of this four-eyes over here-"'
-  - '"Everyone''s been talking about how stupid your new glasses look."'
+  - It tells you "Your glasses make you look compltely ugly."
+  - You overhear it say "What a nerd, get a load of this four-eyes over here-"
+  - It explains to you that "Everyone's been talking about how stupid your new glasses
+    look."
+  - It recites "Oh, I didn't know it was you... you looked so... different..."
+  - It stares at you, but you realize it is taking note of your glasses.
+  - You get caught staring into its ugly g;asses, but realize they are your glasses.
+  - Your glasses weigh more and more, but you can't take them off.
+  - You take off your glasses, but immediately bump into a wall, so you put them
+    back on in shame.

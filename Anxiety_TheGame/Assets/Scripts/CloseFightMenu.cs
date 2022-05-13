@@ -61,19 +61,19 @@ public class CloseFightMenu : MonoBehaviour
     {
         if (playerStats.attributes[2].value.BaseValue <= 0 && fightMenuScript.enemyEncountered == finalBoss)
         {
-            description.text = "Is this it..? Is it really over? [Press space to continue]";
+            description.text = "Is this it..? Is it really over?\n<Press SPACE To Continue>";
             StartCoroutine(Win());
         }
         else if (playerStats.attributes[2].value.BaseValue <= 0)
         {
-            description.text = "Problem defeated! [Press space to continue]";
+            description.text = "Problem defeated!\n<Press SPACE To Continue>";
             fightMenuScript.encounterNum++;
             StartCoroutine(BattleOver());
 
         }
         if (playerStats.attributes[0].value.BaseValue > 100 && !gameOver)
         {
-            description.text = "You are overwhelmed... [Press space to continue]";
+            description.text = "You are overwhelmed...\n<Press SPACE To Respawn At Last Checkpoint>";
             StartCoroutine(Lose());
         }
         if (gameOver)
@@ -214,7 +214,8 @@ public class CloseFightMenu : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
-        description.text = "You ran away.";
+        description.text = "You ran away...";
+        fightMenuScript.encounterNum++;
         yield return new WaitForSeconds(2f);
         worldEffect.resetVariables();
         fightMenu.SetActive(false);

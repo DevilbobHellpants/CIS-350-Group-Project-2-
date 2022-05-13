@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3517784996069295632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5072055, y: -1.9724017, z: 113.1859}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,8 +47,20 @@ MonoBehaviour:
   health: 200
   enemyName: You
   attackDescriptions:
-  - '"You really are worthless, you should just give up."'
-  - '"Nobody really cares about you, they''re just trying to be nice."'
-  - '"You''re disgusting. Why would anyone want to spend time with you?"'
-  - '"You''re so stupid, there''s rocks with more braincells than you."'
-  - '"The world would be a better place without you in it."'
+  - You hear voices tell you "Ugly people will never find true love, you should just
+    give up."
+  - The voices declair that "You're so stupid, there are rocks with more braincells
+    than you."
+  - The voices reveal that "You get annoyed at the slightest noise. Why would anyone
+    want to spend time with you?"
+  - Multiple voices utter the words "Nobody really cares about you, they're just
+    trying to be nice."
+  - Thousands of voices say at once "The world would be a better place without you
+    in it."
+  - Staring into the thing brings you to your knees from the terror you felt.
+  - You remember this is inside you, and you despise it.
+  - You wonder if it is even possible to defeat a creature like whats in front of
+    you.
+  - The anxiety inside feels like it is about to burst out and join what's in front
+    of you.
+  - This is impossible.

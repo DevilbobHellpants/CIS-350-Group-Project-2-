@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6869759108831613000}
   - component: {fileID: 6102935585789387390}
   m_Layer: 0
-  m_Name: Scramble Sound
+  m_Name: ScrambleSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6269468599151264085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72210836, y: -0.3433872, z: 89.9877}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,6 +47,16 @@ MonoBehaviour:
   health: 50
   enemyName: Scramble Sound
   attackDescriptions:
-  - You hear the clicking of a pen. It's constant.
-  - There's a leaky facuet somewhere. Where is it coming from?
-  - Is that the fire alarm?
+  - You hear the sound of multiple animals coming from it... "CHIRP," "WOOF," "HISS,"
+    "QUACK," "MEOW..."
+  - The sound of dripping water comes from it... "Drip... Drip... Drip... Drip...
+    Drip... Drip... Drip... Drip... Drip... Drip... Drip... Drip... Drip... Drip...
+    Drip... Drip... Drip... Drip... Drip... Drip... Drip... Drip... Drip... Drip..."
+  - It yells at you "HEY, HEY, CAN YOU HEAR ME..."
+  - You hear the sound of someone constantly shaking their legs interrupted  by occasional
+    coughs coming from it.
+  - The noise stops for a moment, but your ears still ring not giving you any peace.
+  - The sounds make you cover your ears, but they only get louder.
+  - Your trying to concentrate, but the crowd of people's voices mix into your thoughts.
+  - You suddenly yell trying to stop the noise, but your voice gets drowned out by
+    the noice.

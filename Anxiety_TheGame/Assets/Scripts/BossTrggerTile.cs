@@ -28,6 +28,7 @@ public class BossTrggerTile : MonoBehaviour
         OverworldAnxietyEffect worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         StartCoroutine(RemoveDarkness());
         player.canMove = false;
+        player.resetStats();
         player.gameObject.GetComponent<OpenFightMenu>().startingBattle = true;
         worldEffect.inBattle = true;
         for (int i = 0; i < inOrderAppearTiles.Length; i++)

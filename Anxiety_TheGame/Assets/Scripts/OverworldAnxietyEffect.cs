@@ -13,7 +13,7 @@ public class OverworldAnxietyEffect : MonoBehaviour
 {
     public GameObject[] imagePrefabs;
     public bool inBattle = true;
-    public Image darknessEffect;
+    //public Image darknessEffect;
     public CinemachineVirtualCamera cinemachine;
     public GameObject player;
 
@@ -39,11 +39,12 @@ public class OverworldAnxietyEffect : MonoBehaviour
     private float simSpeed = 1f;
     public SimpleLUT cameraLUT;
     public bool isStart = true;
+    private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnCloudPrefab());
+        playerMovement = player.GetComponent<PlayerMovement>();
         StartCoroutine(SpawnNeuronEffect());
     }
 
@@ -65,50 +66,80 @@ public class OverworldAnxietyEffect : MonoBehaviour
 
     IEnumerator SpawnCloudPrefab()
     {
-        while (true)
+        while (!inBattle)
         {
-            yield return new WaitForSeconds(Random.Range(minCloudSpawnTime, maxCloudSpawnTime));
-            if (!inBattle)
+            if (timer <= 30)
             {
-                if (skipedFirst)
+                if (playerMovement.isIncreasedSpawnRate)
                 {
-                    SpawnClouds();
+                    minCloudSpawnTime = 2f - (1f * (timer / 30f));
+                    maxCloudSpawnTime = 7f - (3f * (timer / 30f));
+                }
+                else if (playerMovement.isDecreasedSpawnRate)
+                {
+                    minCloudSpawnTime = 8f - (3f * (timer / 30f));
+                    maxCloudSpawnTime = 16f - (4f * (timer / 30f));
                 }
                 else
                 {
-                    skipedFirst = true;
+                    minCloudSpawnTime = 5f - (2f * (timer / 30f));
+                    maxCloudSpawnTime = 12f - (4f * (timer / 30f));
                 }
             }
-        }
-    }
+            else if (timer <= 60)
+            {
+                if (playerMovement.isIncreasedSpawnRate)
+                {
+                    minCloudSpawnTime = 1f - (.5f * (timer / 30f));
+                    maxCloudSpawnTime = 4f - (1f * (timer / 30f));
+                }
+                else if (playerMovement.isDecreasedSpawnRate)
+                {
+                    minCloudSpawnTime = 5f - (2f * ((timer - 30f) / 30f));
+                    maxCloudSpawnTime = 12f - (4f * ((timer - 30f) / 30f));
+                }
+                else
+                {
+                    minCloudSpawnTime = 3f - (2f * ((timer - 30f) / 30f));
+                    maxCloudSpawnTime = 8f - (3f * ((timer - 30f) / 30f));
+                }
+            }
+            yield return new WaitForSeconds(Random.Range(minCloudSpawnTime, maxCloudSpawnTime));
+            if (skipedFirst || playerMovement.isIncreasedSpawnRate)
+            {
+                Vector2 spawnPos;
+                int side = Random.Range(0, 4);
+                if (side == 0)
+                {//Top Side
+                    spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, 4f + player.transform.position.y);
+                }
+                else if (side == 1)
+                {//Right Side
+                    spawnPos = new Vector2(7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
+                }
+                else if (side == 2)
+                {//Bottom Side
+                    spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, -4f + player.transform.position.y);
+                }
+                else
+                {//Left Side
+                    spawnPos = new Vector2(-7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
+                }
 
-    private void SpawnClouds()
-    {
-
-        Vector2 spawnPos;
-        int side = Random.Range(0, 4);
-
-        //side = 0,left side
-        //side = 1,right side
-        if (side == 0) {//Top Side
-            spawnPos =  new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, 4f + player.transform.position.y);
+                float size = Random.Range(1.225f, 1.732f);//sqrt 1.5 - sqrt 3
+                size *= size;
+                GameObject cloud = Instantiate(cloudPrefab, spawnPos, cloudPrefab.transform.rotation);
+                cloud.transform.localScale = new Vector3(size, size, size);
+                if (playerMovement.isIncreasedSpawnRate)
+                {
+                    cloud.GetComponent<CloudMovement>().averageSpeed *= 1.4f;
+                }
+            }
+            else
+            {
+                skipedFirst = true;
+            }
         }
-        else if (side == 1)
-        {//Right Side
-            spawnPos = new Vector2(7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
-        }
-        else if (side == 2)
-        {//Bottom Side
-            spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, -4f + player.transform.position.y);
-        }
-        else
-        {//Left Side
-            spawnPos = new Vector2(-7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
-        }
-
-        float size = Random.Range(1.225f, 1.732f);//sqrt 1.5 - sqrt 3
-        size *= size;
-        Instantiate(cloudPrefab, spawnPos, cloudPrefab.transform.rotation).transform.localScale = new Vector3(size, size, size);
     }
 
     // Update is called once per frame
@@ -128,8 +159,6 @@ public class OverworldAnxietyEffect : MonoBehaviour
                 effectTimer = 3f + (1.5f * (timer / 30f));
                 minAlpha = .3f * (timer / 30f);
                 maxAlpha = .1f + (.4f * (timer / 30f));
-                minCloudSpawnTime = 5f - (2f * (timer / 30f));
-                maxCloudSpawnTime = 12f - (4f * (timer / 30f));
             }
             else if (timer <= 60)
             {
@@ -140,8 +169,6 @@ public class OverworldAnxietyEffect : MonoBehaviour
                 effectTimer = 4.5f + (1.5f * ((timer - 30f) / 30f));
                 minAlpha = .2f + (.3f * ((timer - 30f) / 30f));
                 maxAlpha = .5f + (.5f * ((timer - 30f) / 30f));
-                minCloudSpawnTime = 3f - (2f * ((timer - 30f) / 30f));
-                maxCloudSpawnTime = 8f - (3f * ((timer - 30f) / 30f));
                 simSpeed = 2f;
             }
             else
@@ -195,10 +222,11 @@ public class OverworldAnxietyEffect : MonoBehaviour
         minAlpha = 0f;
         maxAlpha = .1f;
         alphaChangeTime = 2f;
-        minCloudSpawnTime = 5f;
-        maxCloudSpawnTime = 12f;
+        //minCloudSpawnTime = 5f;
+        //maxCloudSpawnTime = 12f;
         simSpeed = 1f;
         alphaUp = true;
         skipedFirst = false;
+        StartCoroutine(SpawnCloudPrefab());
     }
 }

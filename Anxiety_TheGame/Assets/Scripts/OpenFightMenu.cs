@@ -47,7 +47,7 @@ public class OpenFightMenu : MonoBehaviour
     public float menuDelayTime = 2f;
     private float timer;
     private PlayerMovement player;
-    public Image darknessEffect;
+    //public Image darknessEffect;
     public bool startingBattle = false;
 
     public int encounterNum = 0;
@@ -67,7 +67,7 @@ public class OpenFightMenu : MonoBehaviour
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
+        //darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
         //description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
     }
 
@@ -97,23 +97,12 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator OpenMenuOnDelay(GameObject cloud)
     {
-        playerAudio.Stop();
-        effectSource.PlayOneShot(encounterSound, .75f);
-        enemyPortrait.color = Color.white;
+        setUpFight();
         if (cloud.GetComponent<CloudMovement>().smoke != null)
         {
             cloud.GetComponent<CloudMovement>().smoke.gameObject.SetActive(true);
         }
-
-        if (!fightMusic.isPlaying)
-        {
-            fightMusic.PlayDelayed(2.5f);
-        }
-
-        player.canMove = false;
-        worldEffect.inBattle = true;
         worldEffect.isStart = false;
-        startingBattle = true;
         cloud.GetComponent<CloudMovement>().inBattle = true;
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
@@ -169,15 +158,6 @@ public class OpenFightMenu : MonoBehaviour
         startingBattle = false;
         fightMenu.SetActive(true);
 
-        //setting up the menu for the specific enemy
-        if (encounterNum == 0)
-        {
-            description.text = "A problem appears! You can see the problem's name and information on the left side of the screen.\nPress[space] to continue.";
-        }
-        if (encounterNum >= 1)
-        {
-            description.text = "A problem appears...";
-        }
         int enemyNum = Random.Range(0, 2);
         if (enemyChoice > enemies.Length)
         {
@@ -191,7 +171,22 @@ public class OpenFightMenu : MonoBehaviour
         {
             enemyNum = enemyChoice - 1;
         }
+        player.resetStats();
         ChoseEnemy(enemyNum);
+    }
+
+    private void setUpFight()
+    {
+        playerAudio.Stop();
+        effectSource.PlayOneShot(encounterSound, .75f);
+        enemyPortrait.color = Color.white;
+        player.canMove = false;
+        worldEffect.inBattle = true;
+        startingBattle = true;
+        if (!fightMusic.isPlaying)
+        {
+            fightMusic.PlayDelayed(2.5f);
+        }
     }
 
     private void ChoseEnemy(int enemyNum)
@@ -206,6 +201,35 @@ public class OpenFightMenu : MonoBehaviour
         {
             if (enemyNameDisplayed.text == "Glass Eye")
             {
+                if (encounterNum == 0)
+                {
+                    description.text = "A problem appears! You can see the problem's name and information on the left side of the screen.\n<Press SPACE To Continue>";
+                }
+                else
+                {
+                    int descriptionTextNum = Random.Range(0, 5);
+                    if (descriptionTextNum == 0)
+                    {
+                        description.text = "Looking at the enemy makes you want to take off your glasses.";
+                    }
+                    else if (descriptionTextNum == 1)
+                    {
+                        description.text = "The enemy looks at you behind its many ugly glasses.";
+                    }
+                    else if (descriptionTextNum == 2)
+                    {
+                        description.text = "Do I look like that when I wear my glasses?";
+                    }
+                    else if (descriptionTextNum == 3)
+                    {
+                        description.text = "You remember being called \"Glass Eyes\".";
+                    }
+                    else
+                    {
+                        description.text = "You prepare to fight, but your glasses bother you.";
+                    }
+                }
+
                 if (enemyStats.Lightbulb01pickedup == false && i == 0)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
@@ -221,6 +245,28 @@ public class OpenFightMenu : MonoBehaviour
             }
             else if (enemyNameDisplayed.text == "Liar Smiler")
             {
+                int descriptionTextNum = Random.Range(0, 5);
+                if (descriptionTextNum == 0)
+                {
+                    description.text = "Looking at the enemy makes you realize your alone.";
+                }
+                else if (descriptionTextNum == 1)
+                {
+                    description.text = "The enemy looks at you behind its mask laughing.";
+                }
+                else if (descriptionTextNum == 2)
+                {
+                    description.text = "Do my friends hide behind a mask when they are with me?";
+                }
+                else if (descriptionTextNum == 3)
+                {
+                    description.text = "You remember when your friends made fun of you when they thought you weren't there.";
+                }
+                else
+                {
+                    description.text = "You prepare to fight, but you feel like your friends are watching you and want to see you fail.";
+                }
+
                 if (enemyStats.Lightbulb07pickedup == false && i == 0)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
@@ -236,6 +282,28 @@ public class OpenFightMenu : MonoBehaviour
             }
             else if (enemyNameDisplayed.text == "Scramble Sound")
             {
+                int descriptionTextNum = Random.Range(0, 5);
+                if (descriptionTextNum == 0)
+                {
+                    description.text = "Looking at the enemy makes you notice the annoying sounds it makes.";
+                }
+                else if (descriptionTextNum == 1)
+                {
+                    description.text = "The enemy looks at you while constantly moving back and forth at a rythmic pace.";
+                }
+                else if (descriptionTextNum == 2)
+                {
+                    description.text = "If I beat him, will the annoying sounds stop?";
+                }
+                else if (descriptionTextNum == 3)
+                {
+                    description.text = "You remember how it is impossible to find peace and quiet at home.";
+                }
+                else
+                {
+                    description.text = "You prepare to fight, but an annoying sound makes it hard to concentrate.";
+                }
+
                 if (enemyStats.Lightbulb05pickedup == false && i == 0)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
@@ -251,6 +319,28 @@ public class OpenFightMenu : MonoBehaviour
             }
             else /*if (enemyNameDisplayed.text == "Question Air")*/
             {
+                int descriptionTextNum = Random.Range(0, 5);
+                if (descriptionTextNum == 0)
+                {
+                    description.text = "Looking at the enemy fills you with questions that you don't want answered.";
+                }
+                else if (descriptionTextNum == 1)
+                {
+                    description.text = "The enemy stares at you, and you are frozen unable to do anything.";
+                }
+                else if (descriptionTextNum == 2)
+                {
+                    description.text = "Is it trying to ask a question?";
+                }
+                else if (descriptionTextNum == 3)
+                {
+                    description.text = "You remember the thousands of times you had a question, but were too afraid to raise your hand.";
+                }
+                else
+                {
+                    description.text = "You prepare to fight, but unanswered questions swarm your mind.";
+                }
+
                 if (enemyStats.Lightbulb03pickedup == false && i == 0)
                 {
                     attackButtons[i].GetComponentInChildren<Text>().text = "";
@@ -269,20 +359,9 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator StartLightbulbFight(GameObject lightbulb)
     {
-        playerAudio.Stop();
-        effectSource.PlayOneShot(encounterSound, .75f);
-        player.canMove = false;
-        worldEffect.inBattle = true;
-        enemyPortrait.color = Color.white;
-        startingBattle = true;
+        setUpFight();
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
-
-        playerAudio.Stop();
-        if (!fightMusic.isPlaying)
-        {
-            fightMusic.PlayDelayed(2.5f);
-        }
 
         float[] alpha = new float[effects.Length];
         for (int i = 0; i < effects.Length; i++)
@@ -331,12 +410,12 @@ public class OpenFightMenu : MonoBehaviour
         fightMenu.SetActive(true);
 
         //setting up the menu for the specific enemy
-        description.text = "A problem appears...";
         int enemyNum = (enemyChoice % enemies.Length) - 1;
         if (enemyNum == -1)
         {
             enemyNum = enemies.Length - 1;
         }
+        player.resetStats();
         ChoseEnemy(enemyNum);
     }
 
@@ -344,13 +423,11 @@ public class OpenFightMenu : MonoBehaviour
     {
         playerAudio.Stop();
         effectSource.PlayOneShot(encounterSound, .75f);
-
         if (!bossMusic.isPlaying)
         {
             bossMusic.PlayDelayed(2.5f);
         }
 
-      
         player.canMove = false;
         worldEffect.inBattle = true;
         startingBattle = true;

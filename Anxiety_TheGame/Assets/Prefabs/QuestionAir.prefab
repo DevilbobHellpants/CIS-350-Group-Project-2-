@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5522158825167243354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72210836, y: -0.3433872, z: 89.9877}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,7 +47,13 @@ MonoBehaviour:
   health: 60
   enemyName: Question Air
   attackDescriptions:
-  - '"You''re so stupid, the professor already went over this section 20 minutes
-    ago."'
-  - '"Everyone''s going to stare, did you even brush your hair this morning?"'
-  - '"What if your voice cracks? Everyone will laugh."'
+  - You hear it say "You're so stupid, the professor already went over this section."
+  - It tells you "Everyone's going to stare."
+  - It questions you by asking "What if your voice cracks?"
+  - You overhear it saying "I bet they get Fs if they ask questions like that."
+  - Staring at it fills you with dread and unanswered questions.
+  - As it holds up its hand, you realize you held up your hand too. You quickly retract
+    it.
+  - Questions overtake your mind, but you hold them in. It feels like you are about
+    to burst.
+  - It stares at you as if it was judging you before you even asked your question.

@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float maxDistence = .3f;
     private Vector2 previousLocation;
+    public Camera camera;
 
     private void Start()
     {
@@ -76,10 +78,28 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isBlind)
+        {
+            camera.GetComponent<PostProcessVolume>().enabled = true;
+        }
         if (isHidden)
         {
             Anim.SetBool("Glitch", true);
         }
+        if (isSlow)
+        {
+            walkSpeed *= .6f;
+        }
+        if (isLoud)
+        {
+            camera.GetComponent<AudioDistortionFilter>().enabled = true;
+        }
+        if (isDrunk)
+        {
+            StartCoroutine(DrunkenMovment());
+        }
+
+
         if (canMove)
         {
             xSpeed = Input.GetAxis("Horizontal");
@@ -120,5 +140,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-}
 
+    public void resetStats()
+    {
+        isBlind = false;
+        isHidden = false;
+        isSlow = false;
+        isIncreasedSpawnRate = false;
+        isDecreasedSpawnRate = false;
+        isDrunk = false;
+    }
+}

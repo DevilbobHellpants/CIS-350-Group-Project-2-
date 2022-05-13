@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4307118723216152070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72210836, y: -0.3433872, z: 89.9877}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,6 +47,15 @@ MonoBehaviour:
   health: 80
   enemyName: Liar Smiler
   attackDescriptions:
-  - '"Your friends don''t really like you, they''re just trying to be nice."'
-  - '"Do you hear the things your friends say behind your back?"'
-  - '"Aw, you think people care about you? Cute."'
+  - It tells you "Your friends don't really like you, they're just trying to be nice."
+  - You step back in fear as it asks you "Do you hear the things your friends say
+    behind your back?"
+  - It proclaims "Aw, you think people care about you? How cute."
+  - You hear two voices announce "It isn't fun being around you. Never speak to us
+    again."
+  - As you look closer, you realize its your friends behind the masks that are laughing
+    at you.
+  - You start to wonder if you have no friends, then they can't hurt you.
+  - You awkwardly start laughing with it even though you don't understand why it
+    is laughing.
+  - Painful memories caused by your "friends" fill your mind.
