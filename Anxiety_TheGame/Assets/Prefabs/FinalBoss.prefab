@@ -64,3 +64,6 @@ MonoBehaviour:
   - The anxiety inside feels like it is about to burst out and join what's in front
     of you.
   - This is impossible.
+  minDamage: 30
+  maxDamage: 40
+  numAttacks: 1

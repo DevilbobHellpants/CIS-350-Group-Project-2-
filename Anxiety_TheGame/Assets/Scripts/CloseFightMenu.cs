@@ -34,6 +34,7 @@ public class CloseFightMenu : MonoBehaviour
 
     private PlayerMovement player;
     private CheckpointTrigger[] checkpoints;
+    private bool afterBattle = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,20 +62,31 @@ public class CloseFightMenu : MonoBehaviour
     {
         if (playerStats.attributes[2].value.BaseValue <= 0 && fightMenuScript.enemyEncountered == finalBoss)
         {
-            description.text = "Is this it..? Is it really over?\n<Press SPACE To Continue>";
-            StartCoroutine(Win());
+            if (!afterBattle)
+            {
+                fightMenuScript.encounterNum++;
+                afterBattle = true;
+                StartCoroutine(Win());
+            }
         }
         else if (playerStats.attributes[2].value.BaseValue <= 0)
         {
-            description.text = "Problem defeated!\n<Press SPACE To Continue>";
-            fightMenuScript.encounterNum++;
-            StartCoroutine(BattleOver());
+            if (!afterBattle)
+            {
+                fightMenuScript.encounterNum++;
+                afterBattle = true;
+                StartCoroutine(BattleOver());
+            }
+            
 
         }
         if (playerStats.attributes[0].value.BaseValue > 100 && !gameOver)
         {
-            description.text = "You are overwhelmed...\n<Press SPACE To Respawn At Last Checkpoint>";
-            StartCoroutine(Lose());
+            if (!afterBattle)
+            {
+                afterBattle = true;
+                StartCoroutine(Lose());
+            }
         }
         if (gameOver)
         {
@@ -129,6 +141,13 @@ public class CloseFightMenu : MonoBehaviour
         openFMScript.effectSource.PlayOneShot(openFMScript.winBattleSound, .2f);
         openFMScript.playerAudio.PlayDelayed(0.5f);
 
+        
+        while (!Input.GetKey(KeyCode.Space))
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        yield return new WaitForEndOfFrame();
+        description.text = "Problem defeated!\n<Press SPACE To Continue>";
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
@@ -155,6 +174,7 @@ public class CloseFightMenu : MonoBehaviour
         }
         hoverDesc.mouseOver = false;
         hoverDesc.descriptionCanvas.SetActive(false);
+        afterBattle = false;
     }
 
     IEnumerator Win()
@@ -170,6 +190,7 @@ public class CloseFightMenu : MonoBehaviour
         attack3.enabled = false;
         attack4.enabled = false;
         win = true;
+        description.text = "Is this it..? Is it really over?\n<Press SPACE To Continue>";
         yield return new WaitForSeconds(3);
         youWinScreen.SetActive(true);
         bossAnim.SetActive(false);
@@ -180,6 +201,7 @@ public class CloseFightMenu : MonoBehaviour
         }
         hoverDesc.mouseOver = false;
         hoverDesc.descriptionCanvas.SetActive(false);
+        afterBattle = false;
     }
 
     IEnumerator Lose()
@@ -195,7 +217,11 @@ public class CloseFightMenu : MonoBehaviour
         attack3.enabled = false;
         attack4.enabled = false;
         gameOver = true;
-        yield return new WaitForSeconds(3);
+        description.text = "You are overwhelmed...\n<Press SPACE To Respawn At Last Checkpoint>";
+        while (!Input.GetKey(KeyCode.Space))
+        {
+            yield return new WaitForFixedUpdate();
+        }
         gameOverScreen.SetActive(true);
         bossAnim.SetActive(false);
 
@@ -205,7 +231,7 @@ public class CloseFightMenu : MonoBehaviour
         }
         hoverDesc.mouseOver = false;
         hoverDesc.descriptionCanvas.SetActive(false);
-
+        afterBattle = false;
     }
 
     IEnumerator BattleOverEarly()

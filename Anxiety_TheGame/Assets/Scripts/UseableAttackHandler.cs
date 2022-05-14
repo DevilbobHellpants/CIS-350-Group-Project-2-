@@ -26,12 +26,12 @@ public class UseableAttackHandler : MonoBehaviour
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         randomNum = GameObject.FindGameObjectWithTag("Player").GetComponent<RandomNumGen>();
     }
-
+    /*
     public void OnEnable()
     {
         StartCoroutine(SetUsableAttacks());
     }
-    
+    */
     public void CallSetUsableAttacks()
     {
         StartCoroutine(SetUsableAttacks());

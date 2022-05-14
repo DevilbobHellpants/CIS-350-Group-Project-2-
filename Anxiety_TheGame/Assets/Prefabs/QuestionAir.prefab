@@ -57,3 +57,7 @@ MonoBehaviour:
   - Questions overtake your mind, but you hold them in. It feels like you are about
     to burst.
   - It stares at you as if it was judging you before you even asked your question.
+  minDamage: 5
+  maxDamage: 35
+  numAttacks: 1
+  attackFirst: 1

@@ -46,6 +46,7 @@ public class OverworldAnxietyEffect : MonoBehaviour
     {
         playerMovement = player.GetComponent<PlayerMovement>();
         StartCoroutine(SpawnNeuronEffect());
+        StartCoroutine(SpawnCloudPrefab());
     }
 
     IEnumerator SpawnNeuronEffect()
@@ -66,78 +67,85 @@ public class OverworldAnxietyEffect : MonoBehaviour
 
     IEnumerator SpawnCloudPrefab()
     {
-        while (!inBattle)
+        while(true)
         {
-            if (timer <= 30)
+            yield return new WaitForEndOfFrame();
+            while (!inBattle)
             {
-                if (playerMovement.isIncreasedSpawnRate)
+                yield return new WaitForSeconds(Random.Range(minCloudSpawnTime, maxCloudSpawnTime));
+                if (!inBattle)
                 {
-                    minCloudSpawnTime = 2f - (1f * (timer / 30f));
-                    maxCloudSpawnTime = 7f - (3f * (timer / 30f));
-                }
-                else if (playerMovement.isDecreasedSpawnRate)
-                {
-                    minCloudSpawnTime = 8f - (3f * (timer / 30f));
-                    maxCloudSpawnTime = 16f - (4f * (timer / 30f));
-                }
-                else
-                {
-                    minCloudSpawnTime = 5f - (2f * (timer / 30f));
-                    maxCloudSpawnTime = 12f - (4f * (timer / 30f));
-                }
-            }
-            else if (timer <= 60)
-            {
-                if (playerMovement.isIncreasedSpawnRate)
-                {
-                    minCloudSpawnTime = 1f - (.5f * (timer / 30f));
-                    maxCloudSpawnTime = 4f - (1f * (timer / 30f));
-                }
-                else if (playerMovement.isDecreasedSpawnRate)
-                {
-                    minCloudSpawnTime = 5f - (2f * ((timer - 30f) / 30f));
-                    maxCloudSpawnTime = 12f - (4f * ((timer - 30f) / 30f));
-                }
-                else
-                {
-                    minCloudSpawnTime = 3f - (2f * ((timer - 30f) / 30f));
-                    maxCloudSpawnTime = 8f - (3f * ((timer - 30f) / 30f));
-                }
-            }
-            yield return new WaitForSeconds(Random.Range(minCloudSpawnTime, maxCloudSpawnTime));
-            if (skipedFirst || playerMovement.isIncreasedSpawnRate)
-            {
-                Vector2 spawnPos;
-                int side = Random.Range(0, 4);
-                if (side == 0)
-                {//Top Side
-                    spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, 4f + player.transform.position.y);
-                }
-                else if (side == 1)
-                {//Right Side
-                    spawnPos = new Vector2(7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
-                }
-                else if (side == 2)
-                {//Bottom Side
-                    spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, -4f + player.transform.position.y);
-                }
-                else
-                {//Left Side
-                    spawnPos = new Vector2(-7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
-                }
+                    if (timer <= 30)
+                    {
+                        if (playerMovement.isIncreasedSpawnRate)
+                        {
+                            minCloudSpawnTime = 2f - (1f * (timer / 30f));
+                            maxCloudSpawnTime = 7f - (3f * (timer / 30f));
+                        }
+                        else if (playerMovement.isDecreasedSpawnRate)
+                        {
+                            minCloudSpawnTime = 8f - (3f * (timer / 30f));
+                            maxCloudSpawnTime = 16f - (4f * (timer / 30f));
+                        }
+                        else
+                        {
+                            minCloudSpawnTime = 5f - (2f * (timer / 30f));
+                            maxCloudSpawnTime = 12f - (4f * (timer / 30f));
+                        }
+                    }
+                    else if (timer <= 60)
+                    {
+                        if (playerMovement.isIncreasedSpawnRate)
+                        {
+                            minCloudSpawnTime = 1f - (.5f * (timer / 30f));
+                            maxCloudSpawnTime = 4f - (1f * (timer / 30f));
+                        }
+                        else if (playerMovement.isDecreasedSpawnRate)
+                        {
+                            minCloudSpawnTime = 5f - (2f * ((timer - 30f) / 30f));
+                            maxCloudSpawnTime = 12f - (4f * ((timer - 30f) / 30f));
+                        }
+                        else
+                        {
+                            minCloudSpawnTime = 3f - (2f * ((timer - 30f) / 30f));
+                            maxCloudSpawnTime = 8f - (3f * ((timer - 30f) / 30f));
+                        }
+                    }
+                    if ((skipedFirst || playerMovement.isIncreasedSpawnRate))
+                    {
+                        Vector2 spawnPos;
+                        int side = Random.Range(0, 4);
+                        if (side == 0)
+                        {//Top Side
+                            spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, 4f + player.transform.position.y);
+                        }
+                        else if (side == 1)
+                        {//Right Side
+                            spawnPos = new Vector2(7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
+                        }
+                        else if (side == 2)
+                        {//Bottom Side
+                            spawnPos = new Vector2(Random.Range(-7f, 7f) + player.transform.position.x, -4f + player.transform.position.y);
+                        }
+                        else
+                        {//Left Side
+                            spawnPos = new Vector2(-7f + player.transform.position.x, Random.Range(-4f, 4f) + player.transform.position.y);
+                        }
 
-                float size = Random.Range(1.225f, 1.732f);//sqrt 1.5 - sqrt 3
-                size *= size;
-                GameObject cloud = Instantiate(cloudPrefab, spawnPos, cloudPrefab.transform.rotation);
-                cloud.transform.localScale = new Vector3(size, size, size);
-                if (playerMovement.isIncreasedSpawnRate)
-                {
-                    cloud.GetComponent<CloudMovement>().averageSpeed *= 1.4f;
+                        float size = Random.Range(1.225f, 1.732f);//sqrt 1.5 - sqrt 3
+                        size *= size;
+                        GameObject cloud = Instantiate(cloudPrefab, spawnPos, cloudPrefab.transform.rotation);
+                        cloud.transform.localScale = new Vector3(size, size, size);
+                        if (playerMovement.isIncreasedSpawnRate)
+                        {
+                            cloud.GetComponent<CloudMovement>().averageSpeed *= 1.4f;
+                        }
+                    }
+                    else
+                    {
+                        skipedFirst = true;
+                    }
                 }
-            }
-            else
-            {
-                skipedFirst = true;
             }
         }
     }
@@ -227,6 +235,5 @@ public class OverworldAnxietyEffect : MonoBehaviour
         simSpeed = 1f;
         alphaUp = true;
         skipedFirst = false;
-        StartCoroutine(SpawnCloudPrefab());
     }
 }

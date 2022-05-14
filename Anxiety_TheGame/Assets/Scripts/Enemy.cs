@@ -14,18 +14,8 @@ public class Enemy : MonoBehaviour
     public int health;
     public string enemyName;
     public string[] attackDescriptions;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
+    public int minDamage;
+    public int maxDamage;
+    public int numAttacks = 1;
+    public bool attackFirst = false;
 }

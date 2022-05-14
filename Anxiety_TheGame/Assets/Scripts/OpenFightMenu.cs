@@ -54,6 +54,8 @@ public class OpenFightMenu : MonoBehaviour
     public int enemyChoice = 0;
 
     public SimpleLUT cameraLUT;
+    private UseableAttackHandler useableAttacks;
+    private EnemiesTurn enemyTurn;
 
     void Start()
     {
@@ -67,6 +69,8 @@ public class OpenFightMenu : MonoBehaviour
         //fightMenu = GameObject.FindGameObjectWithTag("FightMenu");
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        useableAttacks = attackButtons[0].GetComponent<UseableAttackHandler>();
+        enemyTurn = attackButtons[0].GetComponent<EnemiesTurn>();
         //darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
         //description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
     }
@@ -172,7 +176,7 @@ public class OpenFightMenu : MonoBehaviour
             enemyNum = enemyChoice - 1;
         }
         player.resetStats();
-        ChoseEnemy(enemyNum);
+        StartCoroutine(ChoseEnemy(enemyNum));
     }
 
     private void setUpFight()
@@ -189,7 +193,7 @@ public class OpenFightMenu : MonoBehaviour
         }
     }
 
-    private void ChoseEnemy(int enemyNum)
+    IEnumerator ChoseEnemy(int enemyNum)
     {
         enemyEncountered = enemies[enemyNum];
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
@@ -199,6 +203,8 @@ public class OpenFightMenu : MonoBehaviour
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
+            attackButtons[i].GetComponent<Button>().enabled = true;
+            attackButtons[i].GetComponentInChildren<Text>().enabled = true;
             if (enemyNameDisplayed.text == "Glass Eye")
             {
                 if (encounterNum == 0)
@@ -285,23 +291,23 @@ public class OpenFightMenu : MonoBehaviour
                 int descriptionTextNum = Random.Range(0, 5);
                 if (descriptionTextNum == 0)
                 {
-                    description.text = "Looking at the enemy makes you notice the annoying sounds it makes.";
+                    description.text = "Looking at the enemy makes you notice the annoying sounds it makes.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else if (descriptionTextNum == 1)
                 {
-                    description.text = "The enemy looks at you while constantly moving back and forth at a rythmic pace.";
+                    description.text = "The enemy looks at you while constantly moving back and forth at a rythmic pace.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else if (descriptionTextNum == 2)
                 {
-                    description.text = "If I beat him, will the annoying sounds stop?";
+                    description.text = "If I beat him, will the annoying sounds stop?\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else if (descriptionTextNum == 3)
                 {
-                    description.text = "You remember how it is impossible to find peace and quiet at home.";
+                    description.text = "You remember how it is impossible to find peace and quiet at home.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else
                 {
-                    description.text = "You prepare to fight, but an annoying sound makes it hard to concentrate.";
+                    description.text = "You prepare to fight, but an annoying sound makes it hard to concentrate.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
 
                 if (enemyStats.Lightbulb05pickedup == false && i == 0)
@@ -322,23 +328,23 @@ public class OpenFightMenu : MonoBehaviour
                 int descriptionTextNum = Random.Range(0, 5);
                 if (descriptionTextNum == 0)
                 {
-                    description.text = "Looking at the enemy fills you with questions that you don't want answered.";
+                    description.text = "Looking at the enemy fills you with questions that you don't want answered.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else if (descriptionTextNum == 1)
                 {
-                    description.text = "The enemy stares at you, and you are frozen unable to do anything.";
+                    description.text = "The enemy stares at you, and you are frozen unable to do anything.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else if (descriptionTextNum == 2)
                 {
-                    description.text = "Is it trying to ask a question?";
+                    description.text = "Is it trying to ask a question?\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else if (descriptionTextNum == 3)
                 {
-                    description.text = "You remember the thousands of times you had a question, but were too afraid to raise your hand.";
+                    description.text = "You remember the thousands of times you had a question, but were too afraid to raise your hand.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
                 else
                 {
-                    description.text = "You prepare to fight, but unanswered questions swarm your mind.";
+                    description.text = "You prepare to fight, but unanswered questions swarm your mind.\nThe enemy attacks first...\n<Press SPACE To Continue>";
                 }
 
                 if (enemyStats.Lightbulb03pickedup == false && i == 0)
@@ -354,6 +360,23 @@ public class OpenFightMenu : MonoBehaviour
                     attackButtons[i].GetComponentInChildren<Text>().text = attackNames[12 + i];
                 }
             }
+        }
+        if (enemyEncountered.attackFirst)
+        {
+            for (int i = 0; i < attackButtons.Length; i++)
+            {
+                attackButtons[i].GetComponent<Button>().enabled = false;
+                attackButtons[i].GetComponentInChildren<Text>().enabled = false;
+            }
+            while (!Input.GetKey(KeyCode.Space))
+            {
+                yield return new WaitForFixedUpdate();
+            }
+            enemyTurn.enemyTurn(true);
+        }
+        else
+        {
+            useableAttacks.CallSetUsableAttacks();
         }
     }
 
@@ -416,7 +439,7 @@ public class OpenFightMenu : MonoBehaviour
             enemyNum = enemies.Length - 1;
         }
         player.resetStats();
-        ChoseEnemy(enemyNum);
+        StartCoroutine(ChoseEnemy(enemyNum));
     }
 
     IEnumerator StartBossFight(GameObject boss)

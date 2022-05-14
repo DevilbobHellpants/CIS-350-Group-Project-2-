@@ -47,13 +47,17 @@ MonoBehaviour:
   health: 40
   enemyName: Glass Eye
   attackDescriptions:
-  - It tells you "Your glasses make you look compltely ugly."
+  - It tells you "Your glasses make you look too disgusting to look at."
   - You overhear it say "What a nerd, get a load of this four-eyes over here-"
   - It explains to you that "Everyone's been talking about how stupid your new glasses
     look."
   - It recites "Oh, I didn't know it was you... you looked so... different..."
   - It stares at you, but you realize it is taking note of your glasses.
-  - You get caught staring into its ugly g;asses, but realize they are your glasses.
+  - You get caught staring into its ugly glasses, but realize they are your glasses.
   - Your glasses weigh more and more, but you can't take them off.
   - You take off your glasses, but immediately bump into a wall, so you put them
     back on in shame.
+  minDamage: 15
+  maxDamage: 25
+  numAttacks: 1
+  attackFirst: 0

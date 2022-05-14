@@ -59,3 +59,5 @@ MonoBehaviour:
   - You awkwardly start laughing with it even though you don't understand why it
     is laughing.
   - Painful memories caused by your "friends" fill your mind.
+  minDamage: 20
+  maxDamage: 35

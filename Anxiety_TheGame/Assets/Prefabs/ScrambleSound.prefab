@@ -57,6 +57,11 @@ MonoBehaviour:
     coughs coming from it.
   - The noise stops for a moment, but your ears still ring not giving you any peace.
   - The sounds make you cover your ears, but they only get louder.
-  - Your trying to concentrate, but the crowd of people's voices mix into your thoughts.
+  - You're trying to concentrate, but the crowd of people's voices mix into your
+    thoughts.
   - You suddenly yell trying to stop the noise, but your voice gets drowned out by
     the noice.
+  minDamage: 4
+  maxDamage: 10
+  numAttacks: 3
+  attackFirst: 1
