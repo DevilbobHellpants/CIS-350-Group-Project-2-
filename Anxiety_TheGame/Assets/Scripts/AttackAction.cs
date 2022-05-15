@@ -30,6 +30,10 @@ public class AttackAction : MonoBehaviour
     private Text description;
     private BattleTutorial battleTutorial;
     private bool keyboardBug = false;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+    private GameObject camera;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+    private PlayerMovement player;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +53,8 @@ public class AttackAction : MonoBehaviour
 
         description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
         battleTutorial = FindObjectOfType<BattleTutorial>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
 
@@ -333,6 +339,7 @@ public class AttackAction : MonoBehaviour
 
     IEnumerator BlastMusic()
     {
+        camera.GetComponent<AudioDistortionFilter>().enabled = true;
         description.text = "You turn the music up. The noise seems fainter.\n<Press SPACE To Continue>";
         openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         //StartCoroutine(MusicChange());
@@ -348,7 +355,7 @@ public class AttackAction : MonoBehaviour
             enemyTurn.enemyTurn(true);
         }
 
-        //temporarily hide anxiety bar, blast music
+        //temporarily hide anxiety bar!!!!!!!!!!!!!!!!!!!!!
     }
 
     IEnumerator BoxBreath()
@@ -369,6 +376,7 @@ public class AttackAction : MonoBehaviour
 
     IEnumerator DrinkToForget()
     {
+        player.isDrunk = true;
         description.text = "Maybe drinking will help?\n<Press SPACE To Continue>";
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats(0, -Random.Range(25, 45));
@@ -381,7 +389,6 @@ public class AttackAction : MonoBehaviour
         {
             enemyTurn.enemyTurn(true);
         }
-        //Drunken effect
     }
 
     IEnumerator EmotionalSupport()
@@ -450,12 +457,12 @@ public class AttackAction : MonoBehaviour
         }
         else
         {
+            player.isHidden = true;
             description.text = "It's too much. Everyone's staring. You can't do this...\n<Press SPACE To Continue>";
             while (!Input.GetKey(KeyCode.Space))
             {
                 yield return new WaitForFixedUpdate();
             }
-            //Hidden
             endEncounter.EndFightEarly();
         }
     }
@@ -479,12 +486,12 @@ public class AttackAction : MonoBehaviour
         }
         else
         {
+            player.isDecreasedSpawnRate = true;
             description.text = "They're right, none of my friends actually care...\n<Press SPACE To Continue>";
             while (!Input.GetKey(KeyCode.Space))
             {
                 yield return new WaitForFixedUpdate();
             }
-            //Lower spawn
             endEncounter.EndFightEarly();
         }
     }
@@ -507,12 +514,12 @@ public class AttackAction : MonoBehaviour
         }
         else
         {
+            player.isIncreasedSpawnRate = true;
             description.text = "You know what? This isn't worth it. You leave the room...\n<Press SPACE To Continue>";
             while (!Input.GetKey(KeyCode.Space))
             {
                 yield return new WaitForFixedUpdate();
             }
-            //Increase Spawn
             endEncounter.EndFightEarly();
         }
     }
@@ -626,7 +633,7 @@ public class AttackAction : MonoBehaviour
             {
                 yield return new WaitForFixedUpdate();
             }
-            //Slow
+            player.isSlow = true;
             endEncounter.EndFightEarly();
         }
     }
@@ -645,13 +652,13 @@ public class AttackAction : MonoBehaviour
         {
             enemyTurn.enemyTurn(true);
         }
-        //blind
+        player.isBlind = true;
     }
 
     IEnumerator Visualization()
     {
         openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        if (Random.value < 0.1f && (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety"))
+        if (Random.value < 0.15f && (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety"))
         {
             description.text = "You imagine yourself away from the enemy, and it works.\n<Press SPACE To Continue>";
             enemyTurn.playerTurn(false);

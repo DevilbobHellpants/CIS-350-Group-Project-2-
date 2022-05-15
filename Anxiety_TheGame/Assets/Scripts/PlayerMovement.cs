@@ -26,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float maxDistence = .3f;
     private Vector2 previousLocation;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public Camera camera;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+    private bool inBattle = false;
 
     private void Start()
     {
@@ -46,7 +49,13 @@ public class PlayerMovement : MonoBehaviour
     {
         while(isDrunk)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(3f, 7f));
+            for (int i = 0; i < 5; i++)
+            {
+                if (!inBattle)
+                {
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(.6f, 1.4f));// 3-7 seconds
+                }
+            }
             walkSpeed = walkSpeed * -1;
         }
         walkSpeed = Mathf.Abs(walkSpeed);
@@ -75,9 +84,14 @@ public class PlayerMovement : MonoBehaviour
 		}
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CallStartEffects()
     {
+        StartCoroutine(StartEffects());
+    }
+
+    IEnumerator StartEffects()
+    {
+        inBattle = false;
         if (isBlind)
         {
             camera.GetComponent<PostProcessVolume>().enabled = true;
@@ -90,16 +104,78 @@ public class PlayerMovement : MonoBehaviour
         {
             walkSpeed *= .6f;
         }
-        if (isLoud)
-        {
-            camera.GetComponent<AudioDistortionFilter>().enabled = true;
-        }
         if (isDrunk)
         {
             StartCoroutine(DrunkenMovment());
         }
+        float timer = 0;
+        yield return new WaitForFixedUpdate();
+        while (!inBattle && timer < 30)
+        {
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        if (isHidden)
+        {
+            Anim.SetBool("Glitch", false);
+            isHidden = false;
+        }
+        if (isLoud)
+        {
+            camera.GetComponent<AudioDistortionFilter>().enabled = false;
+        }
+        if (isDrunk)
+        {
+            isDrunk = false;
+        }
+        /*isBlind;
+    isSlow;
+    isIncreasedSpawnRate;
+    isDecreasedSpawnRate;*/
+    }
 
+    public void stopEffects(bool died)
+    {
+        if (!died)
+        {
+            inBattle = true;
+        }
+        if (isBlind)
+        {
+            isBlind = false;
+            camera.GetComponent<PostProcessVolume>().enabled = false;
+        }
+        if (isHidden)
+        {
+            Anim.SetBool("Glitch", false);
+            isHidden = false;
+        }
+        if (isSlow && !died)
+        {
+            walkSpeed /= .6f;
+        }
+        if (isLoud)
+        {
+            camera.GetComponent<AudioDistortionFilter>().enabled = false;
+        }
+        if (isIncreasedSpawnRate)
+        {
+            isIncreasedSpawnRate = false;
+        }
+        if (isDecreasedSpawnRate)
+        {
+            isDecreasedSpawnRate = false;
+        }
+        if (isDrunk)
+        {
+            isDrunk = false;
+        }
+    }
+    
 
+    // Update is called once per frame
+    void Update()
+    {
         if (canMove)
         {
             xSpeed = Input.GetAxis("Horizontal");

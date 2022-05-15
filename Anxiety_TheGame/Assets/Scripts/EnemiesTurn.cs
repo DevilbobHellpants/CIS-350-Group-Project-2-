@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DigitalRuby.SimpleLUT;
 
 /*
  * Noah Trillizio
@@ -27,7 +28,8 @@ public class EnemiesTurn : MonoBehaviour
 
     private OpenFightMenu fightMenu;
     private UseableAttackHandler useableAttacks;
-    
+    private SimpleLUT cameraLUT;
+
     void Start()
     {
         clickedAttack = GetComponent<ClickedAttack>();
@@ -36,6 +38,7 @@ public class EnemiesTurn : MonoBehaviour
         playerSanity = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
         useableAttacks = GameObject.FindGameObjectWithTag("Attack 1").GetComponent<UseableAttackHandler>();
+        cameraLUT = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SimpleLUT>();
     }
 
     public void playerTurn(bool hurtEnemy)
@@ -83,7 +86,28 @@ public class EnemiesTurn : MonoBehaviour
         if (fightMenu.enemyEncountered.numAttacks == 1)
         {
             playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(fightMenu.enemyEncountered.minDamage, fightMenu.enemyEncountered.maxDamage);
-            yield return new WaitForSeconds(3f);
+            float timer = 0f;
+            float red = .5f;
+            float green = .5f;
+            float blue = 1f;
+            float attackTime = 1.5f;
+            while (timer < attackTime)
+            {
+                timer += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+                if (timer < (attackTime / 2))
+                {
+                    cameraLUT.TintColor = new Color(1f - (red * (timer/(attackTime/2))), 1f - (green * (timer / (attackTime / 2))), 1f - (blue * (timer / (attackTime / 2))));
+                    cameraLUT.Contrast = .5f * (timer / (attackTime / 2));
+                    cameraLUT.Sharpness = timer / (attackTime / 2);
+                }
+                else
+                {
+                    cameraLUT.TintColor = new Color(1f - (red * (1f - ((timer - (attackTime / 2)) / (attackTime / 2)))), 1f - (green * (1f - ((timer - (attackTime / 2)) / (attackTime / 2)))), 1f - (blue * (1f - ((timer - (attackTime / 2)) / (attackTime / 2)))));
+                    cameraLUT.Contrast = .5f - (.5f * ((timer- (attackTime / 2)) / (attackTime / 2)));
+                    cameraLUT.Sharpness = 1f - ((timer - (attackTime / 2)) / (attackTime / 2));
+                }
+            }
         }
         else
         {

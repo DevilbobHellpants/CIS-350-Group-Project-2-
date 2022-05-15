@@ -5,23 +5,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class TriggerTile : MonoBehaviour
 {
     public GameObject[] disapearList;
     public GameObject[] appearList;
+    public bool isTutorialText;
+    private bool showedOnce = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            for (int i = 0; i < disapearList.Length; i++)
+            if (isTutorialText && !showedOnce)
             {
-                disapearList[i].SetActive(false);
+                showedOnce = true;
+                Time.timeScale = 0f;
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PostProcessVolume>().enabled = false;
+                for (int i = 0; i < disapearList.Length; i++)
+                {
+                    disapearList[i].SetActive(false);
+                }
+                for (int i = 0; i < appearList.Length; i++)
+                {
+                    appearList[i].SetActive(true);
+                }
             }
-            for (int i = 0; i < appearList.Length; i++)
+            else if (!isTutorialText)
             {
-                appearList[i].SetActive(true);
+                for (int i = 0; i < disapearList.Length; i++)
+                {
+                    disapearList[i].SetActive(false);
+                }
+                for (int i = 0; i < appearList.Length; i++)
+                {
+                    appearList[i].SetActive(true);
+                }
             }
         }
     }

@@ -167,6 +167,7 @@ public class CloseFightMenu : MonoBehaviour
         worldEffect.resetVariables();
         fightMenu.SetActive(false);
         player.canMove = true;
+        player.CallStartEffects();
         playerStats.attributes[2].value.BaseValue = 1;
         if (playerStats.attributes[1].value.BaseValue > 0)
         {
@@ -232,6 +233,7 @@ public class CloseFightMenu : MonoBehaviour
         hoverDesc.mouseOver = false;
         hoverDesc.descriptionCanvas.SetActive(false);
         afterBattle = false;
+        player.stopEffects(true);
     }
 
     IEnumerator BattleOverEarly()
@@ -246,6 +248,7 @@ public class CloseFightMenu : MonoBehaviour
         worldEffect.resetVariables();
         fightMenu.SetActive(false);
         player.canMove = true;
+        player.CallStartEffects();
         playerStats.attributes[2].value.BaseValue = 1;
 
         hoverDesc.mouseOver = false;

@@ -235,5 +235,20 @@ public class OverworldAnxietyEffect : MonoBehaviour
         simSpeed = 1f;
         alphaUp = true;
         skipedFirst = false;
+        if (playerMovement.isIncreasedSpawnRate)
+        {
+            minCloudSpawnTime = 2f;
+            maxCloudSpawnTime = 7f;
+        }
+        else if (playerMovement.isDecreasedSpawnRate)
+        {
+            minCloudSpawnTime = 8f;
+            maxCloudSpawnTime = 16f;
+        }
+        else
+        {
+            minCloudSpawnTime = 5f;
+            maxCloudSpawnTime = 12f;
+        }
     }
 }

@@ -161,6 +161,7 @@ public class OpenFightMenu : MonoBehaviour
         }
         startingBattle = false;
         fightMenu.SetActive(true);
+        player.stopEffects(false);
 
         int enemyNum = Random.Range(0, 2);
         if (enemyChoice > enemies.Length)
@@ -431,6 +432,7 @@ public class OpenFightMenu : MonoBehaviour
         }
         startingBattle = false;
         fightMenu.SetActive(true);
+        player.stopEffects(false);
 
         //setting up the menu for the specific enemy
         int enemyNum = (enemyChoice % enemies.Length) - 1;
@@ -460,6 +462,7 @@ public class OpenFightMenu : MonoBehaviour
         boss.SetActive(false);
         startingBattle = false;
         fightMenu.SetActive(true);
+        player.stopEffects(false);
 
         //setting up the menu for the specific enemy
         description.text = "You feel a chill run up your spine...";
