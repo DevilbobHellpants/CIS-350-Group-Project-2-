@@ -59,5 +59,9 @@ MonoBehaviour:
     back on in shame.
   minDamage: 15
   maxDamage: 25
-  numAttacks: 1
   attackFirst: 0
+  numAttacks: 1
+  attackTime: 1.5
+  red: 0
+  green: 0.7
+  blue: 0.7

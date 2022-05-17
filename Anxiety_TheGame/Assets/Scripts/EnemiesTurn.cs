@@ -83,19 +83,19 @@ public class EnemiesTurn : MonoBehaviour
         int randomDescription = Random.Range(0, fightMenu.enemyEncountered.attackDescriptions.Length);
         description.text = fightMenu.enemyEncountered.attackDescriptions[randomDescription];
         //Enemy attack
-        if (fightMenu.enemyEncountered.numAttacks == 1)
+        for (int i = 0; i < fightMenu.enemyEncountered.numAttacks; i++)
         {
             playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(fightMenu.enemyEncountered.minDamage, fightMenu.enemyEncountered.maxDamage);
             float timer = 0f;
-            float red = .5f;
-            float green = .5f;
-            float blue = 1f;
-            float attackTime = 1.5f;
+            float red = fightMenu.enemyEncountered.red;
+            float green = fightMenu.enemyEncountered.green;
+            float blue = fightMenu.enemyEncountered.blue;
+            float attackTime = fightMenu.enemyEncountered.attackTime;
             while (timer < attackTime)
             {
                 timer += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
-                if (timer < (attackTime / 2))
+                /*if (timer < (attackTime / 2))
                 {
                     cameraLUT.TintColor = new Color(1f - (red * (timer/(attackTime/2))), 1f - (green * (timer / (attackTime / 2))), 1f - (blue * (timer / (attackTime / 2))));
                     cameraLUT.Contrast = .5f * (timer / (attackTime / 2));
@@ -106,20 +106,15 @@ public class EnemiesTurn : MonoBehaviour
                     cameraLUT.TintColor = new Color(1f - (red * (1f - ((timer - (attackTime / 2)) / (attackTime / 2)))), 1f - (green * (1f - ((timer - (attackTime / 2)) / (attackTime / 2)))), 1f - (blue * (1f - ((timer - (attackTime / 2)) / (attackTime / 2)))));
                     cameraLUT.Contrast = .5f - (.5f * ((timer- (attackTime / 2)) / (attackTime / 2)));
                     cameraLUT.Sharpness = 1f - ((timer - (attackTime / 2)) / (attackTime / 2));
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < fightMenu.enemyEncountered.numAttacks; i++)
-            {
-                playerSanity.attributes[0].value.BaseValue = (playerSanity.attributes[0].value.BaseValue) + UnityEngine.Random.Range(fightMenu.enemyEncountered.minDamage, fightMenu.enemyEncountered.maxDamage);
-                yield return new WaitForSeconds(3f/ fightMenu.enemyEncountered.numAttacks);
+                }*/
+                cameraLUT.TintColor = new Color(1f - (red * (1f - ((timer) / attackTime))), 1f - (green * (1f - ((timer) / attackTime))), 1f - (blue * (1f - ((timer) / attackTime))));
+                cameraLUT.Contrast = .5f - (.5f * (timer / attackTime));
+                cameraLUT.Sharpness = 1f - (timer / attackTime);
             }
         }
         Debug.Log(playerSanity.attributes[0].value.BaseValue);
         
-        if (showButtons)
+        if (showButtons && playerSanity.attributes[0].value.BaseValue < 100)
         {
             Attack1.enabled = true;
             Attack1.GetComponentInChildren<Text>().enabled = true;

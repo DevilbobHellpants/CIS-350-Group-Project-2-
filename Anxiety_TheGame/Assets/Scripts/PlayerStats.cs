@@ -76,42 +76,34 @@ public class PlayerStats : MonoBehaviour
             if (other.gameObject.name.Contains("Lightbulb 1.1"))
             {
                 Lightbulb01pickedup = true;
-                Destroy(other);
             }
-            if (other.gameObject.name.Contains("Lightbulb 1.2"))
+            else if (other.gameObject.name.Contains("Lightbulb 1.2"))
             {
                 Lightbulb02pickedup = true;
-                Destroy(other);
             }
-            if (other.gameObject.name.Contains("Lightbulb 2.1"))
+            else if (other.gameObject.name.Contains("Lightbulb 2.1"))
             {
                 Lightbulb03pickedup = true;
-                Destroy(other);
             }
-            if (other.gameObject.name.Contains("Lightbulb 2.2"))
+            else if (other.gameObject.name.Contains("Lightbulb 2.2"))
             {
                 Lightbulb04pickedup = true;
-                Destroy(other);
             }
-            if (other.gameObject.name.Contains("Lightbulb 3.1"))
+            else if (other.gameObject.name.Contains("Lightbulb 3.1"))
             {
                 Lightbulb05pickedup = true;
-                Destroy(other);
             }
-            if (other.gameObject.name.Contains("Lightbulb 3.2"))
+            else if (other.gameObject.name.Contains("Lightbulb 3.2"))
             {
                 Lightbulb06pickedup = true;
-                Destroy(other);
             }
-            if (other.gameObject.name.Contains("Lightbulb 4.1"))
+            else if (other.gameObject.name.Contains("Lightbulb 4.1"))
             {
                 Lightbulb07pickedup = true;
-                Destroy(other);
             }
-            if (other.gameObject.name.Contains("Lightbulb 4.2"))
+            else if (other.gameObject.name.Contains("Lightbulb 4.2"))
             {
                 Lightbulb08pickedup = true;
-                Destroy(other);
             }
         }
     }

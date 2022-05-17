@@ -59,7 +59,11 @@ public class ClickedAttack : MonoBehaviour
         {
             if (changeAttack == true)
             {
-                randomNum.makeRandomNum(1,5);
+                int prevNum = randomNum.randomNum;
+                while (prevNum == randomNum.randomNum)
+                {
+                    randomNum.makeRandomNum(1, 5);
+                }
                 if (randomNum.randomNum == 1)
                 {
                     attack = attackButton1;

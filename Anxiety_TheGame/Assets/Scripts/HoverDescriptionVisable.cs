@@ -54,7 +54,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
                     displayText.text = "\"Ground\" yourself in the present moment: Expel 1 / 3 of your anxiety, slowly chip away at the problem";
                 }
             }
-            else if (enemy.enemyNameDisplayed.text == "Question Air")//Shift Focus
+            else if (enemy.enemyNameDisplayed.text == "Question Air")//Visualisation
             {
                 if (!enemyStats.Lightbulb03pickedup)
                 {
@@ -62,7 +62,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
                 }
                 else
                 {
-                    displayText.text = "Shift your focus elsewhere: Enemy health is halved (less for stronger enemies)";
+                    displayText.text = "Visualize yourself somewhere else: Decrease problem health and anxiety a random amount, decrease more anxiety the more you have";
                 }
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")//Box Breathing
@@ -101,14 +101,15 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
                     displayText.text = "Gather support from friends: Decrease anxiety, chip away at the problem, chance of critical hit";
                 }
             }
-            else if (enemy.enemyNameDisplayed.text == "Question Air")//Hide
+            else if (enemy.enemyNameDisplayed.text == "Question Air")//Shift Focus
             {
                 if (!enemyStats.Lightbulb04pickedup)
                 {
                     displayText.text = "Coping skill not unlocked";
                 }
+                else
                 {
-                    displayText.text = "Hide from your problems: Gain some anxiety, end encounter early, temporarily hidden from clouds";
+                    displayText.text = "Shift your focus elsewhere: Enemy health is halved (less for stronger enemies)";
                 }
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")//Blast Music
@@ -130,7 +131,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
                 }
                 else
                 {
-                    displayText.text = "Sometimes you just need to sleep it off. Decrease anxiety, chance enemy attacks twice";
+                    displayText.text = "Sometimes you just need to sleep it off: Decrease anxiety, chance enemy attacks twice (impossible for stronger enemies to attack twice)";
                 }
             }
         }
@@ -159,9 +160,9 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
             {
                 displayText.text = "Glasses are for nerds anyways: Decrease anxiety, slight damage, temporarily blind";
             }
-            else if (enemy.enemyNameDisplayed.text == "Question Air")//Visualisation
+            else if (enemy.enemyNameDisplayed.text == "Question Air")//Hide
             {
-                displayText.text = "Visualize yourself somewhere else: Decrease problem health a random amount";
+                displayText.text = "Hide from your problems: Gain some anxiety, end encounter early, temporarily hidden from clouds";
             }
             else if (enemy.enemyNameDisplayed.text == "Scramble Sound")//Punch A Wall
             {

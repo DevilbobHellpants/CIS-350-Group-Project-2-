@@ -61,7 +61,11 @@ MonoBehaviour:
     thoughts.
   - You suddenly yell trying to stop the noise, but your voice gets drowned out by
     the noice.
-  minDamage: 4
-  maxDamage: 10
-  numAttacks: 3
+  minDamage: 5
+  maxDamage: 11
   attackFirst: 1
+  numAttacks: 3
+  attackTime: 0.6
+  red: 0.5
+  green: 0
+  blue: 0

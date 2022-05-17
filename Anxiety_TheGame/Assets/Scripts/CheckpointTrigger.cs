@@ -21,6 +21,7 @@ public class CheckpointTrigger : MonoBehaviour
     private OpenFightMenu openFightMenu;
     private GameObject bossCloud;
     private ProgressBar progressBar;
+    public GameObject[] lightbulbs;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,43 @@ public class CheckpointTrigger : MonoBehaviour
 
     public void Respawn()
     {
+        for (int i = 0; i < lightbulbs.Length; i++)
+        {
+            if (lightbulbs[i].name.Contains("Lightbulb 1.1"))
+            {
+                playerStats.Lightbulb01pickedup = false;
+            }
+            else if (lightbulbs[i].name.Contains("Lightbulb 1.2"))
+            {
+                playerStats.Lightbulb02pickedup = false;
+            }
+            else if (lightbulbs[i].name.Contains("Lightbulb 2.1"))
+            {
+                playerStats.Lightbulb03pickedup = false;
+            }
+            else if (lightbulbs[i].name.Contains("Lightbulb 2.2"))
+            {
+                playerStats.Lightbulb04pickedup = false;
+            }
+            else if (lightbulbs[i].name.Contains("Lightbulb 3.1"))
+            {
+                playerStats.Lightbulb05pickedup = false;
+            }
+            else if (lightbulbs[i].name.Contains("Lightbulb 3.2"))
+            {
+                playerStats.Lightbulb06pickedup = false;
+            }
+            else if (lightbulbs[i].name.Contains("Lightbulb 4.1"))
+            {
+                playerStats.Lightbulb07pickedup = false;
+            }
+            else if (lightbulbs[i].name.Contains("Lightbulb 4.2"))
+            {
+                playerStats.Lightbulb08pickedup = false;
+            }
+            lightbulbs[i].SetActive(true);
+        }
+        
         player.canMove = true;
         worldEffect.resetVariables();
         player.gameObject.transform.position = respawnPoint;

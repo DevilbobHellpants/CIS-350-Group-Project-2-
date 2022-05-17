@@ -24,6 +24,8 @@ TagManager:
   - Lightbulb
   - HoverBox
   - PlayerAnxietyOverworld
+  - Player Anxiety Bar
+  - Enemy Health Bar
   layers:
   - Default
   - TransparentFX

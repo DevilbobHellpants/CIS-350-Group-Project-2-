@@ -26,6 +26,7 @@ public class BossTrggerTile : MonoBehaviour
     {
         PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         OverworldAnxietyEffect worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
+        player.stopEffects(false);
         StartCoroutine(RemoveDarkness());
         player.canMove = false;
         player.resetStats();
@@ -43,7 +44,7 @@ public class BossTrggerTile : MonoBehaviour
 
     IEnumerator RemoveDarkness()
     {
-        Image darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
+        //Image darknessEffect = GameObject.FindGameObjectWithTag("Darkness Effect").GetComponent<Image>();
         GameObject[] clouds = GameObject.FindGameObjectsWithTag("Cloud");
         GameObject[] effects = GameObject.FindGameObjectsWithTag("PhysicalAnxietyEffect");
         float[] alpha = new float[effects.Length];

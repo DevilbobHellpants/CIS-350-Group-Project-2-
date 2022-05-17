@@ -12,6 +12,7 @@ public class ProgressBar : MonoBehaviour
     public int maximum;
     public int current;
     public Image mask;
+    public Text number;
     //public Image fill;
     //public Color color;
 
@@ -31,7 +32,7 @@ public class ProgressBar : MonoBehaviour
     {
         float fillAmount = (float)current / (float)maximum;
         mask.fillAmount = fillAmount;
-
+        number.text = "" + current;
         //fill.color = color;
     }
 }

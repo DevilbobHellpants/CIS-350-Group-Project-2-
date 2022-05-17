@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     public string[] attackDescriptions;
     public int minDamage;
     public int maxDamage;
-    public int numAttacks = 1;
     public bool attackFirst = false;
+    public int numAttacks = 1;
+    public float attackTime;
+    public float red;
+    public float green;
+    public float blue;
 }

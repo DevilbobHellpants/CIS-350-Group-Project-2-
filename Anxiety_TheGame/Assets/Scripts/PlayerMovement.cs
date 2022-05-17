@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
-    private bool inBattle = false;
+    public bool inBattle = false;
 
     private void Start()
     {
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isSlow)
         {
-            walkSpeed *= .6f;
+            walkSpeed *= .65f;
         }
         if (isDrunk)
         {
@@ -152,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isSlow && !died)
         {
-            walkSpeed /= .6f;
+            walkSpeed /= .65f;
         }
         if (isLoud)
         {

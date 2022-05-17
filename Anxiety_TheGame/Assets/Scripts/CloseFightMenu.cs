@@ -21,9 +21,10 @@ public class CloseFightMenu : MonoBehaviour
     private HoverDescriptionVisable hoverDesc;
 
     public GameObject fightMenu;
-    public OpenFightMenu fightMenuScript;
     public GameObject gameOverScreen;
     public GameObject youWinScreen;
+    public GameObject bossLostScreen;
+    public OpenFightMenu fightMenuScript;
     public bool gameOver;
     public bool win = false;
 
@@ -35,6 +36,7 @@ public class CloseFightMenu : MonoBehaviour
     private PlayerMovement player;
     private CheckpointTrigger[] checkpoints;
     private bool afterBattle = false;
+    private bool keyboardDebugger = false;
 
     // Start is called before the first frame update
     void Start()
@@ -77,10 +79,8 @@ public class CloseFightMenu : MonoBehaviour
                 afterBattle = true;
                 StartCoroutine(BattleOver());
             }
-            
-
         }
-        if (playerStats.attributes[0].value.BaseValue > 100 && !gameOver)
+        else if (playerStats.attributes[0].value.BaseValue >= 100 && !gameOver)
         {
             if (!afterBattle)
             {
@@ -88,10 +88,15 @@ public class CloseFightMenu : MonoBehaviour
                 StartCoroutine(Lose());
             }
         }
+
         if (gameOver)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                if (fightMenuScript.enemyEncountered == finalBoss)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
                 gameOverScreen.SetActive(false);
                 gameOver = false;
                 for (int i = 0; i < checkpoints.Length; i++)
@@ -110,11 +115,11 @@ public class CloseFightMenu : MonoBehaviour
                 openFMScript.playerAudio.PlayDelayed(0.5f);
             }
         }
-        if (win)
+        else if (win)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);//We can add restarting in later
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 youWinScreen.SetActive(false);
                 win = false;
                 fightMenu.SetActive(false);
@@ -125,6 +130,11 @@ public class CloseFightMenu : MonoBehaviour
                 openFMScript.lossMusic.Stop();
                 openFMScript.playerAudio.PlayDelayed(0.5f);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            keyboardDebugger = true;
         }
     }
 
@@ -141,18 +151,19 @@ public class CloseFightMenu : MonoBehaviour
         openFMScript.effectSource.PlayOneShot(openFMScript.winBattleSound, .2f);
         openFMScript.playerAudio.PlayDelayed(0.5f);
 
-        
-        while (!Input.GetKey(KeyCode.Space))
+        keyboardDebugger = false;
+        while (!keyboardDebugger)
         {
             yield return new WaitForFixedUpdate();
         }
+        keyboardDebugger = false;
         yield return new WaitForEndOfFrame();
         description.text = "Problem defeated!\n<Press SPACE To Continue>";
         attack1.enabled = false;
         attack2.enabled = false;
         attack3.enabled = false;
         attack4.enabled = false;
-        while (!Input.GetKey(KeyCode.Space))
+        while (!keyboardDebugger)
         {
             yield return new WaitForFixedUpdate();
         }
@@ -218,13 +229,29 @@ public class CloseFightMenu : MonoBehaviour
         attack3.enabled = false;
         attack4.enabled = false;
         gameOver = true;
-        description.text = "You are overwhelmed...\n<Press SPACE To Respawn At Last Checkpoint>";
+        yield return new WaitForSeconds(openFMScript.enemyEncountered.attackTime * openFMScript.enemyEncountered.numAttacks);
+        if (fightMenuScript.enemyEncountered == finalBoss)
+        {
+            description.text = "You can't keep going on like this...\n<Press SPACE To Continue>";
+        }
+        else
+        {
+            description.text = "You are overwhelmed...\n<Press SPACE To Respawn At Last Checkpoint>";
+        }
         while (!Input.GetKey(KeyCode.Space))
         {
             yield return new WaitForFixedUpdate();
         }
-        gameOverScreen.SetActive(true);
-        bossAnim.SetActive(false);
+        if (fightMenuScript.enemyEncountered == finalBoss)
+        {
+            bossAnim.SetActive(false);
+            bossLostScreen.SetActive(true);
+        }
+        else
+        {
+            gameOverScreen.SetActive(true);
+        }
+        
 
         if (!openFMScript.lossMusic.isPlaying)
         {

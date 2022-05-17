@@ -61,3 +61,9 @@ MonoBehaviour:
   - Painful memories caused by your "friends" fill your mind.
   minDamage: 20
   maxDamage: 35
+  attackFirst: 0
+  numAttacks: 1
+  attackTime: 1.9
+  red: 0.8
+  green: 0.8
+  blue: 0.8

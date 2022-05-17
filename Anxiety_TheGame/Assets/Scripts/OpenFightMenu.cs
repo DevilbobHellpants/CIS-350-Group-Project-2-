@@ -24,6 +24,7 @@ public class OpenFightMenu : MonoBehaviour
     public Enemy finalBoss;
     public Enemy enemyEncountered;
     public GameObject enemyHealthBar;
+    public GameObject playerAnxietyBar;
     public GameObject bossAnim;
 
     public Text description;
@@ -162,6 +163,8 @@ public class OpenFightMenu : MonoBehaviour
         startingBattle = false;
         fightMenu.SetActive(true);
         player.stopEffects(false);
+        playerAnxietyBar.SetActive(true);
+        enemyHealthBar.SetActive(true);
 
         int enemyNum = Random.Range(0, 2);
         if (enemyChoice > enemies.Length)
@@ -362,6 +365,7 @@ public class OpenFightMenu : MonoBehaviour
                 }
             }
         }
+
         if (enemyEncountered.attackFirst)
         {
             for (int i = 0; i < attackButtons.Length; i++)
@@ -421,7 +425,7 @@ public class OpenFightMenu : MonoBehaviour
         }
 
         //When the time has been waited
-        Destroy(lightbulb);
+        lightbulb.SetActive(false);
         for (int i = 0; i < clouds.Length; i++)
         {
             Destroy(clouds[i]);
@@ -433,6 +437,8 @@ public class OpenFightMenu : MonoBehaviour
         startingBattle = false;
         fightMenu.SetActive(true);
         player.stopEffects(false);
+        playerAnxietyBar.SetActive(true);
+        enemyHealthBar.SetActive(true);
 
         //setting up the menu for the specific enemy
         int enemyNum = (enemyChoice % enemies.Length) - 1;
@@ -463,6 +469,8 @@ public class OpenFightMenu : MonoBehaviour
         startingBattle = false;
         fightMenu.SetActive(true);
         player.stopEffects(false);
+        playerAnxietyBar.SetActive(true);
+        enemyHealthBar.SetActive(true);
 
         //setting up the menu for the specific enemy
         description.text = "You feel a chill run up your spine...";
@@ -473,6 +481,25 @@ public class OpenFightMenu : MonoBehaviour
         enemyNameDisplayed.text = finalBoss.enemyName;
         enemyStats.attributes[2].value.BaseValue = finalBoss.health;
         enemyHealthBar.GetComponent<ProgressBar>().maximum = finalBoss.health;
+
+        for (int i = 0; i < attackButtons.Length; i++)
+        {
+            attackButtons[i].GetComponent<Button>().enabled = true;
+            attackButtons[i].GetComponentInChildren<Text>().enabled = true;
+            if (enemyStats.Lightbulb01pickedup == false && i == 0)
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = "";
+            }
+            else if (enemyStats.Lightbulb02pickedup == false && i == 1)
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = "";
+            }
+            else
+            {
+                attackButtons[i].GetComponentInChildren<Text>().text = attackNames[i];
+            }
+        }
+        useableAttacks.CallSetUsableAttacks();
     }
 
     //enemyPortrait.sprite = enemies[1].enemySprite;

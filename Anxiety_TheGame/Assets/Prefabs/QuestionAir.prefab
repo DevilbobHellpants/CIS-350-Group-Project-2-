@@ -58,6 +58,10 @@ MonoBehaviour:
     to burst.
   - It stares at you as if it was judging you before you even asked your question.
   minDamage: 5
-  maxDamage: 30
-  numAttacks: 1
+  maxDamage: 25
   attackFirst: 1
+  numAttacks: 1
+  attackTime: 1.2
+  red: 0.5
+  green: 0.5
+  blue: 1
