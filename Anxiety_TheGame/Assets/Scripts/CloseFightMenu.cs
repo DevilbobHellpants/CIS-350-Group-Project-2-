@@ -27,6 +27,7 @@ public class CloseFightMenu : MonoBehaviour
     public OpenFightMenu fightMenuScript;
     public bool gameOver;
     public bool win = false;
+    private bool lost = false;
 
     public Button attack1;
     public Button attack2;
@@ -93,9 +94,9 @@ public class CloseFightMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                if (fightMenuScript.enemyEncountered == finalBoss)
+                if (lost)
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    SceneManager.LoadScene("StartingScreen");
                 }
                 gameOverScreen.SetActive(false);
                 gameOver = false;
@@ -119,7 +120,7 @@ public class CloseFightMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("StartingScreen");
                 youWinScreen.SetActive(false);
                 win = false;
                 fightMenu.SetActive(false);
@@ -246,6 +247,7 @@ public class CloseFightMenu : MonoBehaviour
         {
             bossAnim.SetActive(false);
             bossLostScreen.SetActive(true);
+            lost = true;
         }
         else
         {

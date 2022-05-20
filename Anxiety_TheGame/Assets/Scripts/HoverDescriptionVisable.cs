@@ -18,6 +18,7 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
     private OpenFightMenu enemy;
     public bool mouseOver = false;
     private PlayerStats enemyStats;
+    private EnemiesTurn enemiesTurn;
 
     //TODO
     //---going to put code and variables here that reads what
@@ -29,6 +30,19 @@ public class HoverDescriptionVisable : MonoBehaviour, IPointerEnterHandler, IPoi
         descriptionCanvas.SetActive(false);
         enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenFightMenu>();
         enemyStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        enemiesTurn = enemy.attackButtons[0].GetComponent<EnemiesTurn>();
+    }
+
+    void Update()
+    {
+        if (mouseOver && enemiesTurn.Visable())
+        {
+            descriptionCanvas.SetActive(true);
+        }
+        else if (mouseOver)
+        {
+            descriptionCanvas.SetActive(false);
+        }
     }
 
 

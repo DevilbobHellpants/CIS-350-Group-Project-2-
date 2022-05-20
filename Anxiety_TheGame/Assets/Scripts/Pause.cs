@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -24,13 +25,7 @@ public class Pause : MonoBehaviour
         {
             if (paused)
             {
-                paused = false;
-                Time.timeScale = 1f;
-                if (player.isBlind && !player.inBattle)
-                {
-                    blind.enabled = true;
-                }
-                menu.SetActive(false);
+                UnPause();
             }
             else
             {
@@ -40,5 +35,21 @@ public class Pause : MonoBehaviour
                 menu.SetActive(true);
             }
         }
+    }
+
+    public void UnPause()
+    {
+        paused = false;
+        Time.timeScale = 1f;
+        if (player.isBlind && !player.inBattle)
+        {
+            blind.enabled = true;
+        }
+        menu.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("StartingScreen");
     }
 }

@@ -22,7 +22,7 @@ public class BattleTutorial : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && phase == 0)
             {
-                description.text = "The two bars on the bottom left are important! Top is enemy health, bottom is your anxiety.\n<Press SPACE To Continue>";
+                description.text = "The two bars on the bottom left are important! The top shows the enemy health, the bottom shows your anxiety.\n<Press SPACE To Continue>";
                 phase++;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 1)
@@ -32,20 +32,25 @@ public class BattleTutorial : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 2)
             {
-                description.text = "Here on this side is how you fight back. Above this box are your 4 options to cope (attacks.) Not all mechanisms are good for you, so choose wisely!\n<Press SPACE To Continue>";
+                description.text = "This side alllows you fight back! The 4 buttons are your options to cope (attack). Not all coping mechanisms are open right away.\n<Press SPACE To Continue>";
                 phase++;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 3)
             {
-                description.text = "You can hover over the individual coping mechanisms to see more details about what they will do.\n<Press SPACE To Continue>";
+                description.text = "Some attacks have temporary effects outside of combat, so be mindful of those.\n<Press SPACE To Continue>";
                 phase++;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 4)
             {
-                description.text = "This box is where you can see everything that's happening. Your attacks, enemy attacks, and other useful information.\n<Press SPACE To Continue>";
+                description.text = "You can hover over the individual coping mechanisms to see more details about what they will do.\n<Press SPACE To Continue>";
                 phase++;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && phase == 5)
+            {
+                description.text = "This box is where you can see everything that's happening. Your attacks, enemy attacks, and other useful information.\n<Press SPACE To Continue>";
+                phase++;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && phase == 6)
             {
                 description.text = "Now, go forth and cope with this problem!\n<Click An Attack To Continue>";
                 phase++;

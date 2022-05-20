@@ -29,6 +29,7 @@ public class EnemiesTurn : MonoBehaviour
     private OpenFightMenu fightMenu;
     private UseableAttackHandler useableAttacks;
     private SimpleLUT cameraLUT;
+    static public bool visableButtons = true;
 
     void Start()
     {
@@ -48,6 +49,7 @@ public class EnemiesTurn : MonoBehaviour
 
     IEnumerator StartPlayerTurn(bool hurtEnemy)
     {
+        visableButtons = false;
         Attack1.enabled = false;
         Attack1.GetComponentInChildren<Text>().enabled = false;
         Attack2.enabled = false;
@@ -112,10 +114,12 @@ public class EnemiesTurn : MonoBehaviour
                 cameraLUT.Sharpness = 1f - (timer / attackTime);
             }
         }
-        Debug.Log(playerSanity.attributes[0].value.BaseValue);
+        
         
         if (showButtons && playerSanity.attributes[0].value.BaseValue < 100)
         {
+            Debug.Log("Anxiety: " + playerSanity.attributes[0].value.BaseValue + ", Enemy Health: " + playerSanity.attributes[2].value.BaseValue);
+            visableButtons = true;
             Attack1.enabled = true;
             Attack1.GetComponentInChildren<Text>().enabled = true;
             Attack2.enabled = true;
@@ -127,6 +131,16 @@ public class EnemiesTurn : MonoBehaviour
             clickedAttack.changeAttack = true;
             useableAttacks.CallSetUsableAttacks();
         }
+    }
+
+    public bool Visable()
+    {
+        return visableButtons;
+    }
+
+    public void ChangeVisable(bool b)
+    {
+        visableButtons = b;
     }
 
     /*IEnumerator EnemyFlash()

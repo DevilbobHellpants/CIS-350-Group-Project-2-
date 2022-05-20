@@ -179,7 +179,6 @@ public class OpenFightMenu : MonoBehaviour
         {
             enemyNum = enemyChoice - 1;
         }
-        player.resetStats();
         StartCoroutine(ChoseEnemy(enemyNum));
     }
 
@@ -232,7 +231,7 @@ public class OpenFightMenu : MonoBehaviour
                     }
                     else if (descriptionTextNum == 3)
                     {
-                        description.text = "You remember being called \"Glass Eyes\".";
+                        description.text = "You remember being called \"Glass Eyes.\"";
                     }
                     else
                     {
@@ -377,10 +376,12 @@ public class OpenFightMenu : MonoBehaviour
             {
                 yield return new WaitForFixedUpdate();
             }
+            enemyTurn.ChangeVisable(false);
             enemyTurn.enemyTurn(true);
         }
         else
         {
+            enemyTurn.ChangeVisable(true);
             useableAttacks.CallSetUsableAttacks();
         }
     }
@@ -446,7 +447,6 @@ public class OpenFightMenu : MonoBehaviour
         {
             enemyNum = enemies.Length - 1;
         }
-        player.resetStats();
         StartCoroutine(ChoseEnemy(enemyNum));
     }
 
@@ -471,6 +471,7 @@ public class OpenFightMenu : MonoBehaviour
         player.stopEffects(false);
         playerAnxietyBar.SetActive(true);
         enemyHealthBar.SetActive(true);
+        enemyTurn.ChangeVisable(true);
 
         //setting up the menu for the specific enemy
         description.text = "You feel a chill run up your spine...";

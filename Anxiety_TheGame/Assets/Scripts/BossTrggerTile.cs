@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class BossTrggerTile : MonoBehaviour
 {
+    public GameObject[] inOrderDisappearTiles;
     public GameObject[] inOrderAppearTiles;
     public float waitTime = 1f;
     public SimpleLUT cameraLUT;
@@ -29,13 +30,17 @@ public class BossTrggerTile : MonoBehaviour
         player.stopEffects(false);
         StartCoroutine(RemoveDarkness());
         player.canMove = false;
-        player.resetStats();
         player.gameObject.GetComponent<OpenFightMenu>().startingBattle = true;
         worldEffect.inBattle = true;
+        for (int i = 0; i < inOrderDisappearTiles.Length; i++)
+        {
+            yield return new WaitForSeconds(waitTime);
+            inOrderDisappearTiles[i].SetActive(false);
+        }
         for (int i = 0; i < inOrderAppearTiles.Length; i++)
         {
-            inOrderAppearTiles[i].SetActive(true);
             yield return new WaitForSeconds(waitTime);
+            inOrderAppearTiles[i].SetActive(true);
         }
         player.canMove = true;
         player.gameObject.GetComponent<OpenFightMenu>().startingBattle = false;
