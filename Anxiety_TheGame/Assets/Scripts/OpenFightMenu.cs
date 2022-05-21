@@ -489,6 +489,11 @@ public class OpenFightMenu : MonoBehaviour
         enemyEncountered = finalBoss;
         enemyPortrait.sprite = null;
         enemyPortrait.color = Color.grey;
+        enemyAnimation.SetBool("isGlassEye", false);
+        enemyAnimation.SetBool("isQuestionAir", false);
+        enemyAnimation.SetBool("isScrambleSound", false);
+        enemyAnimation.SetBool("isLiarSmiler", false);
+        enemyAnimation.SetBool("isBoss", false);
         enemyAnimation.SetBool("isBoss", true);
         //bossAnim.SetActive(true);
         enemyNameDisplayed.text = finalBoss.enemyName;
