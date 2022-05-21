@@ -111,7 +111,7 @@ public class CheckpointTrigger : MonoBehaviour
             tutorialCloud.SetActive(true);
             FindObjectOfType<BattleTutorial>().phase = 0;
         }
-        bossCloud.SetActive(true);
+        //bossCloud.SetActive(true);
         progressBar.current = anxiety;
     }
 }

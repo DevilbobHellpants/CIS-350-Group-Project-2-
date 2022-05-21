@@ -30,6 +30,7 @@ public class EnemiesTurn : MonoBehaviour
     private UseableAttackHandler useableAttacks;
     private SimpleLUT cameraLUT;
     static public bool visableButtons = true;
+    public Pause pause;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class EnemiesTurn : MonoBehaviour
         description = GameObject.FindGameObjectWithTag("DescriptionBox").GetComponentInChildren<Text>();
         useableAttacks = GameObject.FindGameObjectWithTag("Attack 1").GetComponent<UseableAttackHandler>();
         cameraLUT = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SimpleLUT>();
+        pause = gameObject.GetComponentInParent<Pause>();
     }
 
     public void playerTurn(bool hurtEnemy)
@@ -109,10 +111,15 @@ public class EnemiesTurn : MonoBehaviour
                     cameraLUT.Contrast = .5f - (.5f * ((timer- (attackTime / 2)) / (attackTime / 2)));
                     cameraLUT.Sharpness = 1f - ((timer - (attackTime / 2)) / (attackTime / 2));
                 }*/
-                cameraLUT.TintColor = new Color(1f - (red * (1f - ((timer) / attackTime))), 1f - (green * (1f - ((timer) / attackTime))), 1f - (blue * (1f - ((timer) / attackTime))));
-                cameraLUT.Contrast = .5f - (.5f * (timer / attackTime));
-                cameraLUT.Sharpness = 1f - (timer / attackTime);
+                if (!pause.paused) {
+                    cameraLUT.TintColor = new Color(1f - (red * (1f - ((timer) / attackTime))), 1f - (green * (1f - ((timer) / attackTime))), 1f - (blue * (1f - ((timer) / attackTime))));
+                    cameraLUT.Contrast = .5f - (.5f * (timer / attackTime));
+                    cameraLUT.Sharpness = 1f - (timer / attackTime);
+                }
             }
+            cameraLUT.TintColor = Color.white;
+            cameraLUT.Contrast = 0f;
+            cameraLUT.Sharpness = 0f;
         }
         
         

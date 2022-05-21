@@ -57,6 +57,7 @@ public class OpenFightMenu : MonoBehaviour
     public SimpleLUT cameraLUT;
     private UseableAttackHandler useableAttacks;
     private EnemiesTurn enemyTurn;
+    public Animator enemyAnimation;
 
     void Start()
     {
@@ -198,6 +199,12 @@ public class OpenFightMenu : MonoBehaviour
 
     IEnumerator ChoseEnemy(int enemyNum)
     {
+        enemyAnimation.SetBool("isGlassEye", false);
+        enemyAnimation.SetBool("isQuestionAir", false);
+        enemyAnimation.SetBool("isScrambleSound", false);
+        enemyAnimation.SetBool("isLiarSmiler", false);
+        enemyAnimation.SetBool("isBoss", false);
+
         enemyEncountered = enemies[enemyNum];
         enemyPortrait.sprite = enemies[enemyNum].enemySprite;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
@@ -210,6 +217,7 @@ public class OpenFightMenu : MonoBehaviour
             attackButtons[i].GetComponentInChildren<Text>().enabled = true;
             if (enemyNameDisplayed.text == "Glass Eye")
             {
+                enemyAnimation.SetBool("isGlassEye", true);
                 if (encounterNum == 0)
                 {
                     description.text = "A problem appears! You can see the problem's name and information on the left side of the screen.\n<Press SPACE To Continue>";
@@ -254,6 +262,7 @@ public class OpenFightMenu : MonoBehaviour
             }
             else if (enemyNameDisplayed.text == "Liar Smiler")
             {
+                enemyAnimation.SetBool("isLiarSmiler", true);
                 int descriptionTextNum = Random.Range(0, 5);
                 if (descriptionTextNum == 0)
                 {
@@ -291,6 +300,7 @@ public class OpenFightMenu : MonoBehaviour
             }
             else if (enemyNameDisplayed.text == "Scramble Sound")
             {
+                enemyAnimation.SetBool("isScrambleSound", true);
                 int descriptionTextNum = Random.Range(0, 5);
                 if (descriptionTextNum == 0)
                 {
@@ -328,6 +338,7 @@ public class OpenFightMenu : MonoBehaviour
             }
             else /*if (enemyNameDisplayed.text == "Question Air")*/
             {
+                enemyAnimation.SetBool("isQuestionAir", true);
                 int descriptionTextNum = Random.Range(0, 5);
                 if (descriptionTextNum == 0)
                 {
@@ -478,7 +489,8 @@ public class OpenFightMenu : MonoBehaviour
         enemyEncountered = finalBoss;
         enemyPortrait.sprite = null;
         enemyPortrait.color = Color.grey;
-        bossAnim.SetActive(true);
+        enemyAnimation.SetBool("isBoss", true);
+        //bossAnim.SetActive(true);
         enemyNameDisplayed.text = finalBoss.enemyName;
         enemyStats.attributes[2].value.BaseValue = finalBoss.health;
         enemyHealthBar.GetComponent<ProgressBar>().maximum = finalBoss.health;

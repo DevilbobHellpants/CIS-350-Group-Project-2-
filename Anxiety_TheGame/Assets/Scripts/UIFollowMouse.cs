@@ -27,7 +27,7 @@ public class UIFollowMouse : MonoBehaviour
     public void MoveObject()
     {
         //offset = new Vector3(Screen.width / 8, Screen.height / 12, 0);
-        offset = new Vector3(-171, -69, 0);
+        offset = new Vector3(-125, -50, 0);
         Vector3 pos = Input.mousePosition + offset;
         
         pos.z = BasisObject.position.z;

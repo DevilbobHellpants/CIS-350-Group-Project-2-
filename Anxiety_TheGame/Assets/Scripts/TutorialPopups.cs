@@ -8,6 +8,8 @@ public class TutorialPopups : MonoBehaviour
     public GameObject popup;
     private PostProcessVolume processVolume;
     private PlayerMovement player;
+    public Pause pause;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,7 @@ public class TutorialPopups : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !pause.paused)
         {
             popup.SetActive(false);
             Time.timeScale = 1f;

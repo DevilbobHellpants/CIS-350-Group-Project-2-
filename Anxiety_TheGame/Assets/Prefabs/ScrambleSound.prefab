@@ -62,7 +62,7 @@ MonoBehaviour:
   - You suddenly yell trying to stop the noise, but your voice gets drowned out by
     the noice.
   minDamage: 5
-  maxDamage: 11
+  maxDamage: 12
   attackFirst: 1
   numAttacks: 3
   attackTime: 0.6

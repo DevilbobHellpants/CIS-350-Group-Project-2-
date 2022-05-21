@@ -283,39 +283,51 @@ public class AttackAction : MonoBehaviour
             {
                 yield return new WaitForFixedUpdate();
             }
-            if (playerStats.attributes[2].value.BaseValue > 0)
+            if (playerStats.attributes[2].value.BaseValue > 0 && playerStats.attributes[0].value.BaseValue < 100)
             {
                 enemyTurn.enemyTurn(true);
             }
         }
         else if (playerStats.attributes[2].value.BaseValue < openFMScript.enemyEncountered.health)
         {
-            description.text = "Maybe they're right... I do look stupid...\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
+                description.text = "Maybe they're right... I do look stupid...\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+                endEncounter.EndFightEarly();
             }
-            endEncounter.EndFightEarly();
+            else
+            {
+                description.text = "Uh Oh...";
+            }
         }
         else
         {
-            description.text = "You doubt yourself and try to leave, but the enemy blocks you.\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
-            }
-            if (playerStats.attributes[2].value.BaseValue > 0)
-            {
+                description.text = "You doubt yourself and try to leave, but the enemy blocks you.\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
                 enemyTurn.enemyTurn(true);
+            }
+            else
+            {
+                description.text = "Uh Oh...";
             }
         }
     }
 
     IEnumerator TakeOffGlasses()
     {
+        player.isBlind = true;
         description.text = "Who needs glasses anyways? Not you, that's for sure.\n<Press SPACE To Continue>";
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
-        changeStats(Random.Range(3, 8), -Random.Range(15, 20));
+        changeStats(Random.Range(3, 8), -Random.Range(24, 28));
         enemyTurn.playerTurn(true);
         while (!Input.GetKey(KeyCode.Space))
         {
@@ -325,16 +337,15 @@ public class AttackAction : MonoBehaviour
         {
             enemyTurn.enemyTurn(true);
         }
-        player.isBlind = true;
     }
 
     IEnumerator Visualization()
     {
         openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        if (Random.value < 0.15f && enemy.enemyNameDisplayed.text != "You" & enemy.enemyNameDisplayed.text != "Your Anxiety")
+        if (Random.value < 0.15f && enemy.enemyNameDisplayed.text != "You" && enemy.enemyNameDisplayed.text != "Your Anxiety")
         {
             description.text = "You imagine yourself away from the enemy, and it works.\n<Press SPACE To Continue>";
-            changeStats(0, Random.Range(playerStats.attributes[0].value.BaseValue / 4, playerStats.attributes[0].value.BaseValue / 2));
+            changeStats(0, -Random.Range(playerStats.attributes[0].value.BaseValue / 4, playerStats.attributes[0].value.BaseValue / 2));
             enemyTurn.playerTurn(false);
             while (!Input.GetKey(KeyCode.Space))
             {
@@ -348,33 +359,53 @@ public class AttackAction : MonoBehaviour
             int attackDammage = 0;
             int minRange = 0;
             int maxRange = 0;
-            if (randomNum < .35f)
+            if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
             {
-                description.text = "You try imagining yourself somewhere else. It doesn't work so well...\n<Press SPACE To Continue>";
-                attackDammage = Random.Range(1, 11);
-                minRange = playerStats.attributes[0].value.BaseValue / 10;
-                maxRange = playerStats.attributes[0].value.BaseValue / 4;
-            }
-            else if (randomNum < .55f)
-            {
-                description.text = "You imagine yourself at home. Too bad home isn't completely stress free.\n<Press SPACE To Continue>";
-                attackDammage = Random.Range(8, 19);
-                minRange = playerStats.attributes[0].value.BaseValue / 7;
-                maxRange = playerStats.attributes[0].value.BaseValue / 3;
-            }
-            else if (randomNum < .7f)
-            {
-                description.text = "You imagine yourself with your friends. It is nice,\n<Press SPACE To Continue>";
-                attackDammage = Random.Range(16, 25);
-                minRange = playerStats.attributes[0].value.BaseValue / 4;
-                maxRange = playerStats.attributes[0].value.BaseValue / 2;
+               if (randomNum < .5f)
+                {
+                    description.text = "You imagine yourself with your friends. It is nice,\n<Press SPACE To Continue>";
+                    attackDammage = Random.Range(16, 25);
+                    minRange = playerStats.attributes[0].value.BaseValue / 4;
+                    maxRange = playerStats.attributes[0].value.BaseValue / 2;
+                }
+                else
+                {
+                    description.text = "You try imagine yourself defeating the enemy. It seems to have worked...\n<Press SPACE To Continue>";
+                    attackDammage = Random.Range(25, 35);
+                    minRange = playerStats.attributes[0].value.BaseValue / 3;
+                    maxRange = 2 * playerStats.attributes[0].value.BaseValue / 3;
+                }
             }
             else
             {
-                description.text = "You try imagine yourself defeating the enemy. It seems to have worked...\n<Press SPACE To Continue>";
-                attackDammage = Random.Range(25, 35);
-                minRange = playerStats.attributes[0].value.BaseValue / 3;
-                maxRange = 2 * playerStats.attributes[0].value.BaseValue / 3;
+                if (randomNum < .35f)
+                {
+                    description.text = "You try imagining yourself somewhere else. It doesn't work so well...\n<Press SPACE To Continue>";
+                    attackDammage = Random.Range(1, 11);
+                    minRange = playerStats.attributes[0].value.BaseValue / 10;
+                    maxRange = playerStats.attributes[0].value.BaseValue / 4;
+                }
+                else if (randomNum < .55f)
+                {
+                    description.text = "You imagine yourself at home. Too bad home isn't completely stress free.\n<Press SPACE To Continue>";
+                    attackDammage = Random.Range(8, 19);
+                    minRange = playerStats.attributes[0].value.BaseValue / 7;
+                    maxRange = playerStats.attributes[0].value.BaseValue / 3;
+                }
+                else if (randomNum < .7f)
+                {
+                    description.text = "You imagine yourself with your friends. It is nice,\n<Press SPACE To Continue>";
+                    attackDammage = Random.Range(16, 25);
+                    minRange = playerStats.attributes[0].value.BaseValue / 4;
+                    maxRange = playerStats.attributes[0].value.BaseValue / 2;
+                }
+                else
+                {
+                    description.text = "You try imagine yourself defeating the enemy. It seems to have worked...\n<Press SPACE To Continue>";
+                    attackDammage = Random.Range(25, 35);
+                    minRange = playerStats.attributes[0].value.BaseValue / 3;
+                    maxRange = 2 * playerStats.attributes[0].value.BaseValue / 3;
+                }
             }
 
             changeStats(attackDammage, -Random.Range(minRange, maxRange));
@@ -429,59 +460,81 @@ public class AttackAction : MonoBehaviour
 
     IEnumerator ShutDown()
     {
+        player.isSlow = true;
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats(0, Random.Range(10, 16));
         enemyTurn.playerTurn(false);
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
-            description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
-            }
-            if (playerStats.attributes[2].value.BaseValue > 0)
-            {
+                description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
                 enemyTurn.enemyTurn(true);
+            }
+            else
+            {
+                description.text = "Uh Oh...";
             }
         }
         else
         {
-            description.text = "This isn't worth it- you can't do this. Who wants to actually ask questions anyway?\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
+                description.text = "This isn't worth it- you can't do this. Who wants to actually ask questions anyway?\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+                endEncounter.EndFightEarly();
             }
-            player.isSlow = true;
-            endEncounter.EndFightEarly();
+            else
+            {
+                description.text = "Uh Oh...";
+            }
         }
     }
 
     IEnumerator Hide()
     {
+        player.isHidden = true;
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         changeStats(0, Random.Range(20, 30));
         enemyTurn.playerTurn(false);
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
-            description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
-            }
-            if (playerStats.attributes[2].value.BaseValue > 0)
-            {
+                description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
                 enemyTurn.enemyTurn(true);
+            }
+            else
+            {
+                description.text = "Uh Oh...";
             }
         }
         else
         {
-            player.isHidden = true;
-            description.text = "It's too much. Everyone's staring. You can't do this...\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
+                description.text = "It's too much. Everyone's staring. You can't do this...\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+                endEncounter.EndFightEarly();
             }
-            endEncounter.EndFightEarly();
+            else
+            {
+                description.text = "Uh Oh...";
+            }
         }
     }
 
@@ -546,29 +599,40 @@ public class AttackAction : MonoBehaviour
 
     IEnumerator LeaveTheRoom()
     {
+        player.isIncreasedSpawnRate = true;
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
         enemyTurn.playerTurn(false);
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
-            description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
-            }
-            if (playerStats.attributes[2].value.BaseValue > 0)
-            {
+                description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
                 enemyTurn.enemyTurn(true);
+            }
+            else
+            {
+                description.text = "Uh Oh...";
             }
         }
         else
         {
-            player.isIncreasedSpawnRate = true;
-            description.text = "You know what? This isn't worth it. You leave the room...\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
+                description.text = "You know what? This isn't worth it. You leave the room...\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+                endEncounter.EndFightEarly();
             }
-            endEncounter.EndFightEarly();
+            else
+            {
+                description.text = "Uh Oh...";
+            }
         }
     }
 
@@ -582,10 +646,7 @@ public class AttackAction : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
-        if (playerStats.attributes[2].value.BaseValue > 0)
-        {
-            enemyTurn.enemyTurn(true);
-        }
+        enemyTurn.enemyTurn(true);
     }
 
     IEnumerator Grounding()//54321
@@ -595,12 +656,12 @@ public class AttackAction : MonoBehaviour
         description.text = "You focus on 5 things you can see.\n<Press SPACE To Continue>";
         if (Random.value > 0.5f)
         {
-            changeStats(Random.Range(3, 8), 0);
+            changeStats(Random.Range(4, 10), 0);
             enemyTurn.playerTurn(true);
         }
         else
         {
-            changeStats(0, -Random.Range(6, 12));
+            changeStats(0, -Random.Range(8, 16));
             enemyTurn.playerTurn(false);
         }
         while (!keyboardBug)
@@ -609,76 +670,89 @@ public class AttackAction : MonoBehaviour
         }
         keyboardBug = false;
 
-        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        description.text = "You focus on 4 things you can touch.\n<Press SPACE To Continue>";
-        if (Random.value > 0.5f)
-        {
-            changeStats(Random.Range(3, 8), 0);
-            enemyTurn.playerTurn(true);
-        }
-        else
-        {
-            changeStats(0, -Random.Range(6, 12));
-        }
-        while (!keyboardBug)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        keyboardBug = false;
-
-        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        description.text = "You focus on 3 things you can hear.\n<Press SPACE To Continue>";
-        if (Random.value > 0.5f)
-        {
-            changeStats(Random.Range(3, 8), 0);
-            enemyTurn.playerTurn(true);
-        }
-        else
-        {
-            changeStats(0, -Random.Range(6, 12));
-        }
-        while (!keyboardBug)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        keyboardBug = false;
-
-        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        description.text = "You focus on 2 things you can smell.\n<Press SPACE To Continue>";
-        if (Random.value > 0.5f)
-        {
-            changeStats(Random.Range(3, 8), 0);
-            enemyTurn.playerTurn(true);
-        }
-        else
-        {
-            changeStats(0, -Random.Range(6, 12));
-        }
-        while (!keyboardBug)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        keyboardBug = false;
-
-        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        description.text = "You focus on 1 you can taste. You feel grounded.\n<Press SPACE To Continue>";
-        if (Random.value > 0.5f)
-        {
-            changeStats(Random.Range(3, 8), 0);
-            enemyTurn.playerTurn(true);
-        }
-        else
-        {
-            changeStats(0, -Random.Range(6, 12));
-        }
-        while (!keyboardBug)
-        {
-            yield return new WaitForEndOfFrame();
-        }
 
         if (playerStats.attributes[2].value.BaseValue > 0)
         {
-            enemyTurn.enemyTurn(true);
+            openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
+            description.text = "You focus on 4 things you can touch.\n<Press SPACE To Continue>";
+            if (Random.value > 0.5f)
+            {
+                changeStats(Random.Range(4, 10), 0);
+                enemyTurn.playerTurn(true);
+            }
+            else
+            {
+                changeStats(0, -Random.Range(8, 16));
+            }
+            while (!keyboardBug)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+            keyboardBug = false;
+
+            if (playerStats.attributes[2].value.BaseValue > 0)
+            {
+                openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
+                description.text = "You focus on 3 things you can hear.\n<Press SPACE To Continue>";
+                if (Random.value > 0.5f)
+                {
+                    changeStats(Random.Range(4, 10), 0);
+                    enemyTurn.playerTurn(true);
+                }
+                else
+                {
+                    changeStats(0, -Random.Range(8, 16));
+                }
+                while (!keyboardBug)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+                keyboardBug = false;
+
+                if (playerStats.attributes[2].value.BaseValue > 0)
+                {
+                    openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
+                    description.text = "You focus on 2 things you can smell.\n<Press SPACE To Continue>";
+                    if (Random.value > 0.5f)
+                    {
+                        changeStats(Random.Range(4, 10), 0);
+                        enemyTurn.playerTurn(true);
+                    }
+                    else
+                    {
+                        changeStats(0, -Random.Range(8, 16));
+                    }
+                    while (!keyboardBug)
+                    {
+                        yield return new WaitForEndOfFrame();
+                    }
+                    keyboardBug = false;
+
+                    if (playerStats.attributes[2].value.BaseValue > 0)
+                    {
+                        openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
+                        description.text = "You focus on 1 you can taste. You feel grounded.\n<Press SPACE To Continue>";
+                        if (Random.value > 0.5f)
+                        {
+                            changeStats(Random.Range(4, 10), 0);
+                            enemyTurn.playerTurn(true);
+                        }
+                        else
+                        {
+                            changeStats(0, -Random.Range(8, 16));
+                        }
+                        while (!keyboardBug)
+                        {
+                            yield return new WaitForEndOfFrame();
+                        }
+
+                        if (playerStats.attributes[2].value.BaseValue > 0)
+                        {
+                            enemyTurn.enemyTurn(true);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -694,11 +768,8 @@ public class AttackAction : MonoBehaviour
         }
         if (enemy.enemyNameDisplayed.text != "You" && enemy.enemyNameDisplayed.text != "Your Anxiety" && Random.value > 0.5f)
         {
-            if (playerStats.attributes[2].value.BaseValue > 0)
-            {
-                enemyTurn.enemyTurn(false);
-            }
-            keyboardBug = false;
+            enemyTurn.enemyTurn(false);
+            //keyboardBug = false;
             yield return new WaitForSeconds(openFMScript.enemyEncountered.attackTime * openFMScript.enemyEncountered.numAttacks);
             /*description.text = description.text + "\n<Press SPACE To Continue>";
             while (!keyboardBug)
@@ -706,38 +777,46 @@ public class AttackAction : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }*/
         }
-        if (playerStats.attributes[2].value.BaseValue > 0)
-        {
-            enemyTurn.enemyTurn(true);
-        }
+        enemyTurn.enemyTurn(true);//It is impossible for the enemy to do more damage than you heal so no need to check if you are dead
     }
 
     IEnumerator Isolation()
     {
+        player.isDecreasedSpawnRate = true;
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
-        changeStats(0, Random.Range(28, 42));
+        changeStats(0, Random.Range(20, 32));
         enemyTurn.playerTurn(false);
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
-            description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
-            }
-            if (playerStats.attributes[2].value.BaseValue > 0)
-            {
+                description.text = "You can't hide from your problems forever.\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
                 enemyTurn.enemyTurn(true);
+            }
+            else
+            {
+                description.text = "Uh Oh...";
             }
         }
         else
         {
-            player.isDecreasedSpawnRate = true;
-            description.text = "They're right, none of my friends actually care...\n<Press SPACE To Continue>";
-            while (!Input.GetKey(KeyCode.Space))
+            if (playerStats.attributes[0].value.BaseValue < 100)
             {
-                yield return new WaitForFixedUpdate();
+                description.text = "They're right, none of my friends actually care...\n<Press SPACE To Continue>";
+                while (!Input.GetKey(KeyCode.Space))
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+                endEncounter.EndFightEarly();
             }
-            endEncounter.EndFightEarly();
+            else
+            {
+                description.text = "Uh Oh...";
+            }
         }
     }
 
@@ -752,10 +831,7 @@ public class AttackAction : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
-        if (playerStats.attributes[2].value.BaseValue > 0)
-        {
-            enemyTurn.enemyTurn(true);
-        }
+        enemyTurn.enemyTurn(true);
     }
 
     /*

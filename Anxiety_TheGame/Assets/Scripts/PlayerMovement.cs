@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public Image increasedSpawnImage;
     public Image decreasedSpawnImage;
     public Image drunkImage;
+    public Image emptyImage;
 
     public float maxDistence = .3f;
     private Vector2 previousLocation;
@@ -39,12 +40,16 @@ public class PlayerMovement : MonoBehaviour
     public Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     public bool inBattle = false;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+    private Rigidbody2D rigidbody;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
     private void Start()
     {
+        rigidbody = gameObject.GetComponent<Rigidbody2D>();
         canMove = false;
         StartCoroutine(WaitOnStart());
-        StartCoroutine(UpdatePosition());
+        //StartCoroutine(UpdatePosition());
         StartCoroutine(SpriteGlitch());
     }
 
@@ -69,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         }
         walkSpeed = Mathf.Abs(walkSpeed);
     }
-
+    /*
     IEnumerator UpdatePosition()
     {
         while(true)
@@ -77,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             previousLocation = transform.position;
             yield return new WaitForEndOfFrame();
         }
-    }
+    }*/
 
     IEnumerator SpriteGlitch()
 	{
@@ -101,6 +106,14 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator StartEffects()
     {
         inBattle = false;
+        if (!isBlind && !isHidden && !isSlow && !isIncreasedSpawnRate && !isLoud && !isDecreasedSpawnRate && !isDrunk)
+        {
+            emptyImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            emptyImage.gameObject.SetActive(false);
+        }
         if (isBlind)
         {
             camera.GetComponent<PostProcessVolume>().enabled = true;
@@ -171,24 +184,6 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(SlowlyFadeImage(drunkImage));
         }
-        while (!inBattle && timer < 30)
-        {
-            timer += Time.deltaTime;
-            yield return new WaitForFixedUpdate();
-        }
-        if (isHidden)
-        {
-            Anim.SetBool("Glitch", false);
-            isHidden = false;
-        }
-        if (isLoud)
-        {
-            camera.GetComponent<AudioDistortionFilter>().enabled = false;
-        }
-        if (isDrunk)
-        {
-            isDrunk = false;
-        }
     }
 
     IEnumerator SlowlyFadeImage(Image image)
@@ -223,10 +218,41 @@ public class PlayerMovement : MonoBehaviour
         }
         image.color = Color.white;
         image.gameObject.SetActive(false);
+        if (image == hiddenImage)
+        {
+            isHidden = false;
+            Anim.SetBool("Glitch", false);
+        }
+        if (image == loudImage)
+        {
+            isLoud = false;
+            camera.GetComponent<AudioDistortionFilter>().enabled = false;
+            if (isIncreasedSpawnRate)
+            {
+                increasedSpawnImage.rectTransform.anchoredPosition = new Vector3(50f, -95f, 0);
+            }
+            else
+            {
+                emptyImage.gameObject.SetActive(true);
+            }
+        }
+        if (image == drunkImage)
+        {
+            isDrunk = false;
+            if (isDecreasedSpawnRate)
+            {
+                decreasedSpawnImage.rectTransform.anchoredPosition = new Vector3(50f, -95f, 0);
+            }
+            else
+            {
+                emptyImage.gameObject.SetActive(true);
+            }
+        }
     }
 
     public void stopEffects(bool died)
     {
+        emptyImage.gameObject.SetActive(true);
         if (!died)
         {
             inBattle = true;
@@ -239,20 +265,22 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isHidden)
         {
-            Anim.SetBool("Glitch", false);
             isHidden = false;
+            Anim.SetBool("Glitch", false);
             hiddenImage.gameObject.SetActive(false);
-        }
-        if (isSlow && !died)
-        {
-            walkSpeed /= .65f;
         }
         if (isSlow)
         {
+            if (!died)
+            {
+                walkSpeed /= .65f;
+            }
+            isSlow = false;
             slowImage.gameObject.SetActive(false);
         }
         if (isLoud)
         {
+            isLoud = false;
             camera.GetComponent<AudioDistortionFilter>().enabled = false;
             loudImage.gameObject.SetActive(false);
         }
@@ -281,11 +309,12 @@ public class PlayerMovement : MonoBehaviour
         {
             xSpeed = Input.GetAxis("Horizontal");
             ySpeed = Input.GetAxis("Vertical");
-            Vector2 addedPosition = new Vector2(xSpeed, ySpeed).normalized * walkSpeed * Time.deltaTime;
+            rigidbody.velocity = new Vector2(xSpeed, ySpeed).normalized * walkSpeed;
+            /*Vector2 addedPosition = new Vector2(xSpeed, ySpeed).normalized * walkSpeed;
             if (Mathf.Abs(previousLocation.x - (transform.position.x + addedPosition.x)) < maxDistence && Mathf.Abs(previousLocation.y - (transform.position.y + addedPosition.y)) < maxDistence)
             {
                 transform.Translate(addedPosition);
-            }
+            }*/
 
 
             /*WalkDir:
@@ -315,6 +344,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 Anim.SetInteger("WalkDir", 2);
             }
+        }
+        else
+        {
+            rigidbody.velocity = Vector2.zero;
         }
     }
 

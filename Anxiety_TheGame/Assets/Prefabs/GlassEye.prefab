@@ -57,8 +57,8 @@ MonoBehaviour:
   - Your glasses weigh more and more, but you can't take them off.
   - You take off your glasses, but immediately bump into a wall, so you put them
     back on in shame.
-  minDamage: 15
-  maxDamage: 25
+  minDamage: 18
+  maxDamage: 28
   attackFirst: 0
   numAttacks: 1
   attackTime: 1.5

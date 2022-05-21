@@ -20,6 +20,7 @@ public class BossTrggerTile : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StartCoroutine(SlowlyAddTiles());
+            StartCoroutine(RemoveDarkness());
         }
     }
 
@@ -28,7 +29,6 @@ public class BossTrggerTile : MonoBehaviour
         PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         OverworldAnxietyEffect worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         player.stopEffects(false);
-        StartCoroutine(RemoveDarkness());
         player.canMove = false;
         player.gameObject.GetComponent<OpenFightMenu>().startingBattle = true;
         worldEffect.inBattle = true;
