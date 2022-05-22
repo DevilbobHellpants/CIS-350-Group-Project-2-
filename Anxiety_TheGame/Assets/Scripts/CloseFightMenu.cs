@@ -38,6 +38,7 @@ public class CloseFightMenu : MonoBehaviour
     private CheckpointTrigger[] checkpoints;
     private bool afterBattle = false;
     private bool keyboardDebugger = false;
+    public GameObject loadingObject;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +97,7 @@ public class CloseFightMenu : MonoBehaviour
             {
                 if (lost)
                 {
+                    loadingObject.SetActive(true);
                     SceneManager.LoadScene("StartingScreen");
                 }
                 gameOverScreen.SetActive(false);
@@ -120,6 +122,7 @@ public class CloseFightMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                loadingObject.SetActive(true);
                 SceneManager.LoadScene("StartingScreen");
                 youWinScreen.SetActive(false);
                 win = false;
@@ -147,11 +150,6 @@ public class CloseFightMenu : MonoBehaviour
 
     IEnumerator BattleOver()
     {
-        openFMScript.fightMusic.Stop();
-        openFMScript.bossMusic.Stop();
-        openFMScript.effectSource.PlayOneShot(openFMScript.winBattleSound, .2f);
-        openFMScript.playerAudio.PlayDelayed(0.5f);
-
         keyboardDebugger = false;
         while (!keyboardDebugger)
         {
@@ -159,6 +157,9 @@ public class CloseFightMenu : MonoBehaviour
         }
         keyboardDebugger = false;
         yield return new WaitForEndOfFrame();
+        openFMScript.fightMusic.Stop();
+        openFMScript.bossMusic.Stop();
+        openFMScript.effectSource.PlayOneShot(openFMScript.winBattleSound, .2f);
         description.text = "Problem defeated!\n<Press SPACE To Continue>";
         attack1.enabled = false;
         attack2.enabled = false;
@@ -168,6 +169,7 @@ public class CloseFightMenu : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+        openFMScript.playerAudio.PlayDelayed(0.5f);
         attack1.enabled = true;
         attack1.GetComponentInChildren<Text>().enabled = true;
         attack2.enabled = true;

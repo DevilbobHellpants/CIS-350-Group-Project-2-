@@ -11,16 +11,17 @@ using UnityEngine.SceneManagement;
 
 public class StartMenuManager : MonoBehaviour
 {
-    public TextMeshProUGUI titleText;
+    public GameObject title;
     public TextMeshProUGUI storyText;
     public TextMeshProUGUI continueText;
+    public GameObject loadingObject;
     private int phase = 0;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && phase == 0)
         {
-            titleText.gameObject.SetActive(false);
+            title.gameObject.SetActive(false);
             storyText.gameObject.SetActive(true);
             continueText.text = "<Space To Continue>";
             phase++;
@@ -43,6 +44,7 @@ public class StartMenuManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space) && phase == 4)
         {
+            loadingObject.SetActive(true);
             SceneManager.LoadScene("TilemapTest");
         }
     }

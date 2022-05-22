@@ -22,6 +22,7 @@ public class CheckpointTrigger : MonoBehaviour
     private GameObject bossCloud;
     private ProgressBar progressBar;
     public GameObject[] lightbulbs;
+    private AudioSource portalSound;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +40,14 @@ public class CheckpointTrigger : MonoBehaviour
         worldEffect = GameObject.FindGameObjectWithTag("AnxietyEffect").GetComponent<OverworldAnxietyEffect>();
         bossCloud = GameObject.FindGameObjectWithTag("Final Boss Cloud");
         progressBar = GameObject.FindGameObjectWithTag("PlayerAnxietyOverworld").GetComponent<ProgressBar>();
+        portalSound = gameObject.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !currentCheckpoint)
         {
+            portalSound.Play();
             for (int i = 0; i < checkpoints.Length; i++)
             {
                 checkpoints[i].currentCheckpoint = false;
@@ -61,6 +64,7 @@ public class CheckpointTrigger : MonoBehaviour
 
     public void Respawn()
     {
+        portalSound.Play();
         for (int i = 0; i < lightbulbs.Length; i++)
         {
             if (lightbulbs[i].name.Contains("Lightbulb 1.1"))
