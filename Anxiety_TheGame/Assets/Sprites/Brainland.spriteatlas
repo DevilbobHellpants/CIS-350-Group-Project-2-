@@ -31,7 +31,8 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 505865b067db95340b8ebf281fc6f7c4, type: 3}
-    totalSpriteSurfaceArea: 1425408
+    - {fileID: 2800000, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+    totalSpriteSurfaceArea: 1753088
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -124,6 +125,26 @@ SpriteAtlas:
   - {fileID: -237971313580814655, guid: 505865b067db95340b8ebf281fc6f7c4, type: 3}
   - {fileID: 1207233095915619168, guid: 505865b067db95340b8ebf281fc6f7c4, type: 3}
   - {fileID: 4165786468360670033, guid: 505865b067db95340b8ebf281fc6f7c4, type: 3}
+  - {fileID: 6914984262336238553, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 6227777551808320502, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 6807340305228377818, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 2395627051032586259, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -764727304448645233, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -1686986230068812119, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -6185465439416635815, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 811865154352187271, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 9163864364679191059, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 4168455864394013232, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 4216379145747361477, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -1378235982135489801, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -2914040486545613888, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -5808486740006394055, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -8101723374877659849, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 9142737517382176583, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -5054026366807989368, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 6273627047275056375, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: -2049218799686844518, guid: c9520112db2e86f408bd7e05826970da, type: 3}
+  - {fileID: 7302178460934442578, guid: c9520112db2e86f408bd7e05826970da, type: 3}
   m_PackedSpriteNamesToIndex:
   - ANXIETYGAMETILEMAP_11
   - ANXIETYGAMETILEMAP_10
@@ -212,5 +233,25 @@ SpriteAtlas:
   - ANXIETYGAMETILEMAP_50
   - ANXIETYGAMETILEMAP_53
   - ANXIETYGAMETILEMAP_52
+  - ExtraTileMap_11
+  - ExtraTileMap_10
+  - ExtraTileMap_13
+  - ExtraTileMap_12
+  - ExtraTileMap_15
+  - ExtraTileMap_14
+  - ExtraTileMap_17
+  - ExtraTileMap_16
+  - ExtraTileMap_19
+  - ExtraTileMap_18
+  - ExtraTileMap_8
+  - ExtraTileMap_9
+  - ExtraTileMap_2
+  - ExtraTileMap_3
+  - ExtraTileMap_0
+  - ExtraTileMap_1
+  - ExtraTileMap_6
+  - ExtraTileMap_7
+  - ExtraTileMap_4
+  - ExtraTileMap_5
   m_Tag: Brainland
   m_IsVariant: 0

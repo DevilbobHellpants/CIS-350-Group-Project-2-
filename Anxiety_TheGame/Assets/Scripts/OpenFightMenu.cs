@@ -25,7 +25,6 @@ public class OpenFightMenu : MonoBehaviour
     public Enemy enemyEncountered;
     public GameObject enemyHealthBar;
     public GameObject playerAnxietyBar;
-    public GameObject bossAnim;
 
     public Text description;
 
@@ -206,7 +205,8 @@ public class OpenFightMenu : MonoBehaviour
         enemyAnimation.SetBool("isBoss", false);
 
         enemyEncountered = enemies[enemyNum];
-        enemyPortrait.sprite = enemies[enemyNum].enemySprite;
+        enemyPortrait.sprite = null;
+        enemyPortrait.color = Color.grey;
         enemyNameDisplayed.text = enemies[enemyNum].enemyName;
         enemyStats.attributes[2].value.BaseValue = enemies[enemyNum].health;
         enemyHealthBar.GetComponent<ProgressBar>().maximum = enemies[enemyNum].health;
@@ -493,7 +493,6 @@ public class OpenFightMenu : MonoBehaviour
         enemyAnimation.SetBool("isQuestionAir", false);
         enemyAnimation.SetBool("isScrambleSound", false);
         enemyAnimation.SetBool("isLiarSmiler", false);
-        enemyAnimation.SetBool("isBoss", false);
         enemyAnimation.SetBool("isBoss", true);
         //bossAnim.SetActive(true);
         enemyNameDisplayed.text = finalBoss.enemyName;
