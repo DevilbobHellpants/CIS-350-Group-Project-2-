@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public Image drunkImage;
     public Image emptyImage;
 
-    public float maxDistence = .3f;
+    //public float maxDistence = .3f;
     private Vector2 previousLocation;
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public Camera camera;

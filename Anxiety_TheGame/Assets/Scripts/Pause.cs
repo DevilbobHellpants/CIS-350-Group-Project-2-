@@ -13,6 +13,8 @@ public class Pause : MonoBehaviour
     public bool paused = false;
     public GameObject tutorialPopup;
     private SimpleLUT cameraLUT;
+    public Animator enemyAnimation;
+    private SpriteRenderer enemySprite;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class Pause : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         blind = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PostProcessVolume>();
         cameraLUT = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SimpleLUT>();
+        enemySprite = enemyAnimation.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,8 @@ public class Pause : MonoBehaviour
         cameraLUT.TintColor = Color.white;
         cameraLUT.Contrast = 0f;
         cameraLUT.Sharpness = 0f;
+        enemyAnimation.speed = 0f;
+        enemySprite.sortingOrder = 0;
     }
 
     public void UnPause()
@@ -61,6 +66,8 @@ public class Pause : MonoBehaviour
             Time.timeScale = 1f;
         }
         menu.SetActive(false);
+        enemyAnimation.speed = 1f;
+        enemySprite.sortingOrder = 1;
     }
 
     public void Restart()
