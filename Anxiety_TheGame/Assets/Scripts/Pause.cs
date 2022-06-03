@@ -74,4 +74,10 @@ public class Pause : MonoBehaviour
     {
         SceneManager.LoadScene("StartingScreen");
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game");
+        Application.Quit();
+    }
 }

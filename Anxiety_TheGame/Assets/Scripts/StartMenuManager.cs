@@ -19,6 +19,11 @@ public class StartMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Quit Game");
+            Application.Quit();
+        }
         if (Input.GetKeyDown(KeyCode.Space) && phase == 0)
         {
             title.gameObject.SetActive(false);

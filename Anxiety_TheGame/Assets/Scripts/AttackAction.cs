@@ -250,15 +250,15 @@ public class AttackAction : MonoBehaviour
     IEnumerator EmotionalSupport()
     {
         openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        if (Random.value < 0.3f)
+        if (Random.value < 0.3f || (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety"))
         {//Crit
-            changeStats(Random.Range(30, 45), -Random.Range(15, 23));
+            changeStats(Random.Range(30, 45), -Random.Range(28, 39));
             description.text = "You ask a friend for reassurance. They hug you tightly and you start crying.\n<Press SPACE To Continue>";
         }
         else
         {
             description.text = "You ask a friend for reassurance. They smile and say you look fine.\n<Press SPACE To Continue>";
-            changeStats(Random.Range(8, 18), -Random.Range(15, 23));
+            changeStats(Random.Range(8, 18), -Random.Range(18, 26));
         }
         enemyTurn.playerTurn(true);
         while (!Input.GetKey(KeyCode.Space))
@@ -327,7 +327,7 @@ public class AttackAction : MonoBehaviour
         player.isBlind = true;
         description.text = "Who needs glasses anyways? Not you, that's for sure.\n<Press SPACE To Continue>";
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
-        changeStats(Random.Range(3, 8), -Random.Range(24, 28));
+        changeStats(Random.Range(3, 6), -Random.Range(24, 28));
         enemyTurn.playerTurn(true);
         while (!Input.GetKey(KeyCode.Space))
         {
@@ -546,22 +546,22 @@ public class AttackAction : MonoBehaviour
         {
             if (openFMScript.enemyEncountered.health % 6 > 2)//Round Up
             {
-                changeStats(openFMScript.enemyEncountered.health / 6 + 1, -Random.Range(15, 20));
+                changeStats(openFMScript.enemyEncountered.health / 6 + 1, -Random.Range(18, 24));
             }
             else
             {
-                changeStats(openFMScript.enemyEncountered.health / 6, -Random.Range(15, 20));
+                changeStats(openFMScript.enemyEncountered.health / 6, -Random.Range(18, 24));
             }
         }
         else
         {
             if (openFMScript.enemyEncountered.health % 4 > 1)//Round Up
             {
-                changeStats(openFMScript.enemyEncountered.health / 4 + 1, -Random.Range(15, 20));
+                changeStats(openFMScript.enemyEncountered.health / 4 + 1, -Random.Range(18, 24));
             }
             else
             {
-                changeStats(openFMScript.enemyEncountered.health / 4, -Random.Range(15, 20));
+                changeStats(openFMScript.enemyEncountered.health / 4, -Random.Range(18, 24));
             }
         }
         enemyTurn.playerTurn(true);
@@ -585,7 +585,7 @@ public class AttackAction : MonoBehaviour
         openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
         //StartCoroutine(MusicChange());
         //m_MyAudioSource.volume = m_MySliderValue;
-        changeStats(Random.Range(10, 18), -Random.Range(28, 35));
+        changeStats(Random.Range(16, 22), -Random.Range(32, 39));
         enemyTurn.playerTurn(true);
         while (!Input.GetKey(KeyCode.Space))
         {
@@ -640,7 +640,7 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "You punch a wall out of frustration. ...that kind of hurt.\n<Press SPACE To Continue>";
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
-        changeStats(-Random.Range(5, 12), -Random.Range(35, 50));
+        changeStats(-Random.Range(5, 12), -Random.Range(36, 50));
         enemyTurn.playerTurn(false);
         while (!Input.GetKey(KeyCode.Space))
         {
@@ -760,7 +760,7 @@ public class AttackAction : MonoBehaviour
     {
         description.text = "There's nothing a good nap can't fix.\n<Press SPACE To Continue>";
         openFMScript.effectSource.PlayOneShot(openFMScript.positiveAction, .75f);
-        changeStats(0, -Random.Range(35, 45));
+        changeStats(0, -Random.Range(36, 46));
         enemyTurn.playerTurn(false);
         while (!Input.GetKey(KeyCode.Space))
         {
@@ -784,7 +784,7 @@ public class AttackAction : MonoBehaviour
     {
         player.isDecreasedSpawnRate = true;
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
-        changeStats(0, Random.Range(20, 32));
+        changeStats(0, Random.Range(28, 40));
         enemyTurn.playerTurn(false);
         if (enemy.enemyNameDisplayed.text == "You" || enemy.enemyNameDisplayed.text == "Your Anxiety")
         {
@@ -825,7 +825,7 @@ public class AttackAction : MonoBehaviour
         player.isDrunk = true;
         description.text = "Maybe drinking will help?\n<Press SPACE To Continue>";
         openFMScript.effectSource.PlayOneShot(openFMScript.negativeAction, .75f);
-        changeStats(0, -Random.Range(25, 40));
+        changeStats(0, -Random.Range(28, 40));
         enemyTurn.playerTurn(false);
         while (!Input.GetKey(KeyCode.Space))
         {

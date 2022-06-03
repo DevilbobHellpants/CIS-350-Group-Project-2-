@@ -39,6 +39,7 @@ public class CloseFightMenu : MonoBehaviour
     private bool afterBattle = false;
     private bool keyboardDebugger = false;
     public GameObject loadingObject;
+    public SpriteRenderer enemySprite;
 
     // Start is called before the first frame update
     void Start()
@@ -100,6 +101,7 @@ public class CloseFightMenu : MonoBehaviour
                     loadingObject.SetActive(true);
                     SceneManager.LoadScene("StartingScreen");
                 }
+                enemySprite.sortingOrder = 1;
                 gameOverScreen.SetActive(false);
                 gameOver = false;
                 for (int i = 0; i < checkpoints.Length; i++)
@@ -207,6 +209,7 @@ public class CloseFightMenu : MonoBehaviour
         win = true;
         description.text = "Is this it..? Is it really over?\n<Press SPACE To Continue>";
         yield return new WaitForSeconds(3);
+        enemySprite.sortingOrder = 0;
         youWinScreen.SetActive(true);
         bossAnim.SetActive(false);
 
@@ -245,6 +248,7 @@ public class CloseFightMenu : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+        enemySprite.sortingOrder = 0;
         if (fightMenuScript.enemyEncountered == finalBoss)
         {
             bossAnim.SetActive(false);
